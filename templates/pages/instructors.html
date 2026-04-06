@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% block title %}Instructors | Boffins Academy{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section id="instructors-hero" class="bg-white pt-10 pb-0 sm:pt-10 sm:pb-0">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-3 px-3 py-1
+                
+                text-blue-600 text-xs sm:text-sm font-medium
+                mb-5 sm:mb-7">
+     <svg width="169" height="36" viewBox="0 0 169 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="169" height="36" rx="8" fill="#2D9CDB"/>
+<path d="M24.6667 20.5H23.8333C22.9493 20.5 22.1014 20.8512 21.4763 21.4763C20.8512 22.1014 20.5 22.9493 20.5 23.8333V25.5M31.3758 18.5133C31.4309 18.3444 31.5385 18.1976 31.6829 18.0941C31.8273 17.9907 32.001 17.9361 32.1786 17.9384C32.3562 17.9406 32.5285 17.9995 32.6702 18.1066C32.812 18.2136 32.9159 18.3631 32.9667 18.5333L33.5808 19.7433C33.6406 19.861 33.7274 19.9627 33.8342 20.0402C33.941 20.1177 34.0646 20.1688 34.195 20.1892L35.5567 20.4025C35.732 20.4032 35.9027 20.4592 36.0443 20.5625C36.186 20.6658 36.2915 20.8111 36.3458 20.9778C36.4001 21.1446 36.4004 21.3242 36.3467 21.4911C36.293 21.658 36.188 21.8037 36.0467 21.9075L35.07 22.8808C34.9765 22.9739 34.9064 23.0879 34.8656 23.2134C34.8247 23.3388 34.8142 23.4722 34.835 23.6025L35.0508 24.9467C35.1102 25.1151 35.1139 25.2982 35.0613 25.469C35.0087 25.6397 34.9027 25.789 34.7588 25.8949C34.6149 26.0007 34.4408 26.0576 34.2622 26.057C34.0836 26.0564 33.9099 25.9985 33.7667 25.8917L32.5458 25.2667C32.4282 25.2064 32.298 25.175 32.1658 25.175C32.0337 25.175 31.9034 25.2064 31.7858 25.2667L30.565 25.8917C30.4218 25.9976 30.2485 26.0548 30.0704 26.055C29.8923 26.0552 29.7188 25.9984 29.5754 25.8928C29.432 25.7872 29.3261 25.6384 29.2734 25.4683C29.2207 25.2982 29.2239 25.1157 29.2825 24.9475L29.4975 23.6033C29.5183 23.473 29.5078 23.3397 29.4669 23.2142C29.4261 23.0887 29.356 22.9748 29.2625 22.8817L28.2992 21.9208C28.153 21.8196 28.0431 21.6743 27.9855 21.5062C27.9278 21.338 27.9254 21.1558 27.9787 20.9862C28.0319 20.8166 28.138 20.6685 28.2814 20.5635C28.4248 20.4585 28.5981 20.4021 28.7758 20.4025L30.1367 20.1892C30.267 20.1688 30.3907 20.1177 30.4974 20.0402C30.6042 19.9627 30.6911 19.861 30.7508 19.7433L31.3758 18.5133ZM29.6667 13.8333C29.6667 15.6743 28.1743 17.1667 26.3333 17.1667C24.4924 17.1667 23 15.6743 23 13.8333C23 11.9924 24.4924 10.5 26.3333 10.5C28.1743 10.5 29.6667 11.9924 29.6667 13.8333Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44.2866 23V12.92H45.2316L49.1936 21.397L53.1346 12.92H54.0936V22.993H53.1136V15.216L49.5226 23H48.8576L45.2736 15.216V23H44.2866ZM56.0861 23V12.92H62.3861V13.907H57.1151V17.393H61.5461V18.38H57.1151V22.013H62.3861V23H56.0861ZM64.0985 23V12.92H70.3985V13.907H65.1275V17.393H69.5585V18.38H65.1275V22.013H70.3985V23H64.0985ZM74.7918 23V13.907H71.2708V12.92H79.3418V13.907H75.8208V23H74.7918ZM86.9803 23.21C85.9769 23.21 85.1299 22.9883 84.4393 22.545C83.7486 22.097 83.2259 21.4787 82.8713 20.69C82.5166 19.9013 82.3393 18.9913 82.3393 17.96C82.3393 16.9287 82.5166 16.0187 82.8713 15.23C83.2259 14.4413 83.7486 13.8253 84.4393 13.382C85.1299 12.934 85.9769 12.71 86.9803 12.71C87.9883 12.71 88.8353 12.934 89.5213 13.382C90.2119 13.8253 90.7346 14.4413 91.0893 15.23C91.4486 16.0187 91.6283 16.9287 91.6283 17.96C91.6283 18.9913 91.4486 19.9013 91.0893 20.69C90.7346 21.4787 90.2119 22.097 89.5213 22.545C88.8353 22.9883 87.9883 23.21 86.9803 23.21ZM86.9803 22.223C87.7689 22.223 88.4269 22.0433 88.9543 21.684C89.4816 21.3247 89.8759 20.8253 90.1373 20.186C90.4033 19.542 90.5363 18.8 90.5363 17.96C90.5363 17.12 90.4033 16.3803 90.1373 15.741C89.8759 15.1017 89.4816 14.6023 88.9543 14.243C88.4269 13.8837 87.7689 13.7017 86.9803 13.697C86.1916 13.697 85.5359 13.8767 85.0133 14.236C84.4906 14.5953 84.0963 15.097 83.8303 15.741C83.5689 16.3803 83.4359 17.12 83.4313 17.96C83.4266 18.8 83.5549 19.5397 83.8163 20.179C84.0823 20.8137 84.4789 21.313 85.0063 21.677C85.5336 22.0363 86.1916 22.2183 86.9803 22.223ZM96.9921 23.21C96.2221 23.21 95.5408 23.0513 94.9481 22.734C94.3601 22.4167 93.8981 21.9687 93.5621 21.39C93.2261 20.8113 93.0581 20.1347 93.0581 19.36V12.927L94.0941 12.92V19.227C94.0941 19.7497 94.1828 20.2023 94.3601 20.585C94.5375 20.963 94.7685 21.2757 95.0531 21.523C95.3425 21.7657 95.6575 21.9453 95.9981 22.062C96.3388 22.1787 96.6701 22.237 96.9921 22.237C97.3188 22.237 97.6525 22.1787 97.9931 22.062C98.3338 21.9453 98.6465 21.7657 98.9311 21.523C99.2158 21.2757 99.4468 20.963 99.6241 20.585C99.8015 20.2023 99.8901 19.7497 99.8901 19.227V12.92H100.926V19.36C100.926 20.1347 100.758 20.8113 100.422 21.39C100.086 21.964 99.6218 22.412 99.0291 22.734C98.4411 23.0513 97.7621 23.21 96.9921 23.21ZM102.916 23V12.92H106.808C106.906 12.92 107.016 12.9247 107.137 12.934C107.263 12.9387 107.389 12.9527 107.515 12.976C108.043 13.0553 108.488 13.2397 108.852 13.529C109.221 13.8137 109.499 14.173 109.685 14.607C109.877 15.041 109.972 15.5217 109.972 16.049C109.972 16.8097 109.772 17.47 109.37 18.03C108.969 18.59 108.395 18.9423 107.648 19.087L107.291 19.171H103.945V23H102.916ZM109.02 23L107.032 18.898L108.019 18.52L110.203 23H109.02ZM103.945 18.191H106.78C106.864 18.191 106.962 18.1863 107.074 18.177C107.186 18.1677 107.296 18.1513 107.403 18.128C107.749 18.0533 108.031 17.911 108.25 17.701C108.474 17.491 108.64 17.2413 108.747 16.952C108.859 16.6627 108.915 16.3617 108.915 16.049C108.915 15.7363 108.859 15.4353 108.747 15.146C108.64 14.852 108.474 14.6 108.25 14.39C108.031 14.18 107.749 14.0377 107.403 13.963C107.296 13.9397 107.186 13.9257 107.074 13.921C106.962 13.9117 106.864 13.907 106.78 13.907H103.945V18.191ZM117.288 23V13.907H113.767V12.92H121.838V13.907H118.317V23H117.288ZM122.988 23V12.92H129.288V13.907H124.017V17.393H128.448V18.38H124.017V22.013H129.288V23H122.988ZM130.301 23L133.773 12.92H135.138L138.61 23H137.539L134.242 13.494H134.648L131.372 23H130.301ZM131.848 20.557V19.591H137.056V20.557H131.848ZM139.902 23V12.92H140.847L144.809 21.397L148.75 12.92H149.709V22.993H148.729V15.216L145.138 23H144.473L140.889 15.216V23H139.902Z" fill="white"/>
+     </svg>
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+      Learn From The
+      <span class="text-green-400 underline underline-offset-8">
+        Industry's Best
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="mt-4 sm:mt-6 text-gray-500 max-w-2xl mx-auto text-sm sm:text-base">
+      Our instructors bring real-world experience from top companies like Google,
+      Microsoft, Amazon, and AWS. They don’t just teach—they mentor, guide,
+      and help you build a successful career.
+    </p>
+
+  </div>
+</section>
+
+<!-- HERO → NEXT SECTION WAVE (Provided SVG) -->
+<div class="relative w-full overflow-hidden -mt-1 leading-none">
+  <svg
+    viewBox="0 0 1280 100"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-[100px] block"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M0 28.0627L71.4667 20.0697C141.867 12.0766 279.633 -4.7287 421.5 1.26608C563.367 7.26085 711.467 36.0557 853.333 40.0523C995.2 44.0488 1138.13 24.0662 1208.53 14.0749L1280 4.08359V100H1208.53C1138.13 100 995.2 100 853.333 100C711.467 100 568.533 100 426.667 100C284.8 100 141.867 100 71.4667 100H0V28.0627Z"
+      fill="#F4F2FF"
+    />
+  </svg>
+</div>
+
+<!-- INSTRUCTORS GRID -->
+<section id="instructors-grid" class="bg-[#F4F2FF] pt-12 pb-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+
+    <!--
+      Mobile: horizontal scroll + snap
+      Desktop: grid layout
+    -->
+    <div
+      class="
+        relative flex gap-3 md:gap-4 overflow-x-auto pb-3 scroll-pl-2
+        snap-x snap-mandatory scrollbar-hide
+        md:grid md:grid-cols-2 lg:grid-cols-3
+        md:overflow-visible md:scroll-pl-0
+      "
+    >
+      
+      <!-- Swipe hint gradient -->
+      <div class="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-[#F4F2FF] to-transparent pointer-events-none md:hidden z-10"></div>
+
+      <!-- Card 1 -->
+      <div
+        class="
+          min-w-[80%] sm:min-w-[75%]
+          snap-start
+          bg-white rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 text-center
+          shadow-sm hover:shadow-lg transition-all duration-200
+          active:scale-[0.98]
+          md:min-w-0
+        "
+      >
+        <img
+          src="/boffins_academy/static/images/priya.jpg"
+          alt="Priya Sharma"
+          class="w-full h-40 sm:h-44 md:h-48 lg:h-52 object-cover rounded-xl md:rounded-2xl mb-3"
+        />
+        <h3 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
+          Priya Sharma
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">
+          Data Science & AI
+        </p>
+
+        <div class="mt-3 flex justify-center">
+          <!-- LinkedIn Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 9H2V21H6V9Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="
+          min-w-[80%] sm:min-w-[75%]
+          snap-start
+          bg-white rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 text-center
+          shadow-sm hover:shadow-lg transition-all duration-200
+          active:scale-[0.98]
+          md:min-w-0
+        "
+      >
+        <img
+          src="static/images/rahul.jpg"
+          alt="Rahul Deshmukh"
+          class="w-full h-40 sm:h-44 md:h-48 lg:h-52 object-cover rounded-xl md:rounded-2xl mb-3"
+        />
+        <h3 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
+          Rahul Deshmukh
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">
+          Full Stack Development
+        </p>
+
+        <div class="mt-3 flex justify-center">
+          <!-- LinkedIn Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 9H2V21H6V9Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="
+          min-w-[80%] sm:min-w-[75%]
+          snap-start
+          bg-white rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 text-center
+          shadow-sm hover:shadow-lg transition-all duration-200
+          active:scale-[0.98]
+          md:min-w-0
+        "
+      >
+        <img
+          src="static/images/priya.jpg"
+          alt="Priya Sharma"
+          class="w-full h-40 sm:h-44 md:h-48 lg:h-52 object-cover rounded-xl md:rounded-2xl mb-3"
+        />
+        <h3 class="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-gray-900">
+          Priya Sharma
+        </h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">
+          Cloud & DevOps
+        </p>
+
+        <div class="mt-3 flex justify-center">
+          <!-- LinkedIn Icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 9H2V21H6V9Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"
+                  stroke="#D8B66A" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- INSTRUCTORS → CTA TRANSITION + CTA -->
+<section id="instructors-cta" class="relative overflow-hidden bg-white pt-10">
+
+  <!-- Top wave attached to section edge (reverse color) -->
+  <div class="w-full overflow-hidden leading-none -mt-1 bg-[#F4F2FF]" style="height:100px">
+    <svg
+      viewBox="0 0 1280 100"
+      xmlns="http://www.w3.org/2000/svg"
+      class="block w-full"
+      style="height:100px"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M1280 72.4955L1208.53 80.5506C1138.13 88.6056 995.2 104.716 853.333 98.6744C711.467 92.6332 568.533 64.4405 426.667 60.4129C284.8 56.3854 141.867 76.523 71.4666 86.5919L-0.00012207 96.6607V0H71.4666C141.867 0 284.8 0 426.667 0C568.533 0 711.467 0 853.333 0C995.2 0 1138.13 0 1208.53 0H1280V72.4955Z"
+        fill="#F4F2FF"
+      />
+    </svg>
+  </div>
+
+
+  <!-- CTA CONTENT -->
+<div
+  class="relative z-30 flex items-center justify-center bg-white
+         min-h-[360px] py-12 sm:py-16 md:py-20 lg:py-24"
+>
+    <div class="text-center px-4 sm:px-6 max-w-3xl">
+
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900">
+        Ready To Learn From The Best?
+      </h2>
+
+      <p class="mt-4 sm:mt-6 text-gray-500 text-sm sm:text-base md:text-lg">
+        Join thousands of students who've transformed their careers under expert guidance.
+      </p>
+
+      <div class="mt-8 sm:mt-10">
+        <a
+          href="/courses"
+          class="inline-flex items-center justify-center
+                 px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-lg text-sm sm:text-base md:text-lg
+                 bg-indigo-600 text-white font-semibold
+                 hover:bg-indigo-700
+                 transition-all duration-200
+                 shadow-md hover:shadow-lg"
+        >
+          Explore Courses →
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto; }
+}
+</style>
+
+{% endblock %}
+
+
+

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main_pt_value %}0px{% endblock %}
+
+{% block page_css %}
+<link href="{% static 'css/hero.css' %}" rel="stylesheet">
+<link href="{% static 'css/home-mobile.css' %}" rel="stylesheet">
+<style>
+  #navbar {
+    display: none !important;
+  }
+
+  main#page {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="home-landing">
+<!-- Hero Section -->
+{% include "components/hero.html" %}
+
+<!-- Who We Serve Section -->
+{% include "components/who_we_serve.html" %}
+
+<!-- Courses Section -->
+{% include "components/course_card.html" %}
+
+<!-- Success Stories Section -->
+{% include "components/success_stories.html" %}
+
+<!-- Why Choose Us Section -->
+{% include "components/why_choose_us.html" %}
+
+<!-- Stats Section -->
+{% include "components/stats.html" %}
+
+<!-- Companies Section -->
+{% include "components/companies_strip.html" %}
+
+<!-- CTA Section -->
+{% include "components/cta_section.html" %}
+
+<!-- FAQ Section -->
+{% include "components/faq_section.html" %}
+</div>
+
+{% endblock %}

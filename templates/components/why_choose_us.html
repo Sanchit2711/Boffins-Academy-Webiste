@@ -1,0 +1,102 @@
+<section class="fwcu">
+  <div class="fwcu-wrap">
+    <div class="fwcu-head">
+      <div class="fwcu-pill">WHY CHOOSE US</div>
+      <h2>Boffins Advantage</h2>
+    </div>
+
+    <div class="fwcu-grid">
+      <article><h3>Job Ready</h3><p>Curriculum designed with direct input from hiring managers at top companies.</p></article>
+      <article><h3>Careers Support</h3><p>Build portfolio projects, optimize resume, and prepare for technical interviews.</p></article>
+      <article><h3>Expert Mentorship</h3><p>Learn from experienced mentors who have shipped production systems at scale.</p></article>
+      <article><h3>Placement Success</h3><p>Our placement team connects learners with hiring partners and active opportunities.</p></article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fwcu {
+    background: #faf9f6;
+    padding: 100px 32px 80px;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fwcu-wrap {
+    max-width: 1216px;
+    margin: 0 auto;
+  }
+
+  .fwcu-head {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .fwcu-pill {
+    width: fit-content;
+    margin: 0 auto 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(128, 103, 246, 0.3);
+    background: #fff;
+    color: #200060;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.028px;
+  }
+
+  .fwcu-head h2 {
+    margin: 0;
+    color: #1e0a5f;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+
+  .fwcu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .fwcu-grid article {
+    min-height: 325px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: linear-gradient(180deg, #f4f2ff 0%, #faf9f6 100%);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .fwcu-grid h3 {
+    margin: 160px 0 10px;
+    color: #1e0a5f;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+
+  .fwcu-grid p {
+    margin: 0;
+    color: #3a3a66;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (max-width: 1024px) {
+    .fwcu {
+      padding: 64px 16px;
+    }
+
+    .fwcu-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fwcu-grid article {
+      min-height: auto;
+    }
+
+    .fwcu-grid h3 {
+      margin-top: 0;
+    }
+  }
+</style>

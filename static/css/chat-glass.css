@@ -1,0 +1,194 @@
+/* ================================
+   GLASS CHAT PANEL (OPTIMIZED)
+================================ */
+
+#chat-panel {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.62),
+    rgba(245, 246, 255, 0.42)
+  );
+
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 22px;
+
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+#chat-panel > div:first-child {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================================
+   ASSISTANT MESSAGE
+================================ */
+
+#chat-messages > div:not(.ml-auto) {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88),
+    rgba(245, 245, 255, 0.72)
+  );
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 18px 18px 18px 6px;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ================================
+   USER MESSAGE
+================================ */
+
+#chat-messages > .ml-auto {
+  background: linear-gradient(
+    180deg,
+    rgba(108, 92, 231, 0.96),
+    rgba(88, 74, 206, 0.92)
+  );
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-radius: 18px 18px 6px 18px;
+  color: white;
+
+  box-shadow:
+    0 6px 18px rgba(108, 92, 231, 0.42);
+}
+
+
+/* ================================
+   MESSAGE POP (iOS-LIKE)
+================================ */
+
+@keyframes messagePop {
+  0% {
+    transform: scale(0.96) translateY(6px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+#chat-messages > div {
+  animation: messagePop 0.22s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* ================================
+   INPUT BAR
+================================ */
+
+#chat-panel .border-t {
+  background: rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================================
+   INPUT FIELD
+================================ */
+
+#chat-input {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+
+
+/* ================================
+   CHAT NOTCH
+================================ */
+
+#chat-root {
+  pointer-events: auto;
+}
+
+#chat-notch {
+  z-index: 10001;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.34),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+}
+
+
+/* ================================
+   BACKDROP (PERFORMANCE SAFE)
+================================ */
+
+#chat-backdrop {
+  background:
+    radial-gradient(
+      120% 80% at 50% 100%,
+      rgba(0, 0, 0, 0.26),
+      rgba(0, 0, 0, 0.12)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.12),
+      rgba(0, 0, 0, 0.22)
+    );
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+#chat-root.open #chat-backdrop {
+  opacity: 1;
+}
+
+
+/* ================================
+   NOTCH PULSE (REFINED)
+================================ */
+
+@keyframes chatPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(108, 92, 231, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 92, 231, 0);
+  }
+}
+
+.animate-chat-pulse {
+  animation: chatPulse 3.2s infinite;
+}

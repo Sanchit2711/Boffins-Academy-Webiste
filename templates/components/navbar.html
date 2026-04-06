@@ -1,0 +1,307 @@
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-300"
+>
+  <!-- BACKGROUND -->
+  <div id="navbar-bg" class="absolute inset-0"></div>
+
+  <nav class="relative container-custom h-full">
+
+    <!-- ================= DESKTOP ================= -->
+    <div class="hidden lg:flex items-center justify-between h-full">
+
+      <a href="/" class="flex items-center gap-2">
+        <img src="/static/images/logo-icon.svg" class="h-[44px]" />
+        <span class="text-[#6C5CE7] text-[12px] font-semibold translate-y-[6px]">
+          Academy
+        </span>
+      </a>
+
+      <ul class="relative flex items-center gap-8 text-white font-medium" id="nav-links">
+        <li><a href="/" data-nav>Home</a></li>
+        <li><a href="/courses" data-nav>Courses</a></li>
+        <li><a href="/instructors" data-nav>Instructors</a></li>
+        <li><a href="/placements" data-nav>Placements</a></li>
+        <li><a href="/gallery" data-nav>Gallery</a></li>
+        <li><a href="/about" data-nav>About</a></li>
+        <li><a href="/contact" data-nav>Contact</a></li>
+        <span id="nav-underline"></span>
+      </ul>
+
+      <a
+        href="/get-started"
+        class="px-6 py-3 bg-white text-[#2A1F3D] font-semibold rounded-xl"
+      >
+        Get Started
+      </a>
+    </div>
+
+    <!-- ================= MOBILE HEADER ================= -->
+    <div class="lg:hidden relative flex items-center justify-center h-full">
+
+      <!-- HAMBURGER -->
+      <button
+        id="mobile-menu-btn"
+        class="absolute left-4 text-white"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- LOGO -->
+      <a href="/" class="flex items-center gap-1">
+        <img src="/static/images/logo-icon.svg" class="h-[40px]" />
+        <span class="text-[#6C5CE7] text-[12px] font-semibold translate-y-[6px]">
+          Academy
+        </span>
+      </a>
+
+      <!-- 3 DOT -->
+      <button class="absolute right-4 text-white" aria-label="More options">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="5" cy="12" r="1.8"/>
+          <circle cx="12" cy="12" r="1.8"/>
+          <circle cx="19" cy="12" r="1.8"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================= MOBILE BACKDROP ================= -->
+  <div
+    id="mobile-backdrop"
+    class="lg:hidden fixed inset-0 z-30 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300"
+  ></div>
+
+  <!-- ================= MOBILE DRAWER ================= -->
+  <div
+    id="mobile-menu"
+    data-swipe
+    class="
+      lg:hidden fixed top-[72px] left-0 z-40
+      w-[86%] max-w-[320px]
+      -translate-x-full
+      transition-transform duration-300 ease-out
+    "
+  >
+    <div class="px-6 py-8">
+      <ul class="flex flex-col gap-6 text-white text-lg">
+        <li><a href="/">Home</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/instructors">Instructors</a></li>
+        <li><a href="/placements">Placements</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+
+        <li class="pt-4">
+          <a
+            href="/get-started"
+            class="block text-center px-6 py-4 rounded-2xl font-semibold"
+          >
+            Get Started
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<style>
+  #navbar-bg {
+  background: linear-gradient(180deg, #1B0F3A 0%, #2B1760 100%);
+  transition: background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
+}
+
+#navbar.is-blur #navbar-bg {
+  backdrop-filter: blur(14px);
+  background: linear-gradient(
+    180deg,
+    rgba(27,15,58,0.85),
+    rgba(43,23,96,0.85)
+  );
+}
+
+#navbar.is-solid #navbar-bg {
+  background: #1B0F3A;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+
+#navbar.is-compact {
+  height: 60px;
+}
+
+/* underline */
+#nav-underline {
+  position: absolute;
+  bottom: -10px;
+  height: 2px;
+  background: #2EE88F;
+  border-radius: 2px;
+  width: 0;
+  transition: transform .35s cubic-bezier(.4,0,.2,1),
+              width .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* ===============================
+   DESKTOP NAV HOVER & ACTIVE
+================================ */
+@media (min-width: 1024px) {
+  #nav-links a {
+    position: relative;
+    color: rgba(255,255,255,.85);
+    transition: color .2s ease;
+  }
+
+  #nav-links a:hover {
+    color: #2EE88F;
+  }
+
+  #nav-links a.is-active {
+    color: #ffffff;
+  }
+}
+
+
+/* mobile drawer */
+#mobile-menu {
+  background: linear-gradient(180deg, #1B0F3A, #24104F);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow:
+    12px 0 40px rgba(0,0,0,.45),
+    inset -1px 0 0 rgba(255,255,255,.06);
+  will-change: transform;
+}
+
+#mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+#mobile-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#mobile-menu a {
+  opacity: .95;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+#mobile-menu a:active {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+#mobile-menu a[href="/get-started"] {
+  background: linear-gradient(180deg, #fff, #f3f4f6);
+  color: #2A1F3D;
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.35),
+    inset 0 -1px 0 rgba(0,0,0,.12);
+}
+
+</style>
+
+<script>
+(() => {
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileBackdrop = document.getElementById("mobile-backdrop");
+
+  function setMenuOpen(isOpen) {
+    if (!mobileMenu || !mobileBtn || !mobileBackdrop) return;
+    mobileMenu.classList.toggle("is-open", isOpen);
+    mobileBackdrop.classList.toggle("is-open", isOpen);
+    mobileBtn.setAttribute("aria-expanded", String(isOpen));
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  }
+
+  if (mobileBtn && mobileMenu && mobileBackdrop) {
+    mobileBtn.addEventListener("click", () => {
+      const open = mobileMenu.classList.contains("is-open");
+      setMenuOpen(!open);
+    });
+
+    mobileBackdrop.addEventListener("click", () => setMenuOpen(false));
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    });
+  }
+
+  const nav = document.getElementById("nav-links");
+  if (!nav) return;
+
+  const links = [...nav.querySelectorAll("a[data-nav]")];
+  const underline = document.getElementById("nav-underline");
+  if (!underline || !links.length) return;
+
+  let activeLink = null;
+
+  function getPath(path) {
+    return path.replace(/\/$/, "") || "/";
+  }
+
+  function updateNavbarActive(pathname = window.location.pathname) {
+    const currentPath = getPath(pathname);
+
+    const match =
+      links.find(link => getPath(link.getAttribute("href")) === currentPath)
+      || links[0]; // fallback Home
+
+    if (activeLink === match) return;
+
+    links.forEach(l => l.classList.remove("is-active"));
+    match.classList.add("is-active");
+    activeLink = match;
+
+    moveUnderline(match);
+  }
+
+  function moveUnderline(el) {
+    const r = el.getBoundingClientRect();
+    const p = nav.getBoundingClientRect();
+
+    underline.style.width = r.width + "px";
+    underline.style.transform =
+      `translateX(${r.left - p.left}px)`;
+  }
+
+  // Initial sync
+  requestAnimationFrame(() => updateNavbarActive());
+
+  // Hover behavior
+  links.forEach(link => {
+    link.addEventListener("mouseenter", () => moveUnderline(link));
+
+    link.addEventListener("click", () => {
+      updateNavbarActive(link.getAttribute("href"));
+    });
+  });
+
+  nav.addEventListener("mouseleave", () => {
+    if (activeLink) moveUnderline(activeLink);
+  });
+
+  // 🔥 IMPORTANT: expose globally for chatbot SPA navigation
+  window.updateNavbarActive = updateNavbarActive;
+
+  // Back / forward browser navigation
+  window.addEventListener("popstate", () => {
+    updateNavbarActive();
+  });
+})();
+</script>

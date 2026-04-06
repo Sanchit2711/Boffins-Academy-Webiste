@@ -1,0 +1,195 @@
+<footer class="figma-footer">
+  <div class="figma-footer-wave">
+    <img src="https://www.figma.com/api/mcp/asset/17a973c9-995d-4c5e-a95e-f829428683d3" alt="" />
+  </div>
+
+  <div class="figma-footer-main">
+    <div class="figma-footer-top">
+      <div>
+        <h2>Let&rsquo;s get in touch</h2>
+        <p>info@boffinsacademy.com</p>
+      </div>
+      <a href="#page">Back to top</a>
+    </div>
+
+    <div class="figma-footer-middle">
+      <div class="figma-footer-brand">Boffins <span>Academy</span></div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/about">About</a>
+        <a href="/placements">Placements</a>
+        <a href="/contact">Contact</a>
+        <a href="/instructors">Instructors</a>
+      </nav>
+    </div>
+
+    <hr />
+
+    <div class="figma-footer-bottom">
+      <p>&copy; 2026 Boffins Academy. All rights reserved.</p>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund &amp; Cancellations</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .figma-footer {
+    background: #8067f6;
+    color: #fff;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .figma-footer-wave {
+    width: 100%;
+    max-width: 1280px;
+    height: 50px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .figma-footer-wave img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .figma-footer-main {
+    max-width: 1280px;
+    min-height: 455px;
+    margin: 0 auto;
+    padding: 50px 32px;
+    box-sizing: border-box;
+  }
+
+  .figma-footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .figma-footer-top h2 {
+    margin: 0;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -0.3px;
+    font-weight: 700;
+  }
+
+  .figma-footer-top p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 200;
+  }
+
+  .figma-footer-top a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-top: 23px;
+  }
+
+  .figma-footer-middle {
+    margin-top: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .figma-footer-brand {
+    font-family: "Bona Nova SC", serif;
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .figma-footer-brand span {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  .figma-footer-middle nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 14px 36px;
+    margin-top: 13px;
+  }
+
+  .figma-footer-middle nav a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .figma-footer hr {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.55);
+    margin: 24px 0;
+  }
+
+  .figma-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .figma-footer-bottom p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .figma-footer-bottom div {
+    display: flex;
+    gap: 15px;
+  }
+
+  .figma-footer-bottom a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .figma-footer-main {
+      padding: 34px 16px;
+    }
+
+    .figma-footer-top,
+    .figma-footer-middle,
+    .figma-footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .figma-footer-top h2 {
+      font-size: 38px;
+      line-height: 48px;
+    }
+
+    .figma-footer-top p {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    .figma-footer-middle nav {
+      grid-template-columns: repeat(2, max-content);
+    }
+
+    .figma-footer-bottom div {
+      flex-wrap: wrap;
+    }
+  }
+</style>

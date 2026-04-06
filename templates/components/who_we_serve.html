@@ -1,0 +1,230 @@
+{% load static %}
+<section class="fws">
+  <div class="fws-wrap">
+    <div class="fws-head">
+      <div class="fws-pill-wrap">
+        <div class="fws-pill-glow"></div>
+        <div class="fws-pill">
+          <img src="https://www.figma.com/api/mcp/asset/8237e3e2-9277-433e-adc6-08ed8586bbaf" alt="" />
+          <span>WHO WE SERVE</span>
+        </div>
+      </div>
+      <h2>Perfect For Every Stage of Your Journey</h2>
+      <p>Whether you&rsquo;re starting fresh or looking to level up, we have a path designed for you</p>
+    </div>
+
+    <div class="fws-cards">
+      <article class="fws-card">
+        <div class="fws-icon-wrap yellow">
+          <img src="https://www.figma.com/api/mcp/asset/68744c89-19c5-4c7e-aaf6-f0e690aa0ba5" alt="" />
+        </div>
+        <h3>Fresh Graduates</h3>
+        <p>Kickstart your career with job-ready skills.</p>
+        <ul>
+          <li>Build a strong portfolio from scratch</li>
+          <li>Learn latest industry technologies</li>
+          <li>Get mentored by industry experts</li>
+        </ul>
+        <a href="{% url 'contact' %}">Start Your Journey <img src="https://www.figma.com/api/mcp/asset/a06c8f39-ece2-4c41-a3cb-094390c3d6ae" alt="" /></a>
+      </article>
+
+      <article class="fws-card">
+        <div class="fws-icon-wrap cyan">
+          <img src="https://www.figma.com/api/mcp/asset/2b1be143-9f80-41b8-8d3d-aaac49c34dd1" alt="" />
+        </div>
+        <h3>Career Switchers</h3>
+        <p>Transition into tech with structured guidance.</p>
+        <ul>
+          <li>Leverage your existing experience</li>
+          <li>Flexible learning schedules</li>
+          <li>Dedicated career counselling</li>
+        </ul>
+        <a href="{% url 'contact' %}">Plan Your Transition <img src="https://www.figma.com/api/mcp/asset/a06c8f39-ece2-4c41-a3cb-094390c3d6ae" alt="" /></a>
+      </article>
+
+      <article class="fws-card">
+        <div class="fws-icon-wrap green">
+          <img src="https://www.figma.com/api/mcp/asset/5d90b63d-af0a-445e-b9f0-48cc719fb6a5" alt="" />
+        </div>
+        <h3>Working Professionals</h3>
+        <p>Upskill for promotions and better opportunities.</p>
+        <ul>
+          <li>Weekend &amp; evening batches</li>
+          <li>Real-world project experience</li>
+          <li>Leadership &amp; advanced tracks</li>
+        </ul>
+        <a href="{% url 'contact' %}">Explore Weekend Batches <img src="https://www.figma.com/api/mcp/asset/a06c8f39-ece2-4c41-a3cb-094390c3d6ae" alt="" /></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fws {
+    background: #fff;
+    padding: 0 32px 0;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fws-wrap {
+    max-width: 1216px;
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  .fws-head {
+    width: 1002px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .fws-pill-wrap {
+    width: 187px;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .fws-pill-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background: #8067f6;
+    opacity: 0.3;
+    filter: blur(10px);
+  }
+
+  .fws-pill {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 167px;
+    height: 40px;
+    border-radius: 30px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .fws-pill img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fws-pill span {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.028px;
+    color: #200060;
+  }
+
+  .fws-head h2 {
+    margin: 20px 0 20px;
+    color: #1e0a5f;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    letter-spacing: 0.16px;
+  }
+
+  .fws-head p {
+    margin: 0;
+    color: #3a3a66;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .fws-cards {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .fws-card {
+    min-height: 476px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: linear-gradient(180deg, #f4f2ff 0%, #faf9f6 100%);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .fws-icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+  }
+
+  .fws-icon-wrap.yellow { background: #ffcc00; }
+  .fws-icon-wrap.cyan { background: #00c2ff; }
+  .fws-icon-wrap.green { background: #4caf50; }
+
+  .fws-icon-wrap img { width: 40px; height: 40px; }
+
+  .fws-card h3 {
+    margin: 0 0 10px;
+    color: #1e0a5f;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+
+  .fws-card p {
+    margin: 0 0 30px;
+    color: #3a3a66;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .fws-card ul {
+    margin: 0 0 20px;
+    padding: 0 0 0 20px;
+    display: grid;
+    gap: 15px;
+  }
+
+  .fws-card li {
+    color: #1e0a5f;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .fws-card li::marker { color: #ff8a00; }
+
+  .fws-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #8067f6;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  .fws-card a img {
+    width: 20px;
+    height: 20px;
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 1024px) {
+    .fws {
+      padding: 0 16px;
+    }
+
+    .fws-head {
+      width: 100%;
+    }
+
+    .fws-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,55 @@
+<section class="w-full overflow-hidden">
+
+  <!-- TOP WAVE -->
+  <svg
+    class="block w-full relative z-10 h-[64px] md:h-[36px] -mb-[1px]"
+    viewBox="0 0 1280 100"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="topWaveGradient" x1="0" y1="0" x2="0" y2="100">
+        <stop offset="0%" stop-color="#24104F"/>
+        <stop offset="40%" stop-color="#26135A"/>
+        <stop offset="60%" stop-color="#2A165F"/>
+        <stop offset="100%" stop-color="#2A165F"/>
+      </linearGradient>
+    </defs>
+
+    <path
+      d="M0 28.0627L71.4667 20.0697C141.867 12.0766 279.633 -4.7287 421.5 1.26608C563.367 7.26085 711.467 36.0557 853.333 40.0523C995.2 44.0488 1138.13 24.0662 1208.53 14.0749L1280 4.08359V100H0V28.0627Z"
+      fill="url(#topWaveGradient)"
+    />
+  </svg>
+
+  <!-- CENTER CONTENT -->
+  <div class="bg-[#24104F]">
+  <div class="py-12 md:py-16">
+
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+  <!-- BOTTOM WAVE -->
+  <svg
+    class="block w-full relative z-10 md:h-[64px] h-[36px] -mt-[1px]"
+    viewBox="0 0 1280 100"
+    preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="bottomWaveGradient" x1="0" y1="0" x2="0" y2="100">
+        <stop offset="0%" stop-color="#24104F"/>
+        <stop offset="40%" stop-color="#26135A"/>
+        <stop offset="60%" stop-color="#2A165F"/>
+        <stop offset="100%" stop-color="#2A165F"/>
+      </linearGradient>
+    </defs>
+
+    <path
+      d="M1280 71.9373L1208.53 79.9303C1138.13 87.9234 1000.37 104.729 858.5 98.7339C716.633 92.7391 568.533 63.9443 426.667 59.9477C284.8 55.9512 141.867 75.9338 71.4667 85.9251L0 95.9164V0H1280V71.9373Z"
+      fill="url(#bottomWaveGradient)"
+    />
+  </svg>
+
+</section>

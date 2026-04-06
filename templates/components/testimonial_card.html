@@ -1,0 +1,75 @@
+<article class="fst-card">
+  <div class="fst-stars">★★★★★</div>
+  <h3>{{ testimonial.name|default:"Amazing Transformation" }}</h3>
+  <p>{{ testimonial.quote|default:"The structured learning path and mentor guidance helped me switch careers with confidence." }}</p>
+  <div class="fst-user">
+    <img src="{{ testimonial.avatar|default:'/static/images/avatar.png' }}" alt="{{ testimonial.name|default:'Alumni' }}" />
+    <div>
+      <strong>{{ testimonial.name|default:"Boffins Alumni" }}</strong>
+      <span>{{ testimonial.role|default:"Software Engineer" }}</span>
+    </div>
+  </div>
+</article>
+
+<style>
+  .fst-card {
+    min-height: 340px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: #fff;
+    padding: 30px;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fst-stars {
+    color: #ff8a00;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 2px;
+  }
+
+  .fst-card h3 {
+    margin: 15px 0 10px;
+    color: #1e0a5f;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+
+  .fst-card p {
+    margin: 0;
+    color: #3a3a66;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .fst-user {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .fst-user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 999px;
+    object-fit: cover;
+  }
+
+  .fst-user strong {
+    display: block;
+    color: #1e0a5f;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  .fst-user span {
+    display: block;
+    color: #6b6fa8;
+    font-size: 14px;
+    line-height: 20px;
+  }
+</style>

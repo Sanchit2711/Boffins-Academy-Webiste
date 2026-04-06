@@ -1,0 +1,61 @@
+<section class="fstats">
+  <div class="fstats-wrap">
+    <article><h3>10+</h3><p>Years of Excellence</p></article>
+    <article><h3>15,000+</h3><p>Successful Alumni</p></article>
+    <article><h3>96%</h3><p>Placement Rate</p></article>
+    <article><h3>100+</h3><p>Hiring Partners</p></article>
+  </div>
+</section>
+
+<style>
+  .fstats {
+    background: linear-gradient(180deg, #2b0a6f 0%, #4c2fbf 100%);
+    padding: 30px 32px;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fstats-wrap {
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    text-align: center;
+  }
+
+  .fstats h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 700;
+  }
+
+  .fstats p {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 1024px) {
+    .fstats {
+      padding: 24px 16px;
+    }
+
+    .fstats-wrap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .fstats h3 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .fstats p {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+</style>

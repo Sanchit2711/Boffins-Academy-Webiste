@@ -1,0 +1,17 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-15" y="-15" width="180" height="180"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(20px);clip-path:url(#bgblur_0_294_1142_clip_path);height:100%;width:100%"></div></foreignObject><g opacity="0.6" filter="url(#filter0_f_294_1142)" data-figma-bg-blur-radius="40">
+<rect x="25" y="25" width="100" height="100" rx="34" fill="#6C5CE7"/>
+</g>
+<rect x="35" y="35" width="80" height="80" rx="20" fill="#8478E0"/>
+<path d="M74.9997 91.6667C84.2044 91.6667 91.6663 84.2048 91.6663 75C91.6663 65.7953 84.2044 58.3334 74.9997 58.3334C65.7949 58.3334 58.333 65.7953 58.333 75C58.333 84.2048 65.7949 91.6667 74.9997 91.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M74.9997 85C80.5225 85 84.9997 80.5229 84.9997 75C84.9997 69.4772 80.5225 65 74.9997 65C69.4768 65 64.9997 69.4772 64.9997 75C64.9997 80.5229 69.4768 85 74.9997 85Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M74.9997 78.3334C76.8406 78.3334 78.333 76.841 78.333 75C78.333 73.1591 76.8406 71.6667 74.9997 71.6667C73.1587 71.6667 71.6663 73.1591 71.6663 75C71.6663 76.841 73.1587 78.3334 74.9997 78.3334Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_f_294_1142" x="-15" y="-15" width="180" height="180" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="10" result="effect1_foregroundBlur_294_1142"/>
+</filter>
+<clipPath id="bgblur_0_294_1142_clip_path" transform="translate(15 15)"><rect x="25" y="25" width="100" height="100" rx="34"/>
+</clipPath></defs>
+</svg>

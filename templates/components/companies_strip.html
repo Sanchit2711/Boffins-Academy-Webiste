@@ -1,0 +1,87 @@
+<section class="figma-companies">
+  <div class="figma-companies-head">
+    <div class="figma-pill">COMPANIES</div>
+    <h2>Our Alumni Work at Top Companies</h2>
+    <p>Trusted by hiring managers at leading tech organizations</p>
+  </div>
+
+  <div class="figma-company-logos">
+    <img src="https://www.figma.com/api/mcp/asset/f762decc-25c4-4270-ab50-9c6aae87874b" alt="Amazon" />
+    <img src="https://www.figma.com/api/mcp/asset/ec67185c-333b-451e-bf8e-63a161bcd031" alt="Microsoft" />
+    <img src="https://www.figma.com/api/mcp/asset/97849177-3636-4cb8-bc24-146a7a6b3e30" alt="Spotify" />
+    <img src="https://www.figma.com/api/mcp/asset/c9f82a42-1603-4f66-9746-f77976a8608e" alt="Slack" />
+    <img src="https://www.figma.com/api/mcp/asset/50d6cb19-32ab-466e-b290-7fbff3f8e1b0" alt="Panasonic" />
+  </div>
+</section>
+
+<style>
+  .figma-companies {
+    background: #faf9f6;
+    padding: 100px 32px 24px;
+    font-family: "Manrope", sans-serif;
+    text-align: center;
+  }
+
+  .figma-companies-head {
+    max-width: 537px;
+    margin: 0 auto 30px;
+  }
+
+  .figma-pill {
+    width: fit-content;
+    margin: 0 auto 20px;
+    border-radius: 30px;
+    border: 1px solid #e2d9ff;
+    background: #fff;
+    color: #200060;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.028px;
+    padding: 10px 20px;
+  }
+
+  .figma-companies h2 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    color: #1e0a5f;
+  }
+
+  .figma-companies p {
+    margin: 15px 0 0;
+    font-size: 16px;
+    line-height: 26px;
+    color: #3a3a66;
+  }
+
+  .figma-company-logos {
+    max-width: 1280px;
+    margin: 0 auto;
+    min-height: 80px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    align-items: center;
+  }
+
+  .figma-company-logos img {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    max-height: 80px;
+    object-fit: contain;
+    filter: grayscale(100%);
+  }
+
+  @media (max-width: 768px) {
+    .figma-companies {
+      padding: 56px 16px 24px;
+    }
+
+    .figma-company-logos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+  }
+</style>

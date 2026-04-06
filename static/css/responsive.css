@@ -1,0 +1,140 @@
+/* Global responsive safeguards */
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 100%;
+}
+
+svg:not([class*="w-"]):not([class*="h-"]) {
+  height: auto;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+table {
+  max-width: 100%;
+}
+
+/* Standard pill system */
+.pill-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 18px;
+}
+
+.pill-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.pill-svg {
+  height: 36px;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .pill-wrap {
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+}
+
+/* Hide vertical scrollbar (keep scroll) */
+body {
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Chat notch + panel refinements */
+#chat-root {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#chat-root.open #chat-notch {
+  opacity: 0;
+  transform: translate(-50%, 8px) scale(0.96);
+  pointer-events: none;
+}
+
+#chat-panel {
+  width: min(92vw, 360px);
+  height: min(60vh, 440px);
+}
+
+@media (max-width: 640px) {
+  #chat-panel {
+    width: calc(100vw - 24px);
+    height: min(70vh, 560px);
+  }
+}
+
+#chat-notch.is-dragging {
+  cursor: grabbing;
+}
+
+/* Subtle global motion (light + key elements) */
+#page > * {
+  animation: pageFadeUp 0.35s ease both;
+}
+
+@keyframes pageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:where(
+  .course-card,
+  .course-stat,
+  .course-pill,
+  .course-chip,
+  .pill-chip,
+  .course-cta,
+  button,
+  .btn
+) {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+  will-change: transform;
+}
+
+:where(
+  .course-card,
+  .course-stat,
+  .course-pill,
+  .course-chip,
+  .pill-chip,
+  .course-cta,
+  button,
+  .btn
+):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(31, 27, 46, 0.12);
+}

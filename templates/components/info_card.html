@@ -1,0 +1,17 @@
+<div class="bg-white rounded-2xl p-5 shadow-soft flex gap-4">
+  <div class="w-11 h-11 rounded-xl bg-[#F1EDFF] flex items-center justify-center shrink-0">
+    {{ icon|safe }}
+  </div>
+
+  <div class="text-sm">
+    <p class="font-semibold text-[#1E1B2E] mb-0.5">
+      {{ title }}
+    </p>
+
+    {% for line in lines %}
+      <p class="text-gray-600 leading-relaxed">
+        {{ line }}
+      </p>
+    {% endfor %}
+  </div>
+</div>

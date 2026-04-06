@@ -1,0 +1,82 @@
+<section class="fst">
+  <div class="fst-wrap">
+    <div class="fst-head">
+      <div class="fst-pill">SUCCESS STORIES</div>
+      <h2>Real People, Real Results</h2>
+      <p>Hear from our alumni who transformed their careers and are now working at top companies</p>
+    </div>
+
+    <div class="fst-grid">
+      {% for testimonial in testimonials %}
+        {% include "components/testimonial_card.html" with testimonial=testimonial %}
+      {% empty %}
+        {% include "components/testimonial_card.html" %}
+        {% include "components/testimonial_card.html" %}
+        {% include "components/testimonial_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fst {
+    background: #faf9f6;
+    padding: 100px 32px 0;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fst-wrap {
+    max-width: 1216px;
+    margin: 0 auto;
+  }
+
+  .fst-head {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .fst-pill {
+    width: fit-content;
+    margin: 0 auto 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(128, 103, 246, 0.3);
+    background: #fff;
+    color: #200060;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.028px;
+  }
+
+  .fst-head h2 {
+    margin: 0 0 20px;
+    color: #1e0a5f;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+    letter-spacing: 0.16px;
+  }
+
+  .fst-head p {
+    margin: 0;
+    color: #3a3a66;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .fst-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 1024px) {
+    .fst {
+      padding: 64px 16px 0;
+    }
+
+    .fst-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

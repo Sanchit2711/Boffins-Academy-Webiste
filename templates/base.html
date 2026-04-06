@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-x-hidden overflow-y-hidden">
+<head>
+  <meta charset="UTF-8" />
+  <title>Boffins Academy</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="/static/css/output.css" rel="stylesheet">
+  <link href="/static/css/chat-glass.css" rel="stylesheet">
+  <link href="/static/css/responsive.css" rel="stylesheet">
+  {% block page_css %}{% endblock %}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #page {
+      margin-top: 0;
+    }
+  </style>
+
+
+</head>
+
+<body class="font-['Manrope'] text-gray-900 antialiased min-h-screen flex flex-col overflow-x-hidden overflow-y-auto">
+
+  {% include "components/navbar.html" %}
+
+  <!-- PAGE CONTENT -->
+<main
+  id="page"
+  class="flex-1 bg-white relative"
+  style="padding-top: {% block main_pt_value %}64px{% endblock %}; margin-top: 0;"
+>
+    {% block page_heading %}{% endblock %}
+    {% block content %}{% endblock %}
+
+  </main>
+
+  {% include "components/footer.html" %}
+
+
+<!-- ============================= -->
+<!-- MOBILE CHAT NOTCH (GENIE) -->
+<!-- ============================= -->
+
+<!-- ROOT (NO FULLSCREEN OVERLAY) -->
+<div
+  id="chat-root"
+  class="fixed bottom-0 right-0 z-[9999] pointer-events-none"
+>
+
+  <!-- BACKDROP -->
+  <div
+    id="chat-backdrop"
+    class="
+      fixed inset-0
+      opacity-0
+      transition-opacity duration-300
+      pointer-events-none
+    "
+  ></div>
+
+  <!-- CHAT NOTCH -->
+  <button
+    id="chat-notch"
+    type="button"
+    aria-label="Open chat"
+    aria-expanded="false"
+    class="
+      pointer-events-auto
+      fixed
+      bottom-4
+      left-1/2 -translate-x-1/2
+      sm:left-auto sm:right-4 sm:translate-x-0
+
+      w-12 h-12
+      rounded-full
+      bg-transparent
+
+      shadow-[0_12px_40px_rgba(25,15,60,0.25)]
+      transition-all duration-300 ease-out
+      animate-chat-pulse
+    "
+  >
+    <!-- Avatar (visible, no white pill) -->
+    <span class="relative block w-12 h-12">
+      <span class="absolute inset-0 rounded-full bg-emerald-400/60 blur-[10px]"></span>
+      <img
+        src="/static/images/avatar.png"
+        alt="Assistant avatar"
+        class="relative w-12 h-12 rounded-full object-cover ring-2 ring-white/60"
+      />
+    </span>
+  </button>
+
+  <!-- CHAT PANEL -->
+  <div
+    id="chat-panel"
+    class="
+      pointer-events-auto
+      fixed
+      bottom-4
+      left-1/2 -translate-x-1/2
+      sm:left-auto sm:right-4 sm:translate-x-0
+
+      w-[92%] sm:w-[360px]
+      h-[50vh] sm:h-[420px]
+
+      rounded-2xl
+      shadow-2xl
+      flex flex-col
+
+      opacity-0
+      scale-75
+      translate-y-6
+      origin-bottom
+
+      transition-all duration-300 ease-[cubic-bezier(.4,0,.2,1)]
+      pointer-events-none
+    "
+  >
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between px-4 py-3">
+      <div class="font-semibold text-[#2A1F3D] text-sm">
+        Boffins Assistant
+      </div>
+
+      <button
+        id="chat-close"
+        type="button"
+        aria-label="Close chat"
+        class="text-gray-600 text-lg"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- MESSAGES -->
+    <div
+      id="chat-messages"
+      class="flex-1 overflow-y-auto px-4 py-3 space-y-3 text-sm"
+    >
+      <div class="max-w-[85%] rounded-xl px-3 py-2">
+        👋 Hi! How can I help you today?
+      </div>
+    </div>
+
+    <!-- INPUT -->
+    <div class="px-3 py-2">
+      <div class="flex items-center gap-2">
+
+        <input
+          id="chat-input"
+          type="text"
+          placeholder="Type a message…"
+          class="
+            flex-1
+            rounded-xl
+            bg-white/80
+            px-3 py-2
+            text-sm
+            focus:outline-none
+            focus:ring-2 focus:ring-[#6C5CE7]
+          "
+        />
+
+        <button
+          id="chat-mic"
+          type="button"
+          aria-label="Voice input"
+          class="
+            px-3 py-2
+            rounded-xl
+            bg-white/60
+            text-[#2A1F3D]
+            hover:bg-white/80
+            flex items-center justify-center
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 1v11m0 0a3 3 0 003-3V4a3 3 0 00-6 0v5a3 3 0 003 3zm5 0a5 5 0 01-10 0m10 0v2a5 5 0 01-10 0v-2m5 2v4"
+            />
+          </svg>
+        </button>
+
+        <button
+          id="chat-send"
+          type="button"
+          class="
+            px-4 py-2
+            rounded-xl
+            bg-[#6C5CE7]
+            text-white text-sm font-medium
+          "
+        >
+          Send
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CHAT SCRIPTS -->
+<script src="/static/js/chat/chat-ui.js"></script>
+<script src="/static/js/chat/chat-commands.js"></script>
+<script src="/static/js/chat/chat-intents.js"></script>
+<script src="/static/js/chat/chat-api.js"></script>
+<script src="/static/js/chat/chat-toggle.js"></script>
+<script src="/static/js/chat/chat-voice.js"></script>
+<script src="/static/js/chat/chat-drag.js"></script>
+
+<script src="/static/js/reveals.js"></script>
+
+
+</body>
+</html>
