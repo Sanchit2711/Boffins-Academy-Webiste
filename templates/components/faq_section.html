@@ -1,6 +1,9 @@
 <section class="figma-faq">
   <div class="figma-faq-head">
-    <div class="figma-pill">FAQs</div>
+    <div class="figma-pill">
+      <img src="/static/icons/pill-faq.svg" alt="" />
+      <span>FAQs</span>
+    </div>
     <h2>Frequently Asked Questions</h2>
     <p>Everything you need to know about our programs</p>
   </div>
@@ -44,6 +47,27 @@
     max-width: 537px;
     margin: 0 auto 30px;
     text-align: center;
+  }
+
+  .figma-pill {
+    width: fit-content;
+    margin: 0 auto 20px;
+    border-radius: 30px;
+    border: 1px solid #e2d9ff;
+    background: #fff;
+    color: #200060;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.028px;
+    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .figma-pill img {
+    width: 20px;
+    height: 20px;
   }
 
   .figma-faq h2 {

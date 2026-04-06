@@ -1,11 +1,13 @@
 <article class="fst-card">
-  <div class="fst-stars">★★★★★</div>
-  <h3>{{ testimonial.name|default:"Amazing Transformation" }}</h3>
-  <p>{{ testimonial.quote|default:"The structured learning path and mentor guidance helped me switch careers with confidence." }}</p>
+  <div class="fst-quote-mark">”</div>
+  <div class="fst-stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+  <p class="fst-quote">{{ testimonial.quote|default:"Boffins Academy transformed my career completely. Within 6 months of completing the course, I landed my dream job at Google." }}</p>
   <div class="fst-user">
     <img src="{{ testimonial.avatar|default:'/static/images/avatar.png' }}" alt="{{ testimonial.name|default:'Alumni' }}" />
     <div>
-      <strong>{{ testimonial.name|default:"Boffins Alumni" }}</strong>
+      <strong>{{ testimonial.name|default:"Sarah Johnson" }}</strong>
       <span>{{ testimonial.role|default:"Software Engineer" }}</span>
     </div>
   </div>
@@ -13,49 +15,64 @@
 
 <style>
   .fst-card {
-    min-height: 340px;
+    min-height: 520px;
     border-radius: 8px;
     border: 2px solid #e2e8f0;
-    background: #fff;
-    padding: 30px;
+    background: linear-gradient(180deg, #f4f2ff 0%, #faf9f6 100%);
+    padding: 28px 28px 24px;
+    position: relative;
     box-sizing: border-box;
     font-family: "Manrope", sans-serif;
   }
 
+  .fst-quote-mark {
+    position: absolute;
+    right: 24px;
+    top: 20px;
+    color: #b6abd8;
+    font-size: 64px;
+    line-height: 0.8;
+    font-weight: 700;
+  }
+
   .fst-stars {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 24px;
+  }
+
+  .fst-stars span {
     color: #ff8a00;
-    font-size: 24px;
-    line-height: 32px;
-    letter-spacing: 2px;
+    font-size: 18px;
+    line-height: 1;
   }
 
-  .fst-card h3 {
-    margin: 15px 0 10px;
-    color: #1e0a5f;
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 500;
-  }
-
-  .fst-card p {
+  .fst-card p.fst-quote {
     margin: 0;
-    color: #3a3a66;
+    color: #3f3f75;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 400;
+    max-width: 92%;
   }
 
   .fst-user {
-    margin-top: 24px;
+    margin-top: 34px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
   .fst-user img {
-    width: 50px;
-    height: 50px;
+    width: 76px;
+    height: 76px;
     border-radius: 999px;
     object-fit: cover;
+    background: #f5a9cd;
+    box-shadow: 0 6px 16px rgba(189, 94, 151, 0.25);
   }
 
   .fst-user strong {
@@ -70,6 +87,54 @@
     display: block;
     color: #6b6fa8;
     font-size: 14px;
-    line-height: 20px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 1024px) {
+    .fst-card {
+      min-height: auto;
+      padding: 22px 18px;
+    }
+
+    .fst-quote-mark {
+      right: 16px;
+      top: 14px;
+      font-size: 56px;
+    }
+
+    .fst-stars {
+      margin-bottom: 18px;
+      gap: 6px;
+    }
+
+    .fst-stars span {
+      font-size: 26px;
+    }
+
+    .fst-card p.fst-quote {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .fst-user {
+      margin-top: 24px;
+      gap: 12px;
+    }
+
+    .fst-user img {
+      width: 72px;
+      height: 72px;
+    }
+
+    .fst-user strong {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .fst-user span {
+      font-size: 14px;
+      line-height: 22px;
+    }
   }
 </style>

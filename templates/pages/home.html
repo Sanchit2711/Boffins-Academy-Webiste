@@ -6,11 +6,8 @@
 {% block page_css %}
 <link href="{% static 'css/hero.css' %}" rel="stylesheet">
 <link href="{% static 'css/home-mobile.css' %}" rel="stylesheet">
+<link href="{% static 'css/landing-enhancements.css' %}" rel="stylesheet">
 <style>
-  #navbar {
-    display: none !important;
-  }
-
   main#page {
     padding-top: 0 !important;
     margin-top: 0 !important;
@@ -48,4 +45,5 @@
 {% include "components/faq_section.html" %}
 </div>
 
+<script src="{% static 'js/landing-enhancements.js' %}"></script>
 {% endblock %}

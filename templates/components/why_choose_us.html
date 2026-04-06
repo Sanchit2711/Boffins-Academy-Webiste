@@ -1,15 +1,30 @@
 <section class="fwcu">
   <div class="fwcu-wrap">
     <div class="fwcu-head">
-      <div class="fwcu-pill">WHY CHOOSE US</div>
+      <div class="fwcu-pill">
+        <img src="/static/icons/pill-advantage.svg" alt="" />
+        <span>WHY CHOOSE US</span>
+      </div>
       <h2>Boffins Advantage</h2>
     </div>
 
     <div class="fwcu-grid">
-      <article><h3>Job Ready</h3><p>Curriculum designed with direct input from hiring managers at top companies.</p></article>
-      <article><h3>Careers Support</h3><p>Build portfolio projects, optimize resume, and prepare for technical interviews.</p></article>
-      <article><h3>Expert Mentorship</h3><p>Learn from experienced mentors who have shipped production systems at scale.</p></article>
-      <article><h3>Placement Success</h3><p>Our placement team connects learners with hiring partners and active opportunities.</p></article>
+      <article>
+        <div class="fwcu-icon job-ready"><img src="/static/icons/target-icon.svg" alt="" /></div>
+        <h3>Job Ready</h3><p>Curriculum designed with direct input from hiring managers at top companies.</p>
+      </article>
+      <article>
+        <div class="fwcu-icon careers"><img src="/static/icons/briefcase.svg" alt="" /></div>
+        <h3>Careers Support</h3><p>Build portfolio projects, optimize resume, and prepare for technical interviews.</p>
+      </article>
+      <article>
+        <div class="fwcu-icon mentorship"><img src="/static/icons/users-icon.svg" alt="" /></div>
+        <h3>Expert Mentorship</h3><p>Learn from experienced mentors who have shipped production systems at scale.</p>
+      </article>
+      <article>
+        <div class="fwcu-icon placement"><img src="/static/icons/ribbon-icon.svg" alt="" /></div>
+        <h3>Placement Success</h3><p>Our placement team connects learners with hiring partners and active opportunities.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -42,6 +57,14 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.028px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .fwcu-pill img {
+    width: 20px;
+    height: 20px;
   }
 
   .fwcu-head h2 {
@@ -64,11 +87,60 @@
     border: 2px solid #e2e8f0;
     background: linear-gradient(180deg, #f4f2ff 0%, #faf9f6 100%);
     padding: 20px;
+    position: relative;
     box-sizing: border-box;
   }
 
+  .fwcu-icon {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    z-index: 1;
+  }
+
+  .fwcu-icon::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 24px;
+    background: var(--glow-color);
+    opacity: 0.28;
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  .fwcu-icon img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .fwcu-icon.job-ready {
+    --glow-color: #ffb600;
+    background: #ffb600;
+  }
+
+  .fwcu-icon.careers {
+    --glow-color: #00b7ff;
+    background: #00b7ff;
+  }
+
+  .fwcu-icon.mentorship {
+    --glow-color: #6f63ff;
+    background: #6f63ff;
+  }
+
+  .fwcu-icon.placement {
+    --glow-color: #46c36f;
+    background: #46c36f;
+  }
+
   .fwcu-grid h3 {
-    margin: 160px 0 10px;
+    margin: 114px 0 10px;
     color: #1e0a5f;
     font-size: 24px;
     line-height: 32px;
@@ -96,7 +168,7 @@
     }
 
     .fwcu-grid h3 {
-      margin-top: 0;
+      margin-top: 88px;
     }
   }
 </style>

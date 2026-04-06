@@ -1,24 +1,33 @@
 <section id="courses" class="fcourse">
   <div class="fcourse-wrap">
     <div class="fcourse-head">
-      <div class="fcourse-pill">OUR COURSES</div>
+      <div class="fcourse-pill">
+        <img src="/static/icons/pill-courses.svg" alt="" />
+        <span>OUR COURSES</span>
+      </div>
       <h2>Choose Your Path to Mastery</h2>
       <p>Industry-aligned programs designed to fast-track your career with hands-on projects and placement support</p>
     </div>
 
     <div class="fcourse-grid">
       <article class="fcourse-card">
+        <div class="fcourse-icon ai">
+          <img src="/static/icons/database-icon.svg" alt="" />
+        </div>
         <div class="fcourse-tag blue">Most Popular</div>
         <h3>Data Science &amp; AI</h3>
         <h4>Transform Data Into Intelligence</h4>
         <p>Master machine learning, deep learning, and AI to build intelligent systems that solve real-world problems.</p>
         <div class="fcourse-meta">
-          <span>All-Levels</span><span>16 weeks</span><span>12+ Projects</span>
+          <span><img src="/static/icons/chip-star.svg" alt="" />All-Levels</span>
+          <span><img src="/static/icons/chip-clock.svg" alt="" />16 weeks</span>
+          <span><img src="/static/icons/chip-code.svg" alt="" />12+ Projects</span>
         </div>
         <div class="fcourse-salary">
           <strong>Expected Salary Range</strong>
           <span>₹12-18 LPA</span>
         </div>
+        <h5>What you&rsquo;ll learn:</h5>
         <ul>
           <li>Python Fundamentals</li>
           <li>Machine Learning</li>
@@ -32,17 +41,23 @@
       </article>
 
       <article class="fcourse-card">
+        <div class="fcourse-icon fullstack">
+          <img src="/static/icons/code-bracket-left.svg" alt="" />
+        </div>
         <div class="fcourse-tag green">High Demand</div>
         <h3>Full Stack Development</h3>
         <h4>Build The Future of Web</h4>
         <p>Create scalable, production-ready web applications with modern frameworks and best practices.</p>
         <div class="fcourse-meta">
-          <span>Intermediate</span><span>12 weeks</span><span>10+ Projects</span>
+          <span><img src="/static/icons/chip-star.svg" alt="" />Intermediate</span>
+          <span><img src="/static/icons/chip-clock.svg" alt="" />12 weeks</span>
+          <span><img src="/static/icons/chip-code.svg" alt="" />10+ Projects</span>
         </div>
         <div class="fcourse-salary">
           <strong>Expected Salary Range</strong>
           <span>₹10-16 LPA</span>
         </div>
+        <h5>What you&rsquo;ll learn:</h5>
         <ul>
           <li>React &amp; Next.js</li>
           <li>Node.js &amp; Express</li>
@@ -91,6 +106,14 @@
     line-height: 20px;
     letter-spacing: 0.028px;
     padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .fcourse-pill img {
+    width: 20px;
+    height: 20px;
   }
 
   .fcourse-head h2 {
@@ -112,34 +135,73 @@
   .fcourse-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 16px;
   }
 
   .fcourse-card {
-    min-height: 850px;
+    min-height: 780px;
     border-radius: 8px;
     border: 2px solid #e2e8f0;
     background: linear-gradient(180deg, #f4f2ff 0%, #faf9f6 100%);
-    padding: 30px;
+    padding: 28px;
     position: relative;
     box-sizing: border-box;
   }
 
+  .fcourse-icon {
+    position: absolute;
+    left: 30px;
+    top: 34px;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+    z-index: 1;
+  }
+
+  .fcourse-icon::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 20px;
+    background: var(--glow-color);
+    opacity: 0.28;
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  .fcourse-icon.ai {
+    --glow-color: #ff8a00;
+    background: #ff8a00;
+  }
+
+  .fcourse-icon.fullstack {
+    --glow-color: #22c55e;
+    background: #22c55e;
+  }
+
+  .fcourse-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
   .fcourse-tag {
     position: absolute;
-    right: 30px;
-    top: 30px;
+    right: 28px;
+    top: 26px;
     border-radius: 20px;
-    padding: 5px 10px;
+    padding: 5px 12px;
     font-size: 14px;
     line-height: 20px;
+    font-weight: 600;
     color: #fff;
   }
-  .fcourse-tag.blue { background: #0f62fe; }
-  .fcourse-tag.green { background: #22c55e; }
+  .fcourse-tag.blue { background: #8067f6; }
+  .fcourse-tag.green { background: #ff8a00; }
 
   .fcourse-card h3 {
-    margin: 160px 0 10px;
+    margin: 164px 0 12px;
     color: #1e0a5f;
     font-size: 26px;
     line-height: 34px;
@@ -147,7 +209,7 @@
   }
 
   .fcourse-card h4 {
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     color: #6b6fa8;
     font-size: 18px;
     line-height: 26px;
@@ -157,14 +219,14 @@
   .fcourse-card p {
     margin: 0;
     color: #3a3a66;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .fcourse-meta {
-    margin-top: 30px;
+    margin-top: 28px;
     display: flex;
-    gap: 10px;
+    gap: 8px;
     flex-wrap: wrap;
   }
 
@@ -176,42 +238,71 @@
     color: #1e0a5f;
     font-size: 15px;
     line-height: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .fcourse-meta span img {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 
   .fcourse-salary {
-    margin-top: 30px;
+    margin-top: 20px;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     background: #fff;
-    padding: 10px 15px;
+    padding: 12px 16px;
     display: grid;
-    gap: 5px;
+    gap: 4px;
   }
 
   .fcourse-salary strong,
   .fcourse-salary span {
     color: #1e0a5f;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 24px;
     font-weight: 500;
   }
 
   .fcourse-card ul {
-    margin: 30px 0 0;
-    padding-left: 24px;
+    margin: 12px 0 0;
+    padding-left: 0;
     display: grid;
-    gap: 10px;
+    gap: 12px;
+    list-style: none;
+  }
+
+  .fcourse-card h5 {
+    margin: 28px 0 0;
+    color: #1e0a5f;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
   }
 
   .fcourse-card li {
-    font-size: 15px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 20px;
     color: #1e0a5f;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fcourse-card li::before {
+    content: "✓";
+    color: #ff8a00;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 700;
   }
 
   .fcourse-bottom {
-    margin-top: 40px;
-    padding-top: 20px;
+    margin-top: 30px;
+    padding-top: 22px;
     border-top: 1px solid #e2e8f0;
     display: flex;
     justify-content: space-between;
@@ -239,9 +330,13 @@
     line-height: 20px;
     font-weight: 600;
     border-radius: 30px;
-    padding: 14px 16px;
-    border: 1px solid rgba(128, 103, 246, 0.3);
-    background: #fff;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .fcourse-bottom a::after {
+    content: " \2192";
   }
 
   .fcourse-actions {
@@ -275,7 +370,7 @@
     }
 
     .fcourse-card h3 {
-      margin-top: 80px;
+      margin-top: 86px;
       font-size: 24px;
       line-height: 30px;
     }
@@ -286,6 +381,11 @@
     .fcourse-card li {
       font-size: 16px;
       line-height: 24px;
+    }
+
+    .fcourse-card h5 {
+      font-size: 20px;
+      line-height: 28px;
     }
 
     .fcourse-bottom b {

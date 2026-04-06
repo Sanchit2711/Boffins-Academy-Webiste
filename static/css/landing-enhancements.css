@@ -1,0 +1,372 @@
+#home-landing {
+  --landing-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --cta-primary-start: #8067f6;
+  --cta-primary-end: #6e5af1;
+  --cta-primary-hover-start: #ff9a1f;
+  --cta-primary-hover-end: #ff7a00;
+  --cta-secondary-hover: #200060;
+}
+
+/* Hero CTA: requested animated color change on hover */
+#home-landing .hero-ctas .hero-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 220ms var(--landing-ease),
+    background-color 220ms var(--landing-ease),
+    box-shadow 240ms var(--landing-ease),
+    transform 220ms var(--landing-ease),
+    border-color 220ms var(--landing-ease);
+}
+
+#home-landing .hero-ctas .hero-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+#home-landing .hero-ctas .hero-btn-primary {
+  background: linear-gradient(135deg, var(--cta-primary-start) 0%, var(--cta-primary-end) 100%);
+  box-shadow: 0 10px 24px rgba(68, 48, 168, 0.22);
+}
+
+#home-landing .hero-ctas .hero-btn-primary:hover {
+  background: linear-gradient(135deg, var(--cta-primary-hover-start) 0%, var(--cta-primary-hover-end) 100%);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(255, 138, 0, 0.34);
+}
+
+#home-landing .hero-ctas .hero-btn-secondary {
+  border: 1px solid rgba(32, 0, 96, 0.08);
+  box-shadow: 0 8px 20px rgba(35, 20, 86, 0.08);
+}
+
+#home-landing .hero-ctas .hero-btn-secondary:hover {
+  background: var(--cta-secondary-hover);
+  color: #fff;
+  border-color: var(--cta-secondary-hover);
+  box-shadow: 0 14px 28px rgba(32, 0, 96, 0.24);
+}
+
+/* Courses section CTA polish */
+#home-landing .fcourse-actions a {
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 220ms var(--landing-ease),
+    transform 220ms var(--landing-ease),
+    box-shadow 260ms var(--landing-ease),
+    background-color 220ms var(--landing-ease);
+}
+
+#home-landing .fcourse-actions a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff9a1f 0%, #ff7a00 100%);
+  opacity: 0;
+  transition: opacity 240ms var(--landing-ease);
+  z-index: 0;
+}
+
+#home-landing .fcourse-actions a > * {
+  position: relative;
+  z-index: 1;
+}
+
+#home-landing .fcourse-actions a:hover {
+  transform: translateY(-2px) scale(1.01);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(255, 138, 0, 0.34);
+}
+
+#home-landing .fcourse-actions a:hover::before {
+  opacity: 1;
+}
+
+#home-landing .fcourse-actions a:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+/* Scroll reveal choreography */
+#home-landing .landing-reveal {
+  opacity: 0;
+  translate: 0 26px;
+  transition:
+    opacity 540ms var(--landing-ease),
+    translate 540ms var(--landing-ease);
+  will-change: opacity, translate;
+}
+
+#home-landing .landing-reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Lift + soft tilt for cards */
+#home-landing .interactive-card {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition:
+    transform 260ms var(--landing-ease),
+    box-shadow 260ms var(--landing-ease),
+    border-color 260ms var(--landing-ease);
+  will-change: transform;
+}
+
+#home-landing .interactive-card:hover {
+  box-shadow: 0 16px 32px rgba(52, 29, 132, 0.14);
+  border-color: #d4dff1;
+}
+
+/* FAQ affordance */
+#home-landing .figma-faq-list details {
+  transition: box-shadow 220ms ease, border-color 220ms ease;
+}
+
+#home-landing .figma-faq-list details[open] {
+  border-color: #cfdcf0;
+  box-shadow: 0 10px 22px rgba(42, 31, 95, 0.08);
+}
+
+/* Subtle pulse for stats icon row */
+#home-landing .fstats-icon-box {
+  animation: statPulse 3.2s ease-in-out infinite;
+}
+
+#home-landing .fstats article:nth-child(2) .fstats-icon-box {
+  animation-delay: 0.2s;
+}
+
+#home-landing .fstats article:nth-child(3) .fstats-icon-box {
+  animation-delay: 0.4s;
+}
+
+#home-landing .fstats article:nth-child(4) .fstats-icon-box {
+  animation-delay: 0.6s;
+}
+
+@keyframes statPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home-landing .hero-ctas .hero-btn,
+  #home-landing .landing-reveal,
+  #home-landing .interactive-card,
+  #home-landing .fstats-icon-box {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    translate: 0 0 !important;
+  }
+}
+
+/* Mobile comfort-only tuning (desktop untouched) */
+@media (max-width: 768px) {
+  #home-landing .hero-ctas .hero-btn:hover {
+    transform: none;
+  }
+
+  #home-landing .fcourse-actions a:hover {
+    transform: none;
+  }
+
+  #home-landing .hero-ctas .hero-btn {
+    min-height: 50px;
+    border-radius: 26px;
+  }
+
+  #home-landing .hero-btn:active,
+  #home-landing .fcourse-actions a:active,
+  #home-landing .fcourse-bottom a:active,
+  #home-landing .fws-card a:active {
+    transform: scale(0.985);
+    transition-duration: 80ms;
+  }
+
+  #home-landing .interactive-card.is-pressed {
+    transform: scale(0.992) !important;
+  }
+
+  #home-landing .hero-trust img,
+  #home-landing .fws-pill img,
+  #home-landing .fcourse-pill img,
+  #home-landing .fst-pill img,
+  #home-landing .fwcu-pill img,
+  #home-landing .figma-pill img {
+    width: 18px;
+    height: 18px;
+  }
+
+  #home-landing .hero-stat-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+  }
+
+  #home-landing .hero-stat-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  #home-landing .fws-icon-wrap,
+  #home-landing .fcourse-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 18px;
+  }
+
+  #home-landing .fwcu-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+
+  #home-landing .fws-icon-wrap img,
+  #home-landing .fcourse-icon img,
+  #home-landing .fwcu-icon img {
+    width: 34px;
+    height: 34px;
+  }
+
+  #home-landing .fcourse-meta span img {
+    width: 16px;
+    height: 16px;
+  }
+
+  #home-landing .fst-avatar {
+    width: 74px;
+    height: 74px;
+  }
+
+  #home-landing .figma-company-item {
+    width: 150px;
+    height: 68px;
+  }
+
+  #home-landing .figma-company-logos img {
+    max-height: 50px;
+  }
+
+  #home-landing .figma-company-ticker.is-touch-paused .figma-company-logos {
+    animation-play-state: paused;
+  }
+
+  #home-landing .fstats-icon-box {
+    width: 66px;
+    height: 66px;
+    border-radius: 16px;
+  }
+
+  #home-landing .fstats-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  #home-landing .figma-cta-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+  }
+
+  #home-landing .figma-cta-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #home-landing .figma-faq-list details {
+    overflow: clip;
+    transform-origin: top center;
+    transition:
+      box-shadow 220ms ease,
+      border-color 220ms ease,
+      transform 220ms var(--landing-ease);
+  }
+
+  #home-landing .figma-faq-list details[open] {
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 480px) {
+  #home-landing .hero-ctas {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  #home-landing .hero-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  #home-landing .hero-stat-card {
+    min-height: 74px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #home-landing .hero-wave {
+    height: 116px;
+    margin-top: 10px;
+  }
+}
+
+/* Mobile-only floating back-to-top */
+#home-mobile-top {
+  position: fixed;
+  right: 14px;
+  bottom: 78px;
+  z-index: 70;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8067f6 0%, #6f5cf2 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(40, 24, 112, 0.28);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(0.96);
+  transition:
+    opacity 220ms ease,
+    transform 220ms var(--landing-ease),
+    box-shadow 220ms ease;
+}
+
+#home-mobile-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+#home-mobile-top:active {
+  transform: scale(0.96);
+}
+
+#home-mobile-top svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 769px) {
+  #home-mobile-top {
+    display: none !important;
+  }
+}
+
+/* Home-page-only mobile chat placement (prevents overlap with center pills) */
+@media (max-width: 768px) {
+  body.home-landing-page #chat-notch {
+    left: auto !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    transform: none !important;
+  }
+}

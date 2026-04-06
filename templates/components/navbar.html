@@ -1,307 +1,428 @@
-<header
-  id="navbar"
-  class="fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-300"
->
-  <!-- BACKGROUND -->
-  <div id="navbar-bg" class="absolute inset-0"></div>
+<header id="navbar" class="site-navbar">
+  <div class="site-navbar-inner">
+    <a href="/" class="site-brand" aria-label="Boffins Academy home">
+      <span class="site-brand-main">Boffins</span>
+      <span class="site-brand-sub">Academy</span>
+    </a>
 
-  <nav class="relative container-custom h-full">
-
-    <!-- ================= DESKTOP ================= -->
-    <div class="hidden lg:flex items-center justify-between h-full">
-
-      <a href="/" class="flex items-center gap-2">
-        <img src="/static/images/logo-icon.svg" class="h-[44px]" />
-        <span class="text-[#6C5CE7] text-[12px] font-semibold translate-y-[6px]">
-          Academy
-        </span>
-      </a>
-
-      <ul class="relative flex items-center gap-8 text-white font-medium" id="nav-links">
-        <li><a href="/" data-nav>Home</a></li>
-        <li><a href="/courses" data-nav>Courses</a></li>
-        <li><a href="/instructors" data-nav>Instructors</a></li>
-        <li><a href="/placements" data-nav>Placements</a></li>
-        <li><a href="/gallery" data-nav>Gallery</a></li>
-        <li><a href="/about" data-nav>About</a></li>
-        <li><a href="/contact" data-nav>Contact</a></li>
-        <span id="nav-underline"></span>
-      </ul>
-
-      <a
-        href="/get-started"
-        class="px-6 py-3 bg-white text-[#2A1F3D] font-semibold rounded-xl"
-      >
-        Get Started
-      </a>
-    </div>
-
-    <!-- ================= MOBILE HEADER ================= -->
-    <div class="lg:hidden relative flex items-center justify-center h-full">
-
-      <!-- HAMBURGER -->
-      <button
-        id="mobile-menu-btn"
-        class="absolute left-4 text-white"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round"
-            d="M4 6h16M4 12h16M4 18h16"/>
+    <nav class="site-nav-links" aria-label="Primary navigation">
+      <a href="/courses">Courses</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <button type="button" class="site-menu-btn" id="nav-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="19.5" fill="none" stroke="#3A3A66" stroke-opacity="0.35"></circle>
+          <line x1="12.5" y1="14" x2="27.5" y2="14" stroke="#3A3A66" stroke-width="2.4" stroke-linecap="round"></line>
+          <line x1="12.5" y1="20" x2="27.5" y2="20" stroke="#3A3A66" stroke-width="2.4" stroke-linecap="round"></line>
+          <line x1="12.5" y1="26" x2="27.5" y2="26" stroke="#3A3A66" stroke-width="2.4" stroke-linecap="round"></line>
         </svg>
       </button>
-
-      <!-- LOGO -->
-      <a href="/" class="flex items-center gap-1">
-        <img src="/static/images/logo-icon.svg" class="h-[40px]" />
-        <span class="text-[#6C5CE7] text-[12px] font-semibold translate-y-[6px]">
-          Academy
-        </span>
-      </a>
-
-      <!-- 3 DOT -->
-      <button class="absolute right-4 text-white" aria-label="More options">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <circle cx="5" cy="12" r="1.8"/>
-          <circle cx="12" cy="12" r="1.8"/>
-          <circle cx="19" cy="12" r="1.8"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ================= MOBILE BACKDROP ================= -->
-  <div
-    id="mobile-backdrop"
-    class="lg:hidden fixed inset-0 z-30 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300"
-  ></div>
-
-  <!-- ================= MOBILE DRAWER ================= -->
-  <div
-    id="mobile-menu"
-    data-swipe
-    class="
-      lg:hidden fixed top-[72px] left-0 z-40
-      w-[86%] max-w-[320px]
-      -translate-x-full
-      transition-transform duration-300 ease-out
-    "
-  >
-    <div class="px-6 py-8">
-      <ul class="flex flex-col gap-6 text-white text-lg">
-        <li><a href="/">Home</a></li>
-        <li><a href="/courses">Courses</a></li>
-        <li><a href="/instructors">Instructors</a></li>
-        <li><a href="/placements">Placements</a></li>
-        <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
-
-        <li class="pt-4">
-          <a
-            href="/get-started"
-            class="block text-center px-6 py-4 rounded-2xl font-semibold"
-          >
-            Get Started
-          </a>
-        </li>
-      </ul>
-    </div>
+    </nav>
   </div>
+
+  <div class="site-drawer-backdrop" id="nav-drawer-backdrop"></div>
+  <aside class="site-drawer" id="nav-drawer" aria-hidden="true">
+    <button type="button" class="site-drawer-close" id="nav-drawer-close" aria-label="Close menu">×</button>
+    <nav class="site-drawer-nav" aria-label="Mobile menu">
+      <a href="/">Home</a>
+      <a href="/courses">Courses</a>
+      <a href="/placements">Placements</a>
+      <a href="/instructors">Instructors</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div class="site-drawer-social">
+      <a href="#" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.2 9.2H3.1V20h3.1V9.2Zm.2-3.3c0-1-0.8-1.8-1.8-1.8S2.8 4.9 2.8 5.9s0.8 1.8 1.8 1.8 1.8-0.8 1.8-1.8ZM20 20v-6c0-3.2-1.7-4.7-4-4.7-1.8 0-2.6 1-3 1.7V9.2h-3.1V20H13v-5.4c0-1.4.3-2.7 2-2.7s1.9 1.6 1.9 2.8V20H20Z"></path></svg>
+      </a>
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm8.8 1.7a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2ZM12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3Zm0 1.8A2.9 2.9 0 1 1 12 14.9 2.9 2.9 0 0 1 12 9.1Z"></path></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.1H8.5V14h2.2v7h2.7Z"></path></svg>
+      </a>
+      <button type="button" aria-label="Close menu" id="nav-drawer-mini-close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg>
+      </button>
+    </div>
+  </aside>
 </header>
 
 <style>
-  #navbar-bg {
-  background: linear-gradient(180deg, #1B0F3A 0%, #2B1760 100%);
-  transition: background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease;
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC&display=swap");
+
+.site-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  pointer-events: none;
 }
 
-#navbar.is-blur #navbar-bg {
-  backdrop-filter: blur(14px);
-  background: linear-gradient(
-    180deg,
-    rgba(27,15,58,0.85),
-    rgba(43,23,96,0.85)
-  );
+.site-navbar-inner {
+  padding: 26px 56px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+  transition: padding 220ms ease, margin 220ms ease, border-radius 220ms ease, background-color 220ms ease, box-shadow 220ms ease, backdrop-filter 220ms ease;
 }
 
-#navbar.is-solid #navbar-bg {
-  background: #1B0F3A;
-  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+.site-navbar.is-scrolled .site-navbar-inner {
+  margin: 0 16px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: rgba(244, 246, 255, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 26px rgba(33, 20, 86, 0.14);
 }
 
-#navbar.is-compact {
-  height: 60px;
+.site-brand {
+  width: auto;
+  height: auto;
+  position: static;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
 }
 
-/* underline */
-#nav-underline {
-  position: absolute;
-  bottom: -10px;
-  height: 2px;
-  background: #2EE88F;
-  border-radius: 2px;
-  width: 0;
-  transition: transform .35s cubic-bezier(.4,0,.2,1),
-              width .35s cubic-bezier(.4,0,.2,1);
+.site-brand-main {
+  position: static;
+  font-family: "Bona Nova SC", serif;
+  font-size: 34px;
+  line-height: 40px;
+  background: linear-gradient(180deg, #2b0a6f 0%, #4c2fbf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
 }
 
-/* ===============================
-   DESKTOP NAV HOVER & ACTIVE
-================================ */
-@media (min-width: 1024px) {
-  #nav-links a {
-    position: relative;
-    color: rgba(255,255,255,.85);
-    transition: color .2s ease;
-  }
-
-  #nav-links a:hover {
-    color: #2EE88F;
-  }
-
-  #nav-links a.is-active {
-    color: #ffffff;
-  }
+.site-brand-sub {
+  position: static;
+  font-family: "Bona Nova SC", serif;
+  font-size: 13px;
+  line-height: 16px;
+  margin-bottom: 8px;
+  color: #ff8a00;
+  text-transform: uppercase;
 }
 
-
-/* mobile drawer */
-#mobile-menu {
-  background: linear-gradient(180deg, #1B0F3A, #24104F);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  max-height: calc(100vh - 96px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  box-shadow:
-    12px 0 40px rgba(0,0,0,.45),
-    inset -1px 0 0 rgba(255,255,255,.06);
-  will-change: transform;
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-#mobile-menu.is-open {
-  transform: translateX(0);
+.site-nav-links a {
+  color: #3a3a66;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 180ms ease;
 }
 
-#mobile-backdrop.is-open {
+.site-nav-links a:hover {
+  color: #200060;
+}
+
+.site-nav-links a.is-active {
+  color: #200060;
+  font-weight: 700;
+}
+
+.site-menu-btn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  margin-left: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.site-menu-btn svg {
+  width: 40px;
+  height: 40px;
+}
+
+.site-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 15, 72, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.site-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - 268px);
+  height: 100%;
+  background: #f5f5f8;
+  border-left: 1px solid rgba(128, 103, 246, 0.15);
+  transform: translateX(100%);
+  transition: transform 0.28s ease;
+  box-sizing: border-box;
+  padding: 26px 36px 44px 52px;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-navbar.drawer-open .site-drawer-backdrop {
   opacity: 1;
   pointer-events: auto;
 }
 
-#mobile-menu a {
-  opacity: .95;
-  transition: transform .2s ease, opacity .2s ease;
+.site-navbar.drawer-open .site-drawer {
+  transform: translateX(0);
 }
 
-#mobile-menu a:active {
-  transform: translateX(2px);
-  opacity: 1;
+.site-drawer-close {
+  align-self: flex-end;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid #d6dcf3;
+  color: #6c5ce7;
+  background: transparent;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
 }
 
-#mobile-menu a[href="/get-started"] {
-  background: linear-gradient(180deg, #fff, #f3f4f6);
-  color: #2A1F3D;
-  box-shadow:
-    0 10px 28px rgba(0,0,0,.35),
-    inset 0 -1px 0 rgba(0,0,0,.12);
+.site-drawer-nav {
+  margin-top: 146px;
+  display: grid;
+  gap: 14px;
 }
 
+.site-drawer-nav a {
+  color: #241a6c;
+  text-decoration: none;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 500;
+  transition: color 180ms ease;
+}
+
+.site-drawer-nav a:hover {
+  color: #7d6af6;
+}
+
+.site-drawer-nav a.is-active {
+  color: #7d6af6;
+}
+
+.site-drawer-social {
+  margin-top: auto;
+  align-self: flex-end;
+  display: flex;
+  gap: 14px;
+}
+
+.site-drawer-social a,
+.site-drawer-social button {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(128, 103, 246, 0.2);
+  box-shadow: 0 0 18px rgba(128, 103, 246, 0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #fff;
+  color: #816ff7;
+  padding: 0;
+  cursor: pointer;
+}
+
+.site-drawer-social svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+@media (max-width: 1023px) {
+  .site-navbar.is-scrolled .site-navbar-inner {
+    margin: 0 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .site-navbar-inner {
+    padding: 18px 20px 0;
+  }
+
+  .site-nav-links a {
+    display: none;
+  }
+
+  .site-drawer {
+    width: calc(100% - 92px);
+    padding: 22px 20px 32px;
+  }
+
+  .site-drawer-nav {
+    margin-top: 72px;
+    gap: 10px;
+  }
+
+  .site-drawer-nav a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-navbar.is-scrolled .site-navbar-inner {
+    margin: 0 6px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .site-brand-main {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .site-brand-sub {
+    font-size: 11px;
+    line-height: 14px;
+    margin-bottom: 7px;
+  }
+
+  .site-drawer {
+    width: calc(100% - 44px);
+    padding: 18px 14px 22px;
+  }
+
+  .site-drawer-nav {
+    margin-top: 44px;
+  }
+
+  .site-drawer-nav a {
+    font-size: 17px;
+  }
+
+  .site-drawer-social a,
+  .site-drawer-social button {
+    width: 38px;
+    height: 38px;
+  }
+}
 </style>
 
 <script>
 (() => {
-  const mobileBtn = document.getElementById("mobile-menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileBackdrop = document.getElementById("mobile-backdrop");
+  const root = document.getElementById("navbar");
+  if (!root) return;
 
-  function setMenuOpen(isOpen) {
-    if (!mobileMenu || !mobileBtn || !mobileBackdrop) return;
-    mobileMenu.classList.toggle("is-open", isOpen);
-    mobileBackdrop.classList.toggle("is-open", isOpen);
-    mobileBtn.setAttribute("aria-expanded", String(isOpen));
-    document.body.style.overflow = isOpen ? "hidden" : "";
-  }
+  const openBtn = document.getElementById("nav-menu-btn");
+  const drawer = document.getElementById("nav-drawer");
+  const closeBtn = document.getElementById("nav-drawer-close");
+  const miniCloseBtn = document.getElementById("nav-drawer-mini-close");
+  const backdrop = document.getElementById("nav-drawer-backdrop");
+  const desktopLinks = [...root.querySelectorAll(".site-nav-links a")];
+  const drawerLinks = [...root.querySelectorAll(".site-drawer-nav a")];
+  const allLinks = [...desktopLinks, ...drawerLinks];
+  const focusableDrawerNodes = () =>
+    [...drawer.querySelectorAll("a, button, [tabindex]:not([tabindex='-1'])")]
+      .filter((el) => !el.hasAttribute("disabled"));
 
-  if (mobileBtn && mobileMenu && mobileBackdrop) {
-    mobileBtn.addEventListener("click", () => {
-      const open = mobileMenu.classList.contains("is-open");
-      setMenuOpen(!open);
+  let isOpen = false;
+  let previousOverflow = "";
+  let lastFocused = null;
+
+  const normalize = (path) => {
+    if (!path) return "/";
+    return path.replace(/\/+$/, "") || "/";
+  };
+
+  const setActiveLinks = (pathname = window.location.pathname) => {
+    const current = normalize(pathname);
+    allLinks.forEach((link) => {
+      const href = normalize(link.getAttribute("href"));
+      const active = href === current;
+      link.classList.toggle("is-active", active);
+      if (active) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
     });
+  };
 
-    mobileBackdrop.addEventListener("click", () => setMenuOpen(false));
+  const setOpen = (open) => {
+    if (!drawer) return;
+    if (open === isOpen) return;
+    isOpen = open;
+    root.classList.toggle("drawer-open", open);
+    drawer.setAttribute("aria-hidden", open ? "false" : "true");
+    if (openBtn) openBtn.setAttribute("aria-expanded", String(open));
+    if (open) {
+      previousOverflow = document.body.style.overflow || "";
+      document.body.style.overflow = "hidden";
+      lastFocused = document.activeElement;
+      const focusables = focusableDrawerNodes();
+      if (focusables[0]) focusables[0].focus();
+    } else {
+      document.body.style.overflow = previousOverflow;
+      if (lastFocused && typeof lastFocused.focus === "function") {
+        lastFocused.focus();
+      }
+    }
+  };
 
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => setMenuOpen(false));
-    });
+  const onKeyDown = (e) => {
+    if (e.key === "Escape" && isOpen) {
+      setOpen(false);
+      return;
+    }
+    if (e.key !== "Tab" || !isOpen) return;
+    const focusables = focusableDrawerNodes();
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    });
-  }
+  const syncScrollState = () => {
+    root.classList.toggle("is-scrolled", window.scrollY > 18);
+  };
 
-  const nav = document.getElementById("nav-links");
-  if (!nav) return;
+  if (openBtn) openBtn.addEventListener("click", () => setOpen(true));
+  if (closeBtn) closeBtn.addEventListener("click", () => setOpen(false));
+  if (miniCloseBtn) miniCloseBtn.addEventListener("click", () => setOpen(false));
+  if (backdrop) backdrop.addEventListener("click", () => setOpen(false));
+  drawerLinks.forEach((link) => link.addEventListener("click", () => setOpen(false)));
 
-  const links = [...nav.querySelectorAll("a[data-nav]")];
-  const underline = document.getElementById("nav-underline");
-  if (!underline || !links.length) return;
-
-  let activeLink = null;
-
-  function getPath(path) {
-    return path.replace(/\/$/, "") || "/";
-  }
-
-  function updateNavbarActive(pathname = window.location.pathname) {
-    const currentPath = getPath(pathname);
-
-    const match =
-      links.find(link => getPath(link.getAttribute("href")) === currentPath)
-      || links[0]; // fallback Home
-
-    if (activeLink === match) return;
-
-    links.forEach(l => l.classList.remove("is-active"));
-    match.classList.add("is-active");
-    activeLink = match;
-
-    moveUnderline(match);
-  }
-
-  function moveUnderline(el) {
-    const r = el.getBoundingClientRect();
-    const p = nav.getBoundingClientRect();
-
-    underline.style.width = r.width + "px";
-    underline.style.transform =
-      `translateX(${r.left - p.left}px)`;
-  }
-
-  // Initial sync
-  requestAnimationFrame(() => updateNavbarActive());
-
-  // Hover behavior
-  links.forEach(link => {
-    link.addEventListener("mouseenter", () => moveUnderline(link));
-
-    link.addEventListener("click", () => {
-      updateNavbarActive(link.getAttribute("href"));
-    });
+  document.addEventListener("keydown", onKeyDown);
+  window.addEventListener("scroll", syncScrollState, { passive: true });
+  window.addEventListener("popstate", () => setActiveLinks());
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1023 && isOpen) setOpen(false);
   });
 
-  nav.addEventListener("mouseleave", () => {
-    if (activeLink) moveUnderline(activeLink);
-  });
-
-  // 🔥 IMPORTANT: expose globally for chatbot SPA navigation
-  window.updateNavbarActive = updateNavbarActive;
-
-  // Back / forward browser navigation
-  window.addEventListener("popstate", () => {
-    updateNavbarActive();
-  });
+  syncScrollState();
+  setActiveLinks();
 })();
 </script>

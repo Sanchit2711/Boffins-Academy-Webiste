@@ -1,7 +1,10 @@
 <section class="fst">
   <div class="fst-wrap">
     <div class="fst-head">
-      <div class="fst-pill">SUCCESS STORIES</div>
+      <div class="fst-pill">
+        <img src="/static/icons/pill-success.svg" alt="" />
+        <span>SUCCESS STORIES</span>
+      </div>
       <h2>Real People, Real Results</h2>
       <p>Hear from our alumni who transformed their careers and are now working at top companies</p>
     </div>
@@ -46,6 +49,14 @@
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.028px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .fst-pill img {
+    width: 20px;
+    height: 20px;
   }
 
   .fst-head h2 {
