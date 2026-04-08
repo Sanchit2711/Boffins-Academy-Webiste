@@ -161,6 +161,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
+  z-index: 1;
 }
 
 .site-drawer {
@@ -177,6 +178,8 @@
   padding: 26px 36px 44px 52px;
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
+  z-index: 2;
 }
 
 .site-navbar.drawer-open .site-drawer-backdrop {

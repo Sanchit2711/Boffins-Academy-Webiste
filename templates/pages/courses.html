@@ -2,151 +2,1855 @@
 {% block title %}Courses | Boffins Academy{% endblock %}
 {% block page_css %}
 <link href="/static/css/courses.css" rel="stylesheet" data-page-css>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Bona+Nova+SC&display=swap');
+
+  /* ── Design tokens ── */
+  :root {
+    --purple-brand: #8067F6;
+    --purple-primary: #200060;
+    --purple-dark: #1E0A5F;
+    --purple-text2: #3A3A66;
+    --orange-accent: #FF8A00;
+    --green-success: #22C55E;
+    --yellow-warn: #FFC107;
+    --cyan-accent: #00C0E8;
+    --purple-vivid: #CB30E0;
+    --border-default: #E2E8F0;
+    --bg-card-from: #F4F2FF;
+    --bg-card-to: #FAF9F6;
+    --white: #FFFFFF;
+    --font-main: 'Manrope', sans-serif;
+  }
+
+  /* ─── HERO ─────────────────────────────────── */
+  .courses-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    padding: 66px 20px 48px;
+    text-align: center;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .courses-hero__badge-wrap {
+    display: inline-grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .courses-hero__badge-glow {
+    grid-column: 1;
+    grid-row: 1;
+    width: 260px;
+    height: 56px;
+    background: var(--purple-brand);
+    border-radius: 28px;
+    filter: blur(14px);
+    opacity: 0.16;
+  }
+
+  .courses-hero__badge-pill.pill-chip {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 220px;
+    height: 44px;
+    gap: 10px;
+    padding: 0 20px;
+    background: rgba(107, 87, 255, 0.08);
+    border: 1px solid rgba(107, 87, 255, 0.18);
+    box-shadow: 0 16px 40px rgba(107, 87, 255, 0.12);
+    color: #6B57FF;
+  }
+
+  .courses-hero__badge-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .courses-hero__copy {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .courses-hero__title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 74px;
+    letter-spacing: -0.56px;
+    color: #200060;
+    margin: 0;
+    max-width: 840px;
+    text-align: center;
+  }
+
+  .courses-hero__title-highlight {
+    color: #ff8a00;
+  }
+
+  .courses-hero__subtitle {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--purple-text2);
+    margin: 18px auto 0;
+    max-width: 760px;
+  }
+
+  .courses-hero__subtitle {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--purple-text2);
+    margin: 0;
+    max-width: 720px;
+  }
+
+  /* ─── COURSES WRAP ─────────────────────────── */
+  .courses-wrap {
+    display: grid;
+    gap: 30px;
+    padding: 0 20px 48px;
+    max-width: 1130px;
+    margin: 0 auto;
+  }
+
+  /* ─── COURSE CARD ───────────────────────────── */
+  .course-card {
+    background: var(--white);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    border-radius: 28px;
+    box-shadow: 0 28px 70px rgba(15, 8, 81, 0.08);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(340px, 420px);
+  }
+
+  /* LEFT PANEL */
+  .course-card__left {
+    padding: 40px 38px 38px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  /* Icon badge */
+  .course-card__icon-bg {
+    width: 96px;
+    height: 96px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .course-card__icon-glow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 26px;
+    opacity: 0.26;
+    filter: blur(18px);
+  }
+
+  .course-card__icon-fill {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .course-card__icon-fill img,
+  .course-card__icon-fill svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Title block */
+  .course-card__title-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .course-card__name {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 42px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--white);
+    letter-spacing: 0.028px;
+    background: var(--purple-brand);
+    white-space: nowrap;
+  }
+
+  .course-card__tagline {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--purple-brand);
+    margin: 0;
+  }
+
+  .course-card__desc {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: var(--purple-text2);
+    margin: 0;
+    max-width: 700px;
+  }
+
+  /* Section headings inside card */
+  .course-card__section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--purple-dark);
+    margin: 24px 0 12px;
+  }
+
+  .course-card__section-heading img,
+  .course-card__section-heading svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  /* Curriculum checklist */
+  .course-card__curriculum {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-bottom: 14px;
+  }
+
+  .course-card__check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__check-item img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .check-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    display: inline-flex;
+  }
+
+  /* Technologies */
+  .course-card__tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .course-card__tech-tag {
+    background: var(--white);
+    border: 1px solid var(--orange-accent);
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--orange-accent);
+    white-space: nowrap;
+  }
+
+  /* Portfolio projects */
+  .course-card__projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    margin-bottom: 4px;
+  }
+
+  .course-card__project-item {
+    position: relative;
+    list-style: none;
+    padding-left: 18px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__project-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple-brand);
+  }
+
+  /* RIGHT PANEL */
+  .course-card__right {
+    background: #f8f7ff;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-left: 1px solid rgba(226, 232, 240, 0.95);
+  }
+
+  /* Info box (Upcoming Batch / Career Opportunities) */
+  .course-card__info-box {
+    background: var(--white);
+    border: 1px solid rgba(226, 232, 240, 0.95);
+    border-radius: 22px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .course-card__info-box-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__info-box-title img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .course-card__info-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .course-card__info-list li {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--purple-text2);
+    margin: 0;
+  }
+
+  .course-card__info-list li strong {
+    font-weight: 700;
+    color: var(--purple-brand);
+  }
+
+  .course-card__career-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .course-card__career-list li {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__career-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple-brand);
+  }
+
+  /* Certificate box */
+  .course-card__cert-box {
+    background: linear-gradient(180deg, #6f53ff 0%, #7f67ff 100%);
+    border-radius: 22px;
+    padding: 24px;
+    min-height: 132px;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .course-card__cert-box-title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .course-card__cert-box-sub {
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--white);
+    margin: 0;
+    opacity: 0.92;
+  }
+
+  .course-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .course-card__btn-enroll,
+  .course-card__btn-view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 30px;
+    padding: 14px 16px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .course-card__btn-enroll {
+    background: var(--purple-brand);
+    border: 1px solid var(--purple-brand);
+    color: var(--white);
+  }
+
+  .course-card__btn-enroll:hover {
+    background: #6a55d4;
+    transform: translateY(-1px);
+  }
+
+  .course-card__btn-view {
+    background: var(--white);
+    border: 1px solid var(--purple-brand);
+    color: var(--purple-brand);
+  }
+
+  .course-card__btn-view:hover {
+    background: rgba(128, 103, 246, 0.14);
+  }
+
+  .course-card {
+    grid-template-columns: minmax(0, 1.85fr) minmax(320px, 420px);
+    border-radius: 28px;
+    box-shadow: 0 34px 84px rgba(15, 7, 70, 0.12);
+  }
+
+  .course-card__left {
+    padding: 44px 44px 42px;
+    gap: 28px;
+  }
+
+  .course-card__icon-bg {
+    width: 88px;
+    height: 88px;
+    position: relative;
+  }
+
+  .course-card__icon-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: rgba(255, 138, 0, 0.25);
+    filter: blur(26px);
+  }
+
+  .course-card__icon-fill {
+    position: absolute;
+    inset: 12px;
+    border-radius: 22px;
+    background: #FF8A00;
+    display: grid;
+    place-items: center;
+  }
+
+  .course-card__icon-fill svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .course-card__title-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  .course-card__name {
+    font-size: 36px;
+    line-height: 44px;
+    margin: 0;
+    color: var(--purple-dark);
+  }
+
+  .course-card__tagline {
+    margin: 8px 0 0;
+    color: #8067F6;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .course-card__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: #6B57FF;
+    color: #fff;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    box-shadow: 0 18px 36px rgba(107, 87, 255, 0.18);
+  }
+
+  .course-card__desc {
+    margin: 0;
+    color: #4C4C7C;
+    font-size: 15px;
+    line-height: 1.9;
+    max-width: 680px;
+  }
+
+  .course-card__section-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--purple-dark);
+    margin: 32px 0 16px;
+  }
+
+  .course-card__section-heading svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .course-card__curriculum {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 18px;
+    margin-bottom: 0;
+  }
+
+  .course-card__check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--purple-dark);
+    margin: 0;
+  }
+
+  .course-card__check-item svg path {
+    stroke: #FF8A00;
+  }
+
+  .course-card__tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .course-card__tech-tag {
+    border: 1px solid #FF8A00;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 18px;
+    color: #FF8A00;
+    background: var(--white);
+    white-space: nowrap;
+  }
+
+  .course-card__projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 18px;
+  }
+
+  .course-card__project-item {
+    position: relative;
+    list-style: none;
+    padding-left: 18px;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #4C4C7C;
+    margin: 0;
+  }
+
+  .course-card__project-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #FF8A00;
+  }
+
+  .course-card__right {
+    background: #F7F5FF;
+    border-left: 1px solid rgba(128, 103, 246, 0.14);
+    padding: 32px 26px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .course-card__info-box,
+  .course-card__career-box {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 22px;
+    border: 1px solid rgba(128, 103, 246, 0.14);
+    box-shadow: 0 10px 30px rgba(128, 103, 246, 0.06);
+  }
+
+  .course-card__info-box-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 12px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--purple-dark);
+  }
+
+  .course-card__info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .course-card__info-list li {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+    color: #4C4C7C;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .course-card__info-list li strong {
+    font-weight: 700;
+    color: #5B34EE;
+  }
+
+  .course-card__info-list li strong {
+    font-weight: 700;
+    color: #8067F6;
+  }
+
+  .course-card__career-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .course-card__career-list li {
+    position: relative;
+    padding-left: 18px;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #4C4C7C;
+    margin: 0;
+  }
+
+  .course-card__career-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #8067F6;
+  }
+
+  .course-card__cert-box {
+    background: linear-gradient(180deg, #6B57FF 0%, #7E66FF 100%);
+    border-radius: 24px;
+    padding: 24px;
+    color: var(--white);
+    box-shadow: 0 16px 32px rgba(107, 87, 255, 0.24);
+  }
+
+  .course-card__cert-box-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--white);
+  }
+
+  .course-card__cert-box-sub {
+    margin: 0;
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .course-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: auto;
+  }
+
+  .course-card__btn-enroll,
+  .course-card__btn-view {
+    width: 100%;
+    border-radius: 28px;
+    padding: 14px 16px;
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.08px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .course-card__btn-view {
+    color: #8067F6;
+    border: 1px solid #8067F6;
+    background: rgba(128, 103, 246, 0.06);
+  }
+
+  .course-card__btn-view:hover {
+    background: rgba(128, 103, 246, 0.14);
+  }
+
+  .course-card__btn-enroll {
+    color: var(--white);
+    border: none;
+    background: linear-gradient(90deg, #6B57FF, #7E66FF);
+  }
+
+  .course-card__btn-enroll:hover {
+    background: linear-gradient(90deg, #5E4BE5, #6C61FF);
+    transform: translateY(-1px);
+  }
+
+  .course-card__btn-view {
+    border-width: 1px;
+  }
+
+  .course-card__btn-view:hover {
+    transform: translateY(-1px);
+  }
+
+  .fstats {
+    background: linear-gradient(180deg, #2b0a6f 0%, #4c2fbf 100%);
+    padding: 46px 32px 30px;
+    font-family: "Manrope", sans-serif;
+  }
+
+  .fstats-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 42px;
+    text-align: center;
+  }
+
+  .fstats article {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .fstats-icon-box {
+    width: 84px;
+    height: 84px;
+    border-radius: 20px;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    box-shadow:
+      0 0 28px rgba(255, 255, 255, 0.46),
+      0 12px 26px rgba(14, 6, 58, 0.32);
+  }
+
+  .fstats-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+  }
+
+  .fstats h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 52px;
+    line-height: 56px;
+    font-weight: 700;
+  }
+
+  .fstats p {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+
+  @media (max-width: 1024px) {
+    .fstats {
+      padding: 26px 16px;
+    }
+
+    .fstats-wrap {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .fstats h3 {
+      font-size: 42px;
+      line-height: 46px;
+    }
+
+    .fstats p {
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .fstats-icon-box {
+      width: 74px;
+      height: 74px;
+      border-radius: 18px;
+    }
+
+    .fstats-icon {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+  /* ─── CAN'T DECIDE CTA ──────────────────────── */
+  .cta-decide {
+    background: linear-gradient(180deg, #2B0A6F 0%, #4C2FBF 100%);
+    border-radius: 50px;
+    max-width: 1216px;
+    margin: 0 auto;
+    padding: 50px 32px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cta-decide__grid {
+    /* decorative grid lines */
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .cta-decide__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .cta-decide__icon-wrap {
+    display: inline-grid;
+    place-items: start;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content;
+  }
+
+  .cta-decide__icon-glow {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 34px;
+    filter: blur(10px);
+    opacity: 0.3;
+  }
+
+  .cta-decide__icon-fill {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: white;
+    border-radius: 20px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cta-decide__icon-fill svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cta-decide__title {
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 40px;
+    color: var(--white);
+    letter-spacing: 0.16px;
+    margin: 0;
+  }
+
+  .cta-decide__sub {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .cta-decide__btn {
+    display: inline-flex;
+    align-items: center;
+    background: var(--white);
+    border-radius: 30px;
+    padding: 14px 24px;
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--purple-dark);
+    letter-spacing: 0.08px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .cta-decide__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .cta-section-wrap {
+    padding: 40px 16px;
+    background: #faf9ff;
+    background-image:
+      linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  /* ─── FAQs ──────────────────────────────────── */
+  .faqs-section {
+    background: var(--white);
+    padding: 56px 16px;
+  }
+
+  .faqs-section__inner {
+    max-width: 1015px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .faqs-section__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 537px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .faqs-section__badge {
+    display: inline-grid;
+    place-items: start;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content;
+    position: relative;
+  }
+
+  .faqs-section__badge-glow {
+    grid-column: 1;
+    grid-row: 1;
+    width: 119px;
+    height: 60px;
+    background: var(--purple-brand);
+    border-radius: 30px;
+    filter: blur(10px);
+    opacity: 0.3;
+  }
+
+  .faqs-section__badge-pill {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: var(--white);
+    border-radius: 30px;
+    height: 40px;
+    width: 99px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 12px;
+  }
+
+  .faqs-section__badge-label {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--purple-primary);
+    letter-spacing: 0.028px;
+    white-space: nowrap;
+  }
+
+  .faqs-section__title {
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 40px;
+    color: var(--purple-dark);
+    letter-spacing: 0.16px;
+    margin: 0;
+  }
+
+  .faqs-section__subtitle {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--purple-text2);
+    margin: 0;
+  }
+
+  .faqs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .faq-item {
+    background: linear-gradient(180deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%);
+    border: 2px solid var(--border-default);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .faq-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 28px 28px;
+    cursor: pointer;
+    gap: 16px;
+  }
+
+  .faq-item__question {
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 32px;
+    color: var(--purple-dark);
+    margin: 0;
+    flex: 1;
+  }
+
+  .faq-item__toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background: none;
+    padding: 0;
+  }
+
+  .faq-item__toggle svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .faq-item__answer {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--purple-text2);
+    padding: 0 28px 28px;
+    display: none;
+    margin: 0;
+  }
+
+  .faq-item.is-open .faq-item__answer {
+    display: block;
+  }
+
+  .faq-item.is-open .faq-item__toggle {
+    transform: rotate(45deg);
+  }
+
+  /* Open = minus icon, closed = plus icon */
+  .faq-item .icon-plus {
+    display: block;
+  }
+
+  .faq-item .icon-minus {
+    display: none;
+  }
+
+  .faq-item.is-open .icon-plus {
+    display: none;
+  }
+
+  .faq-item.is-open .icon-minus {
+    display: block;
+  }
+
+  /* ─── FOOTER ────────────────────────────────── */
+  .site-footer {
+    background: var(--purple-brand);
+    color: var(--white);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .site-footer__wave {
+    width: 100%;
+    line-height: 0;
+    display: block;
+  }
+
+  .site-footer__wave img {
+    width: 100%;
+    display: block;
+  }
+
+  .site-footer__inner {
+    padding: 48px 32px 0;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: start;
+  }
+
+  .site-footer__brand-name {
+    font-family: 'Bona Nova SC', serif;
+    font-size: 50px;
+    line-height: 1;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .site-footer__brand-sub {
+    font-family: 'Bona Nova SC', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin: 0;
+    margin-left: 180px;
+    margin-top: -8px;
+  }
+
+  .site-footer__tagline {
+    font-family: var(--font-main);
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 74px;
+    letter-spacing: -0.56px;
+    color: var(--white);
+    margin: 24px 0 0;
+  }
+
+  .site-footer__email {
+    font-family: var(--font-main);
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 36px;
+    color: var(--white);
+    margin: 8px 0 24px;
+  }
+
+  .site-footer__socials {
+    display: flex;
+    gap: 15px;
+  }
+
+  .site-footer__social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .site-footer__social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .site-footer__social-link svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+  }
+
+  .site-footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 120px;
+  }
+
+  .site-footer__nav a {
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--white);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .site-footer__backtop {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--white);
+    text-decoration: none;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  .site-footer__divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    margin: 0;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-footer__copy {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+    margin: 0;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .site-footer__legal a {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--white);
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  /* ─── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 1024px) {
+    .course-card {
+      grid-template-columns: 1fr;
+      min-height: unset;
+    }
+
+    .course-card__right {
+      border-radius: 0 0 8px 8px;
+      border-left: none;
+      border-top: 1px solid var(--border-default);
+    }
+
+    .course-card__curriculum {
+      grid-template-columns: 1fr;
+    }
+
+    .course-card__projects {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer__top {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer__tagline {
+      font-size: 36px;
+      line-height: 44px;
+    }
+
+    .site-footer__email {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .courses-hero__title {
+      font-size: 28px;
+    }
+
+    .course-card__name {
+      font-size: 20px;
+    }
+
+    .cta-decide__title {
+      font-size: 22px;
+    }
+  }
+</style>
 {% endblock %}
+
 {% block content %}
-<!-- ================= HERO ================= -->
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
 <section class="courses-hero">
-  <div>
-    <span class="courses-hero__badge">
-      <svg width="250" height="36" viewBox="0 0 250 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="250" height="36" rx="8" fill="#2D9CDB"/>
-        <path d="M24.6667 20.5H23.8333C22.9493 20.5 22.1014 20.8512 21.4763 21.4763C20.8512 22.1014 20.5 22.9493 20.5 23.8333V25.5M31.3758 18.5133C31.4309 18.3444 31.5385 18.1976 31.6829 18.0941C31.8273 17.9907 32.001 17.9361 32.1786 17.9384C32.3562 17.9406 32.5285 17.9995 32.6702 18.1066C32.812 18.2136 32.9159 18.3631 32.9667 18.5333L33.5808 19.7433C33.6406 19.861 33.7274 19.9627 33.8342 20.0402C33.941 20.1177 34.0646 20.1688 34.195 20.1892L35.5567 20.4025C35.732 20.4032 35.9027 20.4592 36.0443 20.5625C36.186 20.6658 36.2915 20.8111 36.3458 20.9778C36.4001 21.1446 36.4004 21.3242 36.3467 21.4911C36.293 21.658 36.188 21.8037 36.0467 21.9075L35.07 22.8808C34.9765 22.9739 34.9064 23.0879 34.8656 23.2134C34.8247 23.3388 34.8142 23.4722 34.835 23.6025L35.0508 24.9467C35.1102 25.1151 35.1139 25.2982 35.0613 25.469C35.0087 25.6397 34.9027 25.789 34.7588 25.8949C34.6149 26.0007 34.4408 26.0576 34.2622 26.057C34.0836 26.0564 33.9099 25.9985 33.7667 25.8917L32.5458 25.2667C32.4282 25.2064 32.298 25.175 32.1658 25.175C32.0337 25.175 31.9034 25.2064 31.7858 25.2667L30.565 25.8917C30.4218 25.9976 30.2485 26.0548 30.0704 26.055C29.8923 26.0552 29.7188 25.9984 29.5754 25.8928C29.432 25.7872 29.3261 25.6384 29.2734 25.4683C29.2207 25.2982 29.2239 25.1157 29.2825 24.9475L29.4975 23.6033C29.5183 23.473 29.5078 23.3397 29.4669 23.2142C29.4261 23.0887 29.356 22.9748 29.2625 22.8817L28.2992 21.9208C28.153 21.8196 28.0431 21.6743 27.9855 21.5062C27.9278 21.338 27.9254 21.1558 27.9787 20.9862C28.0319 20.8166 28.138 20.6685 28.2814 20.5635C28.4248 20.4585 28.5981 20.4021 28.7758 20.4025L30.1367 20.1892C30.267 20.1688 30.3907 20.1177 30.4974 20.0402C30.6042 19.9627 30.6911 19.861 30.7508 19.7433L31.3758 18.5133ZM29.6667 13.8333C29.6667 15.6743 28.1743 17.1667 26.3333 17.1667C24.4924 17.1667 23 15.6743 23 13.8333C23 11.9924 24.4924 10.5 26.3333 10.5C28.1743 10.5 29.6667 11.9924 29.6667 13.8333Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M44.5636 23V12.92H45.5926V23H44.5636ZM47.7192 23V12.92H48.7552L54.3062 21.18V12.92H55.3422V23H54.3062L48.7552 14.733V23H47.7192ZM57.3312 23V12.92H60.3902C60.4975 12.92 60.6795 12.9223 60.9362 12.927C61.1975 12.9317 61.4472 12.9503 61.6852 12.983C62.4505 13.0903 63.0899 13.375 63.6032 13.837C64.1165 14.299 64.5015 14.887 64.7582 15.601C65.0149 16.315 65.1432 17.1013 65.1432 17.96C65.1432 18.8187 65.0149 19.605 64.7582 20.319C64.5015 21.033 64.1165 21.621 63.6032 22.083C63.0899 22.545 62.4505 22.8297 61.6852 22.937C61.4519 22.965 61.2022 22.9837 60.9362 22.993C60.6702 22.9977 60.4882 23 60.3902 23H57.3312ZM58.3952 22.013H60.3902C60.5815 22.013 60.7869 22.0083 61.0062 21.999C61.2302 21.985 61.4215 21.9617 61.5802 21.929C62.1682 21.8263 62.6419 21.5883 63.0012 21.215C63.3652 20.8417 63.6312 20.375 63.7992 19.815C63.9672 19.2503 64.0512 18.632 64.0512 17.96C64.0512 17.2833 63.9672 16.6627 63.7992 16.098C63.6312 15.5333 63.3652 15.0667 63.0012 14.698C62.6372 14.3293 62.1635 14.0937 61.5802 13.991C61.4215 13.9583 61.2279 13.9373 60.9992 13.928C60.7752 13.914 60.5722 13.907 60.3902 13.907H58.3952V22.013ZM70.6994 23.21C69.9294 23.21 69.2481 23.0513 68.6554 22.734C68.0674 22.4167 67.6054 21.9687 67.2694 21.39C66.9334 20.8113 66.7654 20.1347 66.7654 19.36V12.927L67.8014 12.92V19.227C67.8014 19.7497 67.8901 20.2023 68.0674 20.585C68.2448 20.963 68.4758 21.2757 68.7604 21.523C69.0498 21.7657 69.3648 21.9453 69.7054 22.062C70.0461 22.1787 70.3774 22.237 70.6994 22.237C71.0261 22.237 71.3598 22.1787 71.7004 22.062C72.0411 21.9453 72.3538 21.7657 72.6384 21.523C72.9231 21.2757 73.1541 20.963 73.3314 20.585C73.5088 20.2023 73.5974 19.7497 73.5974 19.227V12.92H74.6334V19.36C74.6334 20.1347 74.4654 20.8113 74.1294 21.39C73.7934 21.964 73.3291 22.412 72.7364 22.734C72.1484 23.0513 71.4694 23.21 70.6994 23.21ZM79.6997 23.21C78.995 23.21 78.3604 23.0933 77.7957 22.86C77.2357 22.622 76.7714 22.286 76.4027 21.852C76.0387 21.418 75.8007 20.9023 75.6887 20.305L76.7387 20.13C76.9067 20.7833 77.2614 21.2967 77.8027 21.67C78.344 22.0387 78.9904 22.223 79.7417 22.223C80.2364 22.223 80.6797 22.146 81.0717 21.992C81.4637 21.8333 81.7717 21.6093 81.9957 21.32C82.2197 21.0307 82.3317 20.6877 82.3317 20.291C82.3317 20.0297 82.285 19.808 82.1917 19.626C82.0984 19.4393 81.9747 19.2853 81.8207 19.164C81.6667 19.0427 81.4987 18.9423 81.3167 18.863C81.1347 18.779 80.9574 18.7113 80.7847 18.66L78.2297 17.897C77.9217 17.8083 77.637 17.6963 77.3757 17.561C77.1144 17.421 76.8857 17.2553 76.6897 17.064C76.4984 16.868 76.349 16.6393 76.2417 16.378C76.1344 16.1167 76.0807 15.818 76.0807 15.482C76.0807 14.9127 76.23 14.4203 76.5287 14.005C76.8274 13.5897 77.2357 13.27 77.7537 13.046C78.2717 12.822 78.862 12.7123 79.5247 12.717C80.1967 12.717 80.7964 12.836 81.3237 13.074C81.8557 13.312 82.2944 13.6527 82.6397 14.096C82.985 14.5347 83.2137 15.055 83.3257 15.657L82.2477 15.853C82.1777 15.4143 82.0167 15.034 81.7647 14.712C81.5127 14.39 81.1907 14.1427 80.7987 13.97C80.4114 13.7927 79.9844 13.7017 79.5177 13.697C79.065 13.697 78.6614 13.774 78.3067 13.928C77.9567 14.0773 77.679 14.2827 77.4737 14.544C77.2684 14.8053 77.1657 15.104 77.1657 15.44C77.1657 15.7807 77.259 16.0537 77.4457 16.259C77.637 16.4643 77.8704 16.6253 78.1457 16.742C78.4257 16.8587 78.6964 16.9543 78.9577 17.029L80.9317 17.61C81.137 17.666 81.3774 17.7477 81.6527 17.855C81.9327 17.9577 82.2034 18.107 82.4647 18.303C82.7307 18.4943 82.95 18.7463 83.1227 19.059C83.2954 19.3717 83.3817 19.7683 83.3817 20.249C83.3817 20.7157 83.2884 21.1333 83.1017 21.502C82.9197 21.8707 82.6607 22.181 82.3247 22.433C81.9934 22.685 81.6037 22.8763 81.1557 23.007C80.7124 23.1423 80.227 23.21 79.6997 23.21ZM87.5356 23V13.907H84.0146V12.92H92.0856V13.907H88.5646V23H87.5356ZM93.2362 23V12.92H97.1282C97.2262 12.92 97.3358 12.9247 97.4572 12.934C97.5832 12.9387 97.7092 12.9527 97.8352 12.976C98.3625 13.0553 98.8082 13.2397 99.1722 13.529C99.5408 13.8137 99.8185 14.173 100.005 14.607C100.196 15.041 100.292 15.5217 100.292 16.049C100.292 16.8097 100.091 17.47 99.6902 18.03C99.2888 18.59 98.7148 18.9423 97.9682 19.087L97.6112 19.171H94.2652V23H93.2362ZM99.3402 23L97.3522 18.898L98.3392 18.52L100.523 23H99.3402ZM94.2652 18.191H97.1002C97.1842 18.191 97.2822 18.1863 97.3942 18.177C97.5062 18.1677 97.6158 18.1513 97.7232 18.128C98.0685 18.0533 98.3508 17.911 98.5702 17.701C98.7942 17.491 98.9598 17.2413 99.0672 16.952C99.1792 16.6627 99.2352 16.3617 99.2352 16.049C99.2352 15.7363 99.1792 15.4353 99.0672 15.146C98.9598 14.852 98.7942 14.6 98.5702 14.39C98.3508 14.18 98.0685 14.0377 97.7232 13.963C97.6158 13.9397 97.5062 13.9257 97.3942 13.921C97.2822 13.9117 97.1842 13.907 97.1002 13.907H94.2652V18.191ZM104.333 23V18.779L100.952 12.92H102.142L104.851 17.603L107.546 12.92H108.736L105.369 18.779V23H104.333ZM111.87 19.031V18.149H116.07V19.031H111.87ZM120.747 23V12.92H124.639C124.737 12.92 124.847 12.9247 124.968 12.934C125.094 12.9387 125.22 12.9527 125.346 12.976C125.874 13.0553 126.319 13.2397 126.683 13.529C127.052 13.8137 127.33 14.173 127.516 14.607C127.708 15.041 127.803 15.5217 127.803 16.049C127.803 16.8097 127.603 17.47 127.201 18.03C126.8 18.59 126.226 18.9423 125.479 19.087L125.122 19.171H121.776V23H120.747ZM126.851 23L124.863 18.898L125.85 18.52L128.034 23H126.851ZM121.776 18.191H124.611C124.695 18.191 124.793 18.1863 124.905 18.177C125.017 18.1677 125.127 18.1513 125.234 18.128C125.58 18.0533 125.862 17.911 126.081 17.701C126.305 17.491 126.471 17.2413 126.578 16.952C126.69 16.6627 126.746 16.3617 126.746 16.049C126.746 15.7363 126.69 15.4353 126.578 15.146C126.471 14.852 126.305 14.6 126.081 14.39C125.862 14.18 125.58 14.0377 125.234 13.963C125.127 13.9397 125.017 13.9257 124.905 13.921C124.793 13.9117 124.695 13.907 124.611 13.907H121.776V18.191ZM129.607 23V12.92H135.907V13.907H130.636V17.393H135.067V18.38H130.636V22.013H135.907V23H129.607ZM136.92 23L140.392 12.92H141.757L145.229 23H144.158L140.861 13.494H141.267L137.991 23H136.92ZM138.467 20.557V19.591H143.675V20.557H138.467ZM146.521 23V12.92H149.58C149.687 12.92 149.869 12.9223 150.126 12.927C150.387 12.9317 150.637 12.9503 150.875 12.983C151.64 13.0903 152.279 13.375 152.793 13.837C153.306 14.299 153.691 14.887 153.948 15.601C154.204 16.315 154.333 17.1013 154.333 17.96C154.333 18.8187 154.204 19.605 153.948 20.319C153.691 21.033 153.306 21.621 152.793 22.083C152.279 22.545 151.64 22.8297 150.875 22.937C150.641 22.965 150.392 22.9837 150.126 22.993C149.86 22.9977 149.678 23 149.58 23H146.521ZM147.585 22.013H149.58C149.771 22.013 149.976 22.0083 150.196 21.999C150.42 21.985 150.611 21.9617 150.77 21.929C151.358 21.8263 151.831 21.5883 152.191 21.215C152.555 20.8417 152.821 20.375 152.989 19.815C153.157 19.2503 153.241 18.632 153.241 17.96C153.241 17.2833 153.157 16.6627 152.989 16.098C152.821 15.5333 152.555 15.0667 152.191 14.698C151.827 14.3293 151.353 14.0937 150.77 13.991C150.611 13.9583 150.417 13.9373 150.189 13.928C149.965 13.914 149.762 13.907 149.58 13.907H147.585V22.013ZM157.932 23V18.779L154.551 12.92H155.741L158.45 17.603L161.145 12.92H162.335L158.968 18.779V23H157.932ZM165.609 23V12.92H169.501C169.599 12.92 169.708 12.9247 169.83 12.934C169.956 12.9387 170.082 12.9527 170.208 12.976C170.735 13.0553 171.181 13.2397 171.545 13.529C171.913 13.8137 172.191 14.173 172.378 14.607C172.569 15.041 172.665 15.5217 172.665 16.049C172.665 16.5717 172.569 17.05 172.378 17.484C172.186 17.918 171.906 18.2797 171.538 18.569C171.174 18.8537 170.73 19.0357 170.208 19.115C170.082 19.1337 169.956 19.1477 169.83 19.157C169.708 19.1663 169.599 19.171 169.501 19.171H166.638V23H165.609ZM166.638 18.191H169.473C169.557 18.191 169.655 18.1863 169.767 18.177C169.879 18.1677 169.988 18.1513 170.096 18.128C170.441 18.0533 170.723 17.911 170.943 17.701C171.167 17.491 171.332 17.2413 171.44 16.952C171.552 16.6627 171.608 16.3617 171.608 16.049C171.608 15.7363 171.552 15.4353 171.44 15.146C171.332 14.852 171.167 14.6 170.943 14.39C170.723 14.18 170.441 14.0377 170.096 13.963C169.988 13.9397 169.879 13.9257 169.767 13.921C169.655 13.9117 169.557 13.907 169.473 13.907H166.638V18.191ZM174.086 23V12.92H177.978C178.076 12.92 178.186 12.9247 178.307 12.934C178.433 12.9387 178.559 12.9527 178.685 12.976C179.212 13.0553 179.658 13.2397 180.022 13.529C180.391 13.8137 180.668 14.173 180.855 14.607C181.046 15.041 181.142 15.5217 181.142 16.049C181.142 16.8097 180.941 17.47 180.54 18.03C180.139 18.59 179.565 18.9423 178.818 19.087L178.461 19.171H175.115V23H174.086ZM180.19 23L178.202 18.898L179.189 18.52L181.373 23H180.19ZM175.115 18.191H177.95C178.034 18.191 178.132 18.1863 178.244 18.177C178.356 18.1677 178.466 18.1513 178.573 18.128C178.918 18.0533 179.201 17.911 179.42 17.701C179.644 17.491 179.81 17.2413 179.917 16.952C180.029 16.6627 180.085 16.3617 180.085 16.049C180.085 15.7363 180.029 15.4353 179.917 15.146C179.81 14.852 179.644 14.6 179.42 14.39C179.201 14.18 178.918 14.0377 178.573 13.963C178.466 13.9397 178.356 13.9257 178.244 13.921C178.132 13.9117 178.034 13.907 177.95 13.907H175.115V18.191ZM187.027 23.21C186.024 23.21 185.177 22.9883 184.486 22.545C183.795 22.097 183.273 21.4787 182.918 20.69C182.563 19.9013 182.386 18.9913 182.386 17.96C182.386 16.9287 182.563 16.0187 182.918 15.23C183.273 14.4413 183.795 13.8253 184.486 13.382C185.177 12.934 186.024 12.71 187.027 12.71C188.035 12.71 188.882 12.934 189.568 13.382C190.259 13.8253 190.781 14.4413 191.136 15.23C191.495 16.0187 191.675 16.9287 191.675 17.96C191.675 18.9913 191.495 19.9013 191.136 20.69C190.781 21.4787 190.259 22.097 189.568 22.545C188.882 22.9883 188.035 23.21 187.027 23.21ZM187.027 22.223C187.816 22.223 188.474 22.0433 189.001 21.684C189.528 21.3247 189.923 20.8253 190.184 20.186C190.45 19.542 190.583 18.8 190.583 17.96C190.583 17.12 190.45 16.3803 190.184 15.741C189.923 15.1017 189.528 14.6023 189.001 14.243C188.474 13.8837 187.816 13.7017 187.027 13.697C186.238 13.697 185.583 13.8767 185.06 14.236C184.537 14.5953 184.143 15.097 183.877 15.741C183.616 16.3803 183.483 17.12 183.478 17.96C183.473 18.8 183.602 19.5397 183.863 20.179C184.129 20.8137 184.526 21.313 185.053 21.677C185.58 22.0363 186.238 22.2183 187.027 22.223ZM197.144 23.21C196.434 23.21 195.795 23.0863 195.226 22.839C194.656 22.5917 194.171 22.2393 193.77 21.782C193.373 21.3247 193.07 20.774 192.86 20.13C192.65 19.4813 192.545 18.758 192.545 17.96C192.545 16.9053 192.727 15.986 193.091 15.202C193.459 14.4133 193.987 13.802 194.673 13.368C195.359 12.934 196.182 12.717 197.144 12.717C198.217 12.717 199.09 12.969 199.762 13.473C200.438 13.9723 200.91 14.6443 201.176 15.489L200.14 15.741C199.92 15.125 199.559 14.6327 199.055 14.264C198.555 13.8953 197.932 13.711 197.186 13.711C196.397 13.7063 195.741 13.8837 195.219 14.243C194.696 14.5977 194.302 15.097 194.036 15.741C193.774 16.3803 193.641 17.12 193.637 17.96C193.632 18.8 193.76 19.5397 194.022 20.179C194.288 20.8137 194.684 21.313 195.212 21.677C195.739 22.0363 196.397 22.2183 197.186 22.223C197.909 22.223 198.506 22.083 198.978 21.803C199.449 21.523 199.806 21.1217 200.049 20.599C200.296 20.0763 200.436 19.458 200.469 18.744H198.145V17.862H201.547C201.561 17.9693 201.568 18.0837 201.568 18.205C201.572 18.3217 201.575 18.4057 201.575 18.457C201.575 19.367 201.411 20.1813 201.085 20.9C200.758 21.614 200.266 22.1787 199.608 22.594C198.954 23.0047 198.133 23.21 197.144 23.21ZM203.004 23V12.92H206.896C206.994 12.92 207.103 12.9247 207.225 12.934C207.351 12.9387 207.477 12.9527 207.603 12.976C208.13 13.0553 208.576 13.2397 208.94 13.529C209.308 13.8137 209.586 14.173 209.773 14.607C209.964 15.041 210.06 15.5217 210.06 16.049C210.06 16.8097 209.859 17.47 209.458 18.03C209.056 18.59 208.482 18.9423 207.736 19.087L207.379 19.171H204.033V23H203.004ZM209.108 23L207.12 18.898L208.107 18.52L210.291 23H209.108ZM204.033 18.191H206.868C206.952 18.191 207.05 18.1863 207.162 18.177C207.274 18.1677 207.383 18.1513 207.491 18.128C207.836 18.0533 208.118 17.911 208.338 17.701C208.562 17.491 208.727 17.2413 208.835 16.952C208.947 16.6627 209.003 16.3617 209.003 16.049C209.003 15.7363 208.947 15.4353 208.835 15.146C208.727 14.852 208.562 14.6 208.338 14.39C208.118 14.18 207.836 14.0377 207.491 13.963C207.383 13.9397 207.274 13.9257 207.162 13.921C207.05 13.9117 206.952 13.907 206.868 13.907H204.033V18.191ZM211.164 23L214.636 12.92H216.001L219.473 23H218.402L215.105 13.494H215.511L212.235 23H211.164ZM212.711 20.557V19.591H217.919V20.557H212.711ZM220.765 23V12.92H221.71L225.672 21.397L229.613 12.92H230.572V22.993H229.592V15.216L226.001 23H225.336L221.752 15.216V23H220.765Z" fill="white"/>
+  <!-- Industry Ready badge -->
+  <div class="courses-hero__badge-wrap">
+    <div class="courses-hero__badge-glow"></div>
+    <div class="courses-hero__badge-pill pill-chip">
+      <!-- book icon -->
+      <svg class="courses-hero__badge-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="4" width="6" height="15" rx="1.5" fill="#6B57FF" />
+        <rect x="13" y="4" width="6" height="15" rx="1.5" fill="#6B57FF" />
+        <path d="M4 8H10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+        <path d="M13 8H20" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
       </svg>
-    </span>
+      <span class="courses-hero__badge-text">INDUSTRY - READY PROGRAM</span>
+      </div>
   </div>
-  <h1 class="courses-hero__title">
-    Master In-Demand <span>Tech Skills</span>
-  </h1>
-  <p class="courses-hero__subtitle">
-    Comprehensive programs designed by industry experts. Learn by building real projects, get certified, and launch your tech career in months.
-  </p>
+  
+  <div class="courses-hero__copy">
+    <h1 class="courses-hero__title">
+      Master In-Demand <span class="courses-hero__title-highlight">Tech Skills</span>
+      </h1>
+      <p class="courses-hero__subtitle">
+      Comprehensive programs designed by industry experts. Learn by building real projects, get certified, and launch your
+      tech career in months.
+      </p>
+  </div>
 </section>
 
-<!-- ================= COURSE CARDS ================= -->
+<!-- ═══════════════════════════════════
+     COURSE CARDS (Jinja loop)
+═══════════════════════════════════ -->
 <div class="courses-wrap">
   {% for course in courses %}
-      {% include "components/course-cards.html" %}
-  {% endfor %}
-</div>
-
-
-
-
-<!-- TOP SVG : WHAT'S INCLUDED -->
-<div class="w-full overflow-hidden leading-none">
-  <svg viewBox="0 0 1280 100" class="w-full h-16 sm:h-20 md:h-24" preserveAspectRatio="none">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M0 28.0627L71.4667 20.0697C141.867 12.0766 279.633 -4.7287 421.5 1.26608C563.367 7.26085 711.467 36.0557 853.333 40.0523C995.2 44.0488 1138.13 24.0662 1208.53 14.0749L1280 4.08359V100H1208.53C1138.13 100 995.2 100 853.333 100C711.467 100 568.533 100 426.667 100C284.8 100 141.867 100 71.4667 100H0V28.0627Z"
-      fill="#F4F2FF"/>
-  </svg>
-</div>
-
-<!-- WHAT'S INCLUDED -->
-<section class="relative bg-[#F4F2FF] py-8 sm:py-12 md:py-16">
-
-  <div class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
-
-    <h2 class="text-center text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 mb-6 sm:mb-8 md:mb-12">
-      What’s Included
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
-
-      <!-- Feature 1 -->
-      <div>
-        <div class="flex justify-center mb-4">
-           <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect width="80" height="80" rx="20" fill="#8478E0"/> <path d="M39.6667 31.6667V55M39.6667 31.6667C39.6667 29.8986 38.9643 28.2029 37.714 26.9526C36.4638 25.7024 34.7681 25 33 25H24.6667C24.2246 25 23.8007 25.1756 23.4882 25.4882C23.1756 25.8007 23 26.2246 23 26.6667V48.3333C23 48.7754 23.1756 49.1993 23.4882 49.5118C23.8007 49.8244 24.2246 50 24.6667 50H34.6667C35.9927 50 37.2645 50.5268 38.2022 51.4645C39.1399 52.4021 39.6667 53.6739 39.6667 55M39.6667 31.6667C39.6667 29.8986 40.369 28.2029 41.6193 26.9526C42.8695 25.7024 44.5652 25 46.3333 25H54.6667C55.1087 25 55.5326 25.1756 55.8452 25.4882C56.1577 25.8007 56.3333 26.2246 56.3333 26.6667V48.3333C56.3333 48.7754 56.1577 49.1993 55.8452 49.5118C55.5326 49.8244 55.1087 50 54.6667 50H44.6667C43.3406 50 42.0688 50.5268 41.1311 51.4645C40.1934 52.4021 39.6667 53.6739 39.6667 55" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
+  <div class="course-card">
+  
+    <!-- LEFT -->
+    <div class="course-card__left">
+  
+      <!-- Icon Badge -->
+      <div class="course-card__icon-bg">
+        <div class="course-card__icon-glow"></div>
+        <div class="course-card__icon-fill">
+          {% if course.icon_svg %}
+          {{ course.icon_svg | safe }}
+          {% else %}
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="rgba(255,255,255,0.2)" />
+          </svg>
+          {% endif %}
         </div>
-        <h3 class="font-semibold text-gray-900 text-sm sm:text-base md:text-lg mb-1.5">Live, Expert-Led Learning</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Attend interactive classes with experienced instructors and real-time Q&amp;A.
-        </p>
+      </div>
+      <!-- Title + badge -->
+      <div class="course-card__title-block">
+        <div>
+          <h2 class="course-card__name">{{ course.title }}</h2>
+          <p class="course-card__tagline">{{ course.tagline }}</p>
+        </div>
+        <span class="course-card__badge-pill pill-chip">Most Popular</span>
+      </div>
+      <!-- Description -->
+      <p class="course-card__desc">{{ course.description }}</p>
+      <!-- Curriculum -->
+      <div class="course-card__section-heading">
+        <!-- library icon -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="#1E0A5F" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="#1E0A5F" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Course Curriculum
+      </div>
+      <div class="course-card__curriculum">
+        {% for topic in course.curriculum.all %}
+        <div class="course-card__check-item">
+          <!-- check icon -->
+          <svg class="check-icon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 6L9 17l-5-5" stroke="#8067F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {{ topic }}
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Technologies -->
+      <div class="course-card__section-heading">
+        <!-- chevrons-up icon -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 11l-5-5-5 5M17 18l-5-5-5 5" stroke="#1E0A5F" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        Technologies You'll Master
+      </div>
+      <div class="course-card__tech-list">
+        {% for tech in course.technologies.all %}
+        <span class="course-card__tech-tag">{{ tech.name }}</span>
+        {% endfor %}
+      </div>
+      <!-- Portfolio Projects -->
+      <div class="course-card__section-heading">
+        <!-- target icon -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="#1E0A5F" stroke-width="1.5" />
+          <circle cx="12" cy="12" r="6" stroke="#1E0A5F" stroke-width="1.5" />
+          <circle cx="12" cy="12" r="2" stroke="#1E0A5F" stroke-width="1.5" />
+        </svg>
+        Portfolio Projects
+      </div>
+      <div class="course-card__projects">
+        {% for project in course.projects.all %}
+        <li class="course-card__project-item">{{ project.title }}</li>
+        {% endfor %}
       </div>
 
-      <!-- Feature 2 -->
-      <div>
-        <div class="flex justify-center mb-4">
-           <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect width="80" height="80" rx="20" fill="#8478E0"/> <path d="M52.3568 44.0232C55.0002 41.3799 56.6668 39.1666 56.6668 35.8332C56.6668 33.9786 56.1042 32.1676 55.0533 30.6394C54.0024 29.1112 52.5126 27.9377 50.7808 27.2739C49.049 26.6101 47.1566 26.4873 45.3535 26.9217C43.5504 27.356 41.9215 28.327 40.6818 29.7066M52.3568 44.0232C52.0281 44.352 51.6378 44.6128 51.2083 44.7908C50.7788 44.9687 50.3184 45.0603 49.8535 45.0603C49.3886 45.0603 48.9282 44.9687 48.4987 44.7908C48.0692 44.6128 47.6789 44.352 47.3502 44.0232C47.7061 44.3451 47.9928 44.7359 48.193 45.172C48.3932 45.6081 48.5027 46.0803 48.5147 46.56C48.5268 47.0397 48.4412 47.5169 48.2631 47.9625C48.0851 48.4081 47.8183 48.8128 47.479 49.1521C47.1397 49.4914 46.735 49.7582 46.2894 49.9362C45.8438 50.1143 45.3666 50.1999 44.8869 50.1878C44.4073 50.1758 43.935 50.0663 43.4989 49.8661C43.0628 49.6659 42.672 49.3792 42.3502 49.0232C42.6792 49.351 42.9403 49.7403 43.1188 50.1691C43.2972 50.5978 43.3893 51.0575 43.3899 51.5219C43.3906 51.9862 43.2996 52.4462 43.1224 52.8754C42.9451 53.3046 42.685 53.6947 42.3568 54.0232C42.0401 54.3401 41.6628 54.5898 41.2474 54.7575C40.8321 54.9252 40.3871 55.0075 39.9392 54.9994C39.4914 54.9913 39.0497 54.893 38.6407 54.7104C38.2316 54.5278 37.8636 54.2646 37.5585 53.9366L28.3335 44.9999C25.8335 42.4999 23.3335 39.6666 23.3335 35.8332C23.3339 33.9787 23.8967 32.1679 24.9478 30.64C25.9988 29.1121 27.4885 27.9388 29.2203 27.2753C30.952 26.6117 32.8443 26.489 34.6473 26.9234C36.4502 27.3578 38.079 28.3288 39.3185 29.7082C39.5038 29.8805 39.7475 29.9761 40.0005 29.9758C40.2535 29.9754 40.4969 29.8793 40.6818 29.7066M52.3568 44.0232C52.9817 43.3982 53.3328 42.5505 53.3328 41.6666C53.3328 40.7827 52.9817 39.935 52.3568 39.3099L49.2218 36.1732C48.8488 35.8001 48.406 35.5041 47.9185 35.3021C47.4311 35.1001 46.9086 34.9962 46.381 34.9962C45.8534 34.9962 45.3309 35.1001 44.8435 35.3021C44.356 35.5041 43.9132 35.8001 43.5402 36.1732L40.6902 39.0232C40.0651 39.6482 39.2174 39.9992 38.3335 39.9992C37.4496 39.9992 36.6019 39.6482 35.9768 39.0232C35.3519 38.3982 35.0009 37.5505 35.0009 36.6666C35.0009 35.7827 35.3519 34.935 35.9768 34.3099L40.6818 29.7066" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
-        </div>
-        <h3 class="font-semibold text-gray-900 text-sm sm:text-base md:text-lg mb-1.5">Hands-On Projects &amp; Certification</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Build a strong portfolio through real-world projects and certifications.
-        </p>
+    </div><!-- /left -->
+    <!-- RIGHT -->
+    <div class="course-card__right">
+      <!-- Upcoming Batch -->
+      <div class="course-card__info-box">
+        <h4 class="course-card__info-box-title">
+          <!-- layers icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#1E0A5F" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#1E0A5F" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          Upcoming Batch
+        </h4>
+        <ul class="course-card__info-list">
+          <li><strong>Start Date</strong>: {{ course.batch.start_date | default:'Feb 15, 2025' }}</li>
+          <li><strong>Duration:</strong> 16 weeks</li>
+          <li><strong>Schedule:</strong> Mon-Fri, 7-9 PM</li>
+          <li><strong>Mode:</strong> Offline</li>
+        </ul>
+      </div>
+      <!-- Certificate Included -->
+      <div class="course-card__cert-box">
+        <h4 class="course-card__cert-box-title">
+          <!-- award icon -->
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="8" r="6" stroke="white" stroke-width="1.5" />
+            <path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12" stroke="white" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          Certificate Included
+        </h4>
+        <p class="course-card__cert-box-sub">Industry-Recognized {{ course.title }} Certificate.</p>
+      </div>
+      <!-- Career Opportunities -->
+      <div class="course-card__info-box course-card__career-box">
+        <h4 class="course-card__info-box-title">
+          <!-- briefcase icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" stroke="#1E0A5F" stroke-width="1.5" />
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M12 12v.01" stroke="#1E0A5F" stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+          Career Opportunities
+          </h4>
+          <ul class="course-card__info-list course-card__career-list">
+            {% for role in course.career_roles.all %}
+            <li>{{ role.title }}</li>
+            {% endfor %}
+          </ul>
       </div>
 
-      <!-- Feature 3 -->
-      <div>
-        <div class="flex justify-center mb-4">
-           <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect width="80" height="80" rx="20" fill="#8478E0"/> <path d="M39.9997 55C41.8406 55 43.333 53.5076 43.333 51.6667C43.333 49.8257 41.8406 48.3333 39.9997 48.3333C38.1587 48.3333 36.6663 49.8257 36.6663 51.6667C36.6663 53.5076 38.1587 55 39.9997 55Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M39.9997 31.6667C41.8406 31.6667 43.333 30.1743 43.333 28.3333C43.333 26.4924 41.8406 25 39.9997 25C38.1587 25 36.6663 26.4924 36.6663 28.3333C36.6663 30.1743 38.1587 31.6667 39.9997 31.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M46.6663 43.3333C48.5073 43.3333 49.9997 41.8409 49.9997 40C49.9997 38.1591 48.5073 36.6667 46.6663 36.6667C44.8254 36.6667 43.333 38.1591 43.333 40C43.333 41.8409 44.8254 43.3333 46.6663 43.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M53.333 55C55.174 55 56.6663 53.5076 56.6663 51.6667C56.6663 49.8257 55.174 48.3333 53.333 48.3333C51.4921 48.3333 49.9997 49.8257 49.9997 51.6667C49.9997 53.5076 51.4921 55 53.333 55Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M26.6663 55C28.5073 55 29.9997 53.5076 29.9997 51.6667C29.9997 49.8257 28.5073 48.3333 26.6663 48.3333C24.8254 48.3333 23.333 49.8257 23.333 51.6667C23.333 53.5076 24.8254 55 26.6663 55Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M33.333 43.3333C35.174 43.3333 36.6663 41.8409 36.6663 40C36.6663 38.1591 35.174 36.6667 33.333 36.6667C31.4921 36.6667 29.9997 38.1591 29.9997 40C29.9997 41.8409 31.4921 43.3333 33.333 43.3333Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
-        </div>
-        <h3 class="font-semibold text-gray-900 text-sm sm:text-base md:text-lg mb-1.5">Placement &amp; Career Assistance</h3>
-        <p class="text-sm text-gray-600 leading-relaxed">
-          Resume building, mock interviews, and job referrals.
-        </p>
+      <!-- CTA Buttons -->
+      <div class="course-card__actions">
+        <a href="#" class="course-card__btn-view">View Details</a>
+        <a href="{{ course.cta.url | default:'#' }}" class="course-card__btn-enroll">
+          {{ course.cta.button_text | default:'Enroll Course Now' }}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
       </div>
 
+    </div><!-- /right -->
+    </div><!-- /course-card -->
+    {% endfor %}
     </div>
-  </div>
+
+<section class="fstats">
+  <div class="fstats-wrap">
+    <article>
+      <div class="fstats-icon-box">
+        <img class="fstats-icon" src="/static/icons/stats-award-purple.svg" alt="" />
+      </div>
+      <h3>10+</h3>
+      <p>Years of Excellence</p>
+    </article>
+    <article>
+      <div class="fstats-icon-box">
+        <img class="fstats-icon" src="/static/icons/stats-users-purple.svg" alt="" />
+      </div>
+      <h3>15,000+</h3>
+      <p>Successful Alumni</p>
+    </article>
+    <article>
+      <div class="fstats-icon-box">
+        <img class="fstats-icon" src="/static/icons/stats-target-purple.svg" alt="" />
+      </div>
+      <h3>96%</h3>
+      <p>Placement Rate</p>
+    </article>
+    <article>
+      <div class="fstats-icon-box">
+        <img class="fstats-icon" src="/static/icons/stats-briefcase-purple.svg" alt="" />
+      </div>
+      <h3>100+</h3>
+      <p>Hiring Partners</p>
+      </article>
+      </div>
+</section>
 </section>
 
-<!-- BOTTOM SVG : WHAT'S INCLUDED -->
-<div class="w-full overflow-hidden leading-none relative">
-  <!-- GRID BACKGROUND -->
-  <div
-    class="absolute inset-0"
-    style="
-      background-color: #faf9ff;
-      background-image:
-        linear-gradient(to right, rgba(99,102,241,0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(99,102,241,0.08) 1px, transparent 1px);
-      background-size: 36px 36px;
-    ">
+<!-- ═══════════════════════════════════
+     CAN'T DECIDE CTA
+═══════════════════════════════════ -->
+<div class="cta-section-wrap">
+  <div class="cta-decide">
+    <div class="cta-decide__grid"></div>
+    <div class="cta-decide__inner">
+      <!-- Sparkle icon badge -->
+      <div class="cta-decide__icon-wrap">
+        <div class="cta-decide__icon-glow"></div>
+        <div class="cta-decide__icon-fill">
+          <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z" stroke="#8067F6" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" fill="#8067F6" fill-opacity="0.15" />
+            <path d="M5 3l.75 2.25L8 6l-2.25.75L5 9l-.75-2.25L2 6l2.25-.75L5 3z" stroke="#8067F6" stroke-width="1.2"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M19 14l.75 2.25L22 17l-2.25.75L19 20l-.75-2.25L16 17l2.25-.75L19 14z" stroke="#8067F6"
+              stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="cta-decide__title">Can't Decide Which Course?</h2>
+      <p class="cta-decide__sub">Join 15,000+ successful tech professionals. Get personalized career guidance and a
+        custom learning roadmap completely free.</p>
+      <a href="#" class="cta-decide__btn">Get Free Career Counselling</a>
+      </div>
   </div>
-  <svg viewBox="0 0 1280 100" class="w-full h-16 sm:h-20 md:h-24 relative z-10" preserveAspectRatio="none">
-    <path fill-rule="evenodd" clip-rule="evenodd"
-      d="M1280 72.4955L1208.53 80.5506C1138.13 88.6056 995.2 104.716 853.333 98.6744C711.467 92.6332 568.533 64.4405 426.667 60.4129C284.8 56.3854 141.867 76.523 71.4666 86.5919L-0.00012207 96.6607V0H71.4666C141.867 0 284.8 0 426.667 0C568.533 0 711.467 0 853.333 0C995.2 0 1138.13 0 1208.53 0H1280V72.4955Z"
-      fill="#F4F2FF"/>
-  </svg>
-</div>
-
-<!-- CTA : CAN'T DECIDE WHICH COURSE -->
-<section class="relative overflow-hidden">
-
-  <!-- GRID BACKGROUND -->
-  <div
-    class="absolute inset-0"
-    style="
-      background-color: #faf9ff;
-      background-image:
-        linear-gradient(to right, rgba(99,102,241,0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(99,102,241,0.08) 1px, transparent 1px);
-      background-size: 36px 36px;
-    ">
   </div>
 
-  <!-- CONTENT -->
-  <div class="relative z-10 py-8 sm:py-12 md:py-16">
-    <div class="max-w-4xl mx-auto px-3 sm:px-4 md:px-6 text-center">
-      <h2 class="text-lg sm:text-xl md:text-2xl md:text-3xl font-semibold text-gray-900">
-        Can’t Decide Which Course?
-      </h2>
+<!-- ═══════════════════════════════════
+     FAQs
+═══════════════════════════════════ -->
+<section class="faqs-section">
+  <div class="faqs-section__inner">
 
-      <p class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-600">
-        Book a free counseling session. We’ll help you choose based on your goals.
-      </p>
-
-      <a
-        href="#"
-        class="inline-flex items-center gap-2 mt-6 sm:mt-8 px-5 sm:px-6 py-2 sm:py-3 text-sm sm:text-base
-               bg-indigo-500 text-white rounded-lg
-               font-medium hover:bg-indigo-600 transition"
-      >
-        Get Free Career Guidance →
-      </a>
+    <div class="faqs-section__header">
+      <!-- Badge -->
+      <div class="faqs-section__badge">
+        <div class="faqs-section__badge-glow"></div>
+        <div class="faqs-section__badge-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#200060" stroke-width="1.5" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="#200060" stroke-width="1.5"
+              stroke-linecap="round" />
+          </svg>
+          <span class="faqs-section__badge-label">FAQs</span>
+        </div>
+      </div>
+      <h2 class="faqs-section__title">Frequently Asked Questions</h2>
+      <p class="faqs-section__subtitle">Everything you need to know about our programs</p>
     </div>
-  </div>
+<div class="faqs-list">
 
+      <div class="faq-item is-open">
+        <div class="faq-item__header" onclick="toggleFaq(this)">
+          <h3 class="faq-item__question">Do I need prior coding experience to join?</h3>
+          <button class="faq-item__toggle" aria-label="Toggle">
+            <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+              <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="faq-item__answer">No prior experience required! Our programs are designed for complete beginners. We
+          start with fundamentals and gradually build up to advanced concepts with hands-on practice.</p>
+      </div>
+<div class="faq-item">
+  <div class="faq-item__header" onclick="toggleFaq(this)">
+    <h3 class="faq-item__question">Will I get placement assistance?</h3>
+    <button class="faq-item__toggle" aria-label="Toggle">
+      <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+        <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+      </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            </button>
+            </div>
+            <p class="faq-item__answer">Yes! We provide full placement assistance including resume reviews, mock interviews,
+              LinkedIn profile optimization, and direct referrals to our hiring partner network.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__header" onclick="toggleFaq(this)">
+          <h3 class="faq-item__question">What is the duration and schedule of the courses?</h3>
+          <button class="faq-item__toggle" aria-label="Toggle">
+            <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+              <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="faq-item__answer">Our courses run for 16 weeks with live classes Monday to Friday, 7–9 PM. Weekend batch
+          options are also available.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__header" onclick="toggleFaq(this)">
+          <h3 class="faq-item__question">What kind of projects will I work on?</h3>
+          <button class="faq-item__toggle" aria-label="Toggle">
+            <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+              <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="faq-item__answer">You'll work on industry-grade capstone projects like churn prediction models, sales
+          forecasting dashboards, fraud detection systems, and more—building a portfolio that showcases real skills.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__header" onclick="toggleFaq(this)">
+          <h3 class="faq-item__question">Are the instructors industry professionals?</h3>
+          <button class="faq-item__toggle" aria-label="Toggle">
+            <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+              <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="faq-item__answer">Absolutely. All instructors have 5+ years of industry experience at top tech companies and
+          are carefully vetted for both technical expertise and teaching ability.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-item__header" onclick="toggleFaq(this)">
+          <h3 class="faq-item__question">What certifications will I receive?</h3>
+          <button class="faq-item__toggle" aria-label="Toggle">
+            <svg class="icon-minus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#8067F6" opacity="0.15" />
+              <path d="M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#E5EBFF" />
+              <path d="M12 8v8M8 12h8" stroke="#8067F6" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="faq-item__answer">You'll receive a Boffins Academy course completion certificate and, depending on your
+          course, industry-recognized partner certifications that are valued by employers.</p>
+      </div>
+
+    </div><!-- /faqs-list -->
+    </div>
 </section>
+
+
 
 {% endblock %}

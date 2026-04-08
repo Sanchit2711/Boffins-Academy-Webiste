@@ -194,8 +194,8 @@
   #home-landing .fst-pill img,
   #home-landing .fwcu-pill img,
   #home-landing .figma-pill img {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+      height: 16px;
   }
 
   #home-landing .hero-stat-icon {
@@ -211,27 +211,27 @@
 
   #home-landing .fws-icon-wrap,
   #home-landing .fcourse-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 18px;
+    width: 62px;
+      height: 62px;
+      border-radius: 16px;
   }
 
   #home-landing .fwcu-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    width: 58px;
+      height: 58px;
+      border-radius: 14px;
   }
 
   #home-landing .fws-icon-wrap img,
   #home-landing .fcourse-icon img,
   #home-landing .fwcu-icon img {
-    width: 34px;
-    height: 34px;
+    width: 28px;
+      height: 28px;
   }
 
   #home-landing .fcourse-meta span img {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+      height: 14px;
   }
 
   #home-landing .fst-avatar {
@@ -245,7 +245,7 @@
   }
 
   #home-landing .figma-company-logos img {
-    max-height: 50px;
+    max-height: 44px;
   }
 
   #home-landing .figma-company-ticker.is-touch-paused .figma-company-logos {
@@ -253,25 +253,25 @@
   }
 
   #home-landing .fstats-icon-box {
-    width: 66px;
-    height: 66px;
-    border-radius: 16px;
+    width: 60px;
+      height: 60px;
+      border-radius: 14px;
   }
 
   #home-landing .fstats-icon {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+      height: 30px;
   }
 
   #home-landing .figma-cta-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 14px;
+    width: 54px;
+      height: 54px;
+      border-radius: 13px;
   }
 
   #home-landing .figma-cta-icon img {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+      height: 26px;
   }
 
   #home-landing .figma-faq-list details {
@@ -307,7 +307,49 @@
 
   #home-landing .hero-wave {
     height: 116px;
-    margin-top: 10px;
+    margin-top: -2px;
+      padding: 0;
+      overflow: hidden;
+      background: #c1caff;
+    }
+    
+    #home-landing .hero-wave img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      margin: 0;
+    }
+    
+    #home-landing .fcourse-icon {
+      left: 20px;
+      top: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
+    
+    #home-landing .fcourse-icon img {
+      width: 24px;
+      height: 24px;
+    }
+    
+    #home-landing .fcourse-meta span {
+      gap: 6px;
+      padding: 8px 10px;
+    }
+    
+    #home-landing .fws-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
+    
+    #home-landing .fws-icon-wrap img,
+    #home-landing .fwcu-icon img {
+      width: 24px;
+      height: 24px;
   }
 }
 
