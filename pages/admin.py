@@ -17,6 +17,7 @@ from .models import (
     CourseTechnology,
     CourseProject,
     CourseCareerRole,
+    CourseOffer,
 )
 
 
@@ -85,6 +86,12 @@ class CourseCareerRoleInline(admin.TabularInline):
     ordering = ("order",)
 
 
+class CourseOfferInline(admin.TabularInline):
+    model = CourseOffer
+    extra = 0
+    ordering = ("order",)
+
+
 # =========================
 # Courses (MAIN ADMIN)
 # =========================
@@ -104,6 +111,7 @@ class CoursesAdmin(admin.ModelAdmin):
         CourseTechnologyInline,
         CourseProjectInline,
         CourseCareerRoleInline,
+        CourseOfferInline,
     ]
 
 

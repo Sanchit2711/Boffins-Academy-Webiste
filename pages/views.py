@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 
@@ -48,11 +48,12 @@ def home(request):
     )
 
 def gallery(request):
-    images = GalleryImage.objects.filter(is_active=True)
-
+    images = list(GalleryImage.objects.filter(is_active=True).order_by("order", "id"))
     return render(request, "pages/gallery.html", {
-        "images": images
+        "images": images,
+        "last_img": images[-1] if images else None,
     })
+
 
 
 def about(request):
@@ -75,18 +76,129 @@ def courses(request):
             "technologies",
             "projects",
             "career_roles",
+            "offers",
         )
         .order_by("order")
     )
+
+    featured_offer = None
+    for course in courses:
+        if course.current_offer:
+            featured_offer = course.current_offer
+            break
 
     return render(
         request,
         "pages/courses.html",
         {
-            "courses": courses
+            "courses": courses,
+            "featured_offer": featured_offer,
         }
     )
 
+
+def course_detail(request, slug):
+    course = get_object_or_404(
+        Courses.objects.filter(is_active=True)
+        .select_related("salary", "batch", "certificate", "cta")
+        .prefetch_related("curriculum", "technologies", "projects", "career_roles", "offers"),
+        slug=slug,
+    )
+
+    tech_icons = {
+        "power bi": {
+            "icon": "PB",
+            "description": "Learn how to transform raw data into interactive dashboards and reports using Power BI.",
+            "points": [
+                "Clean and prepare data for reporting",
+                "Build interactive dashboards and charts",
+                "Understand trends and patterns",
+                "Share reports with others",
+            ],
+        },
+        "python": {
+            "icon": "Py",
+            "description": "Start with Python basics and move into data analysis and machine learning to solve real problems.",
+            "points": [
+                "Write Python programs with confidence",
+                "Analyze data using popular libraries",
+                "Visualize data with charts and graphs",
+                "Explore datasets and discover insights",
+            ],
+        },
+        "excel": {
+            "icon": "XL",
+            "description": "Discover how Excel can power analysis, reporting, and automation for business-ready data workflows.",
+            "points": [
+                "Use powerful formulas and functions",
+                "Analyze data with Pivot Tables",
+                "Create interactive dashboards",
+                "Work faster with automation tips",
+            ],
+        },
+        "sql": {
+            "icon": "SQL",
+            "description": "Understand how data is stored and learn to extract the exact information you need using SQL.",
+            "points": [
+                "Fetch and filter data from databases",
+                "Combine tables using joins",
+                "Analyze data using SQL queries",
+                "Prepare data for reporting and analysis",
+            ],
+        },
+    }
+
+    tool_overview = []
+    for tech in course.technologies.all()[:4]:
+        key = tech.name.strip().lower()
+        detail = tech_icons.get(key)
+        if detail is None:
+            detail = {
+                "icon": tech.name[:2].upper(),
+                "description": f"Master {tech.name} as part of an industry-ready {course.title} curriculum.",
+                "points": [
+                    f"Gain practical experience with {tech.name}",
+                    "Work on real-world industry scenarios",
+                    "Build skills that companies value",
+                ],
+            }
+        tool_overview.append({
+            "title": tech.name,
+            "icon": detail["icon"],
+            "description": detail["description"],
+            "points": detail["points"],
+        })
+
+    if not tool_overview:
+        tool_overview = [
+            {
+                "title": course.title,
+                "icon": course.title[:2].upper(),
+                "description": course.description,
+                "points": [
+                    "Build practical skills through hands-on projects",
+                    "Learn the core concepts that hiring managers look for",
+                    "Get industry-ready with real-world use cases",
+                ],
+            }
+        ]
+
+    # Get active, non-expired offers
+    from django.utils import timezone
+    active_offers = course.offers.filter(
+        is_active=True,
+        deadline__gte=timezone.now()
+    ).order_by("order")
+
+    return render(
+        request,
+        "pages/course_detail.html",
+        {
+            "course": course,
+            "tool_overview": tool_overview,
+            "active_offers": active_offers,
+        },
+    )
 
 
 def instructors(request):

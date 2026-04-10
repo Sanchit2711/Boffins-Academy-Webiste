@@ -10,27 +10,27 @@
 
   <div class="figma-faq-list">
     <details open>
-      <summary>Do I need prior coding experience to join?</summary>
+      <summary>Do I need prior coding experience to join?<span class="figma-faq-toggle" aria-hidden="true">-</span></summary>
       <p>No prior experience required. We start from fundamentals and build up to advanced concepts with practical projects.</p>
     </details>
     <details>
-      <summary>Will I get placement assistance?</summary>
+      <summary>Will I get placement assistance?<span class="figma-faq-toggle" aria-hidden="true">+</span></summary>
       <p>Yes. You get resume support, mock interviews, portfolio reviews, and hiring partner referrals.</p>
     </details>
     <details>
-      <summary>What is the duration and schedule of the courses?</summary>
+      <summary>What is the duration and schedule of the courses?<span class="figma-faq-toggle" aria-hidden="true">+</span></summary>
       <p>Durations vary by track and include flexible weekday/weekend slots for students and working professionals.</p>
     </details>
     <details>
-      <summary>What kind of projects will I work on?</summary>
+      <summary>What kind of projects will I work on?<span class="figma-faq-toggle" aria-hidden="true">+</span></summary>
       <p>You will build capstone and portfolio projects based on real industry workflows.</p>
     </details>
     <details>
-      <summary>Are the instructors industry professionals?</summary>
+      <summary>Are the instructors industry professionals?<span class="figma-faq-toggle" aria-hidden="true">+</span></summary>
       <p>Yes, mentors are experienced practitioners with strong product and engineering backgrounds.</p>
     </details>
     <details>
-      <summary>What certifications will I receive?</summary>
+      <summary>What certifications will I receive?<span class="figma-faq-toggle" aria-hidden="true">+</span></summary>
       <p>You receive completion certification and track-specific validation based on assessment outcomes.</p>
     </details>
   </div>
@@ -105,6 +105,10 @@
   .figma-faq-list summary {
     cursor: pointer;
     list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
     font-size: 20px;
     line-height: 28px;
     font-weight: 500;
@@ -113,6 +117,28 @@
 
   .figma-faq-list summary::-webkit-details-marker {
     display: none;
+  }
+
+  .figma-faq-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    line-height: 1;
+    color: #6b57ff;
+    background: #f6f3ff;
+    border: 1px solid #e2d9ff;
+    transition: all 0.2s ease;
+  }
+
+  .figma-faq-list details[open] .figma-faq-toggle {
+    color: #ff8a00;
+    background: #fff5ea;
+    border-color: #ffd8ad;
   }
 
   .figma-faq-list details p {

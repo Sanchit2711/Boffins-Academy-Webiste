@@ -1,0 +1,46 @@
+/* Unified pill size to match landing page across non-home pages */
+
+:where(
+  .about-pill,
+  .inst-pill,
+  .galp-pill,
+  .plx-pill,
+  .section-pill,
+  .faq-pill,
+  .courses-hero__badge-pill.pill-chip
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 40px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.028px;
+  white-space: nowrap;
+}
+
+:where(
+  .about-pill,
+  .inst-pill,
+  .galp-pill,
+  .plx-pill,
+  .section-pill,
+  .faq-pill,
+  .courses-hero__badge-pill.pill-chip
+) img,
+:where(
+  .about-pill,
+  .inst-pill,
+  .galp-pill,
+  .plx-pill,
+  .section-pill,
+  .faq-pill,
+  .courses-hero__badge-pill.pill-chip
+) svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

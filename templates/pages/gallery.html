@@ -1,111 +1,417 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Gallery | Boffins Academy{% endblock %}
+
+{% block page_css %}
+<style>
+  .galp-page {
+    background: #faf9f6;
+    font-family: "Manrope", sans-serif;
+    color: #1e0a5f;
+  }
+
+  .galp-wrap {
+    width: min(1216px, calc(100% - 16px));
+    margin: 0 auto;
+  }
+
+  .galp-hero {
+    padding: 84px 0 24px;
+    text-align: center;
+  }
+
+  .galp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 999px;
+    border: 1px solid rgba(128, 103, 246, 0.25);
+    background: #fff;
+    padding: 6px 10px;
+    font-size: 8px;
+    line-height: 12px;
+    font-weight: 600;
+    color: #5d57cb;
+    letter-spacing: 0.02em;
+  }
+
+  .galp-pill svg {
+    width: 10px;
+    height: 10px;
+    stroke: #7f6cf4;
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .galp-hero h1 {
+    margin: 14px 0 0;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #2a2168;
+    letter-spacing: -0.01em;
+  }
+
+  .galp-hero p {
+    margin: 8px auto 0;
+    max-width: 300px;
+    font-size: 8.5px;
+    line-height: 13px;
+    color: #7a7fa8;
+  }
+
+  .galp-grid-sec {
+    padding-bottom: 26px;
+  }
+
+  .galp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .galp-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #ececf5;
+    aspect-ratio: 1.02 / 1;
+    border: 1px solid #eceffa;
+  }
+
+  .galp-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .galp-card--overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(29, 22, 77, 0.45);
+  }
+
+  .galp-view-all {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    justify-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 8px;
+    line-height: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .galp-view-all svg {
+    width: 14px;
+    height: 14px;
+    stroke: #fff;
+    fill: none;
+    stroke-width: 1.7;
+  }
+
+  .galp-cta {
+    padding: 16px 0 34px;
+  }
+
+  .galp-cta-box {
+    border-radius: 16px;
+    padding: 16px 10px 14px;
+    text-align: center;
+    background:
+      repeating-linear-gradient(0deg, transparent 0, transparent 23px, rgba(255, 255, 255, 0.09) 24px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 23px, rgba(255, 255, 255, 0.09) 24px),
+      linear-gradient(180deg, #2f0f84 0%, #4c2fbf 100%);
+  }
+
+  .galp-cta-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    margin: 0 auto 8px;
+    background: #fff;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.52);
+    display: grid;
+    place-items: center;
+  }
+
+  .galp-cta-icon img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .galp-cta h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  .galp-cta p {
+    margin: 6px auto 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 7.5px;
+    line-height: 12px;
+  }
+
+  .galp-cta a {
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #fff;
+    color: #1e0a5f;
+    text-decoration: none;
+    font-size: 7px;
+    line-height: 10px;
+    font-weight: 700;
+    padding: 5px 9px;
+  }
+
+  .galp-faq {
+    text-align: center;
+    padding-bottom: 40px;
+  }
+
+  .galp-faq .galp-pill {
+    margin-bottom: 10px;
+  }
+
+  .galp-faq h2 {
+    margin: 0;
+    color: #2a2168;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+  }
+
+  .galp-faq p {
+    margin: 6px 0 12px;
+    color: #7a7fa8;
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .galp-faq-list {
+    display: grid;
+    gap: 6px;
+    text-align: left;
+  }
+
+  .galp-faq-list details {
+    border: 1px solid #e6e8f6;
+    border-radius: 4px;
+    background: #f5f4ff;
+    padding: 8px 10px;
+  }
+
+  .galp-faq-list summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #3a3371;
+    font-size: 8px;
+    line-height: 12px;
+    font-weight: 600;
+  }
+
+  .galp-faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .galp-faq-toggle {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: #7f6cf4;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .galp-faq-list details[open] .galp-faq-toggle {
+    background: #ff8a00;
+  }
+
+  .galp-faq-list details p {
+    margin: 7px 0 0;
+    color: #777aa3;
+    font-size: 7.5px;
+    line-height: 12px;
+  }
+
+  @media (min-width: 768px) {
+    .galp-wrap {
+      width: min(1216px, calc(100% - 32px));
+    }
+
+    .galp-hero {
+      padding-top: 108px;
+    }
+
+    .galp-pill {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 9px 16px;
+      gap: 7px;
+    }
+
+    .galp-pill svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .galp-hero h1 {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    .galp-hero p {
+      max-width: 780px;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .galp-grid {
+      gap: 10px;
+    }
+
+    .galp-cta-box {
+      border-radius: 26px;
+      padding: 30px 18px 24px;
+    }
+
+    .galp-cta-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+    }
+
+    .galp-cta-icon img {
+      width: 26px;
+      height: 26px;
+    }
+
+    .galp-cta h2 {
+      font-size: 34px;
+      line-height: 42px;
+    }
+
+    .galp-cta p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+    .galp-cta a {
+      font-size: 12px;
+      line-height: 16px;
+      padding: 10px 16px;
+      margin-top: 14px;
+    }
+
+    .galp-faq h2 {
+      font-size: 34px;
+      line-height: 42px;
+    }
+
+    .galp-faq p {
+      font-size: 12px;
+      line-height: 18px;
+      margin-bottom: 22px;
+    }
+
+    .galp-faq-list {
+      gap: 10px;
+    }
+
+    .galp-faq-list details {
+      padding: 13px 16px;
+      border-radius: 6px;
+    }
+
+    .galp-faq-list summary {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .galp-faq-toggle {
+      width: 20px;
+      height: 20px;
+      font-size: 14px;
+    }
+
+    .galp-faq-list details p {
+      font-size: 12px;
+      line-height: 18px;
+    }
+  }
+</style>
+{% endblock %}
 
 {% block content %}
-
-<!-- HERO -->
-<section id="gallery-hero" class="px-5 sm:px-8 pt-10 sm:pt-10 pb-12 text-center">
-
-  <span class="inline-flex items-center gap-2 text-xs sm:text-sm font-medium
-               text-primary
-               px-4 py-1.5">
-    <svg width="218" height="36" viewBox="0 0 218 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="218" height="36" rx="8" fill="#2D9CDB"/>
-<path d="M35.5 20.5L32.9283 17.9283C32.6158 17.6159 32.1919 17.4404 31.75 17.4404C31.3081 17.4404 30.8842 17.6159 30.5717 17.9283L23 25.5M22.1667 10.5H33.8333C34.7538 10.5 35.5 11.2462 35.5 12.1667V23.8333C35.5 24.7538 34.7538 25.5 33.8333 25.5H22.1667C21.2462 25.5 20.5 24.7538 20.5 23.8333V12.1667C20.5 11.2462 21.2462 10.5 22.1667 10.5ZM27.1667 15.5C27.1667 16.4205 26.4205 17.1667 25.5 17.1667C24.5795 17.1667 23.8333 16.4205 23.8333 15.5C23.8333 14.5795 24.5795 13.8333 25.5 13.8333C26.4205 13.8333 27.1667 14.5795 27.1667 15.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M48.4672 23.21C47.7579 23.21 47.1185 23.0863 46.5492 22.839C45.9799 22.5917 45.4945 22.2393 45.0932 21.782C44.6965 21.3247 44.3932 20.774 44.1832 20.13C43.9732 19.4813 43.8682 18.758 43.8682 17.96C43.8682 16.9053 44.0502 15.986 44.4142 15.202C44.7829 14.4133 45.3102 13.802 45.9962 13.368C46.6822 12.934 47.5059 12.717 48.4672 12.717C49.5405 12.717 50.4132 12.969 51.0852 13.473C51.7619 13.9723 52.2332 14.6443 52.4992 15.489L51.4632 15.741C51.2439 15.125 50.8822 14.6327 50.3782 14.264C49.8789 13.8953 49.2559 13.711 48.5092 13.711C47.7205 13.7063 47.0649 13.8837 46.5422 14.243C46.0195 14.5977 45.6252 15.097 45.3592 15.741C45.0979 16.3803 44.9649 17.12 44.9602 17.96C44.9555 18.8 45.0839 19.5397 45.3452 20.179C45.6112 20.8137 46.0079 21.313 46.5352 21.677C47.0625 22.0363 47.7205 22.2183 48.5092 22.223C49.2325 22.223 49.8299 22.083 50.3012 21.803C50.7725 21.523 51.1295 21.1217 51.3722 20.599C51.6195 20.0763 51.7595 19.458 51.7922 18.744H49.4682V17.862H52.8702C52.8842 17.9693 52.8912 18.0837 52.8912 18.205C52.8959 18.3217 52.8982 18.4057 52.8982 18.457C52.8982 19.367 52.7349 20.1813 52.4082 20.9C52.0815 21.614 51.5892 22.1787 50.9312 22.594C50.2779 23.0047 49.4565 23.21 48.4672 23.21ZM53.3539 23L56.8259 12.92H58.1909L61.6629 23H60.5919L57.2949 13.494H57.7009L54.4249 23H53.3539ZM54.9009 20.557V19.591H60.1089V20.557H54.9009ZM63.0949 23V12.92H64.1239V22.013H68.9119V23H63.0949ZM70.2733 23V12.92H71.3023V22.013H76.0903V23H70.2733ZM77.3117 23V12.92H83.6117V13.907H78.3407V17.393H82.7717V18.38H78.3407V22.013H83.6117V23H77.3117ZM85.3241 23V12.92H89.2161C89.3141 12.92 89.4237 12.9247 89.5451 12.934C89.6711 12.9387 89.7971 12.9527 89.9231 12.976C90.4504 13.0553 90.8961 13.2397 91.2601 13.529C91.6287 13.8137 91.9064 14.173 92.0931 14.607C92.2844 15.041 92.3801 15.5217 92.3801 16.049C92.3801 16.8097 92.1794 17.47 91.7781 18.03C91.3767 18.59 90.8027 18.9423 90.0561 19.087L89.6991 19.171H86.3531V23H85.3241ZM91.4281 23L89.4401 18.898L90.4271 18.52L92.6111 23H91.4281ZM86.3531 18.191H89.1881C89.2721 18.191 89.3701 18.1863 89.4821 18.177C89.5941 18.1677 89.7037 18.1513 89.8111 18.128C90.1564 18.0533 90.4387 17.911 90.6581 17.701C90.8821 17.491 91.0477 17.2413 91.1551 16.952C91.2671 16.6627 91.3231 16.3617 91.3231 16.049C91.3231 15.7363 91.2671 15.4353 91.1551 15.146C91.0477 14.852 90.8821 14.6 90.6581 14.39C90.4387 14.18 90.1564 14.0377 89.8111 13.963C89.7037 13.9397 89.5941 13.9257 89.4821 13.921C89.3701 13.9117 89.2721 13.907 89.1881 13.907H86.3531V18.191ZM96.421 23V18.779L93.04 12.92H94.23L96.939 17.603L99.634 12.92H100.824L97.457 18.779V23H96.421ZM107.339 23.21C106.779 23.21 106.258 23.1307 105.778 22.972C105.302 22.8087 104.903 22.5543 104.581 22.209C104.329 21.9383 104.142 21.6373 104.021 21.306C103.899 20.97 103.832 20.6153 103.818 20.242C103.813 19.8873 103.864 19.535 103.972 19.185C104.079 18.835 104.247 18.5247 104.476 18.254C104.611 18.086 104.763 17.946 104.931 17.834C105.103 17.722 105.281 17.6263 105.463 17.547C105.113 17.183 104.844 16.847 104.658 16.539C104.476 16.2263 104.385 15.8437 104.385 15.391C104.385 14.873 104.515 14.3993 104.777 13.97C105.043 13.5407 105.409 13.221 105.876 13.011C106.114 12.9037 106.356 12.829 106.604 12.787C106.856 12.7403 107.105 12.717 107.353 12.717C107.731 12.717 108.102 12.7707 108.466 12.878C108.83 12.9807 109.14 13.144 109.397 13.368C109.569 13.5033 109.721 13.6643 109.852 13.851C109.982 14.033 110.085 14.2243 110.16 14.425L109.166 14.719C109.068 14.467 108.904 14.2547 108.676 14.082C108.498 13.942 108.293 13.844 108.06 13.788C107.831 13.732 107.6 13.704 107.367 13.704C106.97 13.704 106.611 13.781 106.289 13.935C106.009 14.075 105.799 14.2687 105.659 14.516C105.519 14.7633 105.449 15.0527 105.449 15.384C105.449 15.6687 105.495 15.9043 105.589 16.091C105.682 16.273 105.817 16.4713 105.995 16.686C106.097 16.798 106.212 16.9123 106.338 17.029C106.464 17.141 106.592 17.2577 106.723 17.379L109.915 20.34C109.933 20.2093 109.945 20.0833 109.95 19.962C109.954 19.836 109.957 19.7123 109.957 19.591L109.95 18.114H110.923V19.661C110.923 20.0297 110.909 20.3307 110.881 20.564C110.853 20.7973 110.815 20.991 110.769 21.145L112.071 22.342L111.392 23.063L110.279 22.013C110.125 22.2137 109.929 22.3933 109.691 22.552C109.457 22.7107 109.224 22.8343 108.991 22.923C108.739 23.035 108.473 23.1097 108.193 23.147C107.913 23.189 107.628 23.21 107.339 23.21ZM107.353 22.216C107.619 22.216 107.859 22.1997 108.074 22.167C108.288 22.1343 108.494 22.0667 108.69 21.964C108.937 21.8333 109.121 21.712 109.243 21.6C109.364 21.4833 109.462 21.3807 109.537 21.292L106.261 18.296C106.065 18.3567 105.88 18.4407 105.708 18.548C105.54 18.6507 105.395 18.7743 105.274 18.919C105.138 19.087 105.038 19.2807 104.973 19.5C104.907 19.7193 104.875 19.9503 104.875 20.193C104.884 20.4497 104.926 20.6877 105.001 20.907C105.08 21.1217 105.197 21.313 105.351 21.481C105.57 21.7377 105.864 21.9243 106.233 22.041C106.601 22.1577 106.975 22.216 107.353 22.216ZM116.075 23V12.92H117.02L120.982 21.397L124.923 12.92H125.882V22.993H124.902V15.216L121.311 23H120.646L117.062 15.216V23H116.075ZM131.956 23.21C130.953 23.21 130.106 22.9883 129.415 22.545C128.724 22.097 128.202 21.4787 127.847 20.69C127.492 19.9013 127.315 18.9913 127.315 17.96C127.315 16.9287 127.492 16.0187 127.847 15.23C128.202 14.4413 128.724 13.8253 129.415 13.382C130.106 12.934 130.953 12.71 131.956 12.71C132.964 12.71 133.811 12.934 134.497 13.382C135.188 13.8253 135.71 14.4413 136.065 15.23C136.424 16.0187 136.604 16.9287 136.604 17.96C136.604 18.9913 136.424 19.9013 136.065 20.69C135.71 21.4787 135.188 22.097 134.497 22.545C133.811 22.9883 132.964 23.21 131.956 23.21ZM131.956 22.223C132.745 22.223 133.403 22.0433 133.93 21.684C134.457 21.3247 134.852 20.8253 135.113 20.186C135.379 19.542 135.512 18.8 135.512 17.96C135.512 17.12 135.379 16.3803 135.113 15.741C134.852 15.1017 134.457 14.6023 133.93 14.243C133.403 13.8837 132.745 13.7017 131.956 13.697C131.167 13.697 130.512 13.8767 129.989 14.236C129.466 14.5953 129.072 15.097 128.806 15.741C128.545 16.3803 128.412 17.12 128.407 17.96C128.402 18.8 128.531 19.5397 128.792 20.179C129.058 20.8137 129.455 21.313 129.982 21.677C130.509 22.0363 131.167 22.2183 131.956 22.223ZM140.172 23L136.7 12.92H137.771L140.844 21.831L143.938 12.92H145.009L141.537 23H140.172ZM146.087 23V12.92H152.387V13.907H147.116V17.393H151.547V18.38H147.116V22.013H152.387V23H146.087ZM154.099 23V12.92H155.044L159.006 21.397L162.947 12.92H163.906V22.993H162.926V15.216L159.335 23H158.67L155.086 15.216V23H154.099ZM165.899 23V12.92H172.199V13.907H166.928V17.393H171.359V18.38H166.928V22.013H172.199V23H165.899ZM173.911 23V12.92H174.947L180.498 21.18V12.92H181.534V23H180.498L174.947 14.733V23H173.911ZM186.204 23V13.907H182.683V12.92H190.754V13.907H187.233V23H186.204ZM195.405 23.21C194.7 23.21 194.066 23.0933 193.501 22.86C192.941 22.622 192.477 22.286 192.108 21.852C191.744 21.418 191.506 20.9023 191.394 20.305L192.444 20.13C192.612 20.7833 192.967 21.2967 193.508 21.67C194.049 22.0387 194.696 22.223 195.447 22.223C195.942 22.223 196.385 22.146 196.777 21.992C197.169 21.8333 197.477 21.6093 197.701 21.32C197.925 21.0307 198.037 20.6877 198.037 20.291C198.037 20.0297 197.99 19.808 197.897 19.626C197.804 19.4393 197.68 19.2853 197.526 19.164C197.372 19.0427 197.204 18.9423 197.022 18.863C196.84 18.779 196.663 18.7113 196.49 18.66L193.935 17.897C193.627 17.8083 193.342 17.6963 193.081 17.561C192.82 17.421 192.591 17.2553 192.395 17.064C192.204 16.868 192.054 16.6393 191.947 16.378C191.84 16.1167 191.786 15.818 191.786 15.482C191.786 14.9127 191.935 14.4203 192.234 14.005C192.533 13.5897 192.941 13.27 193.459 13.046C193.977 12.822 194.567 12.7123 195.23 12.717C195.902 12.717 196.502 12.836 197.029 13.074C197.561 13.312 198 13.6527 198.345 14.096C198.69 14.5347 198.919 15.055 199.031 15.657L197.953 15.853C197.883 15.4143 197.722 15.034 197.47 14.712C197.218 14.39 196.896 14.1427 196.504 13.97C196.117 13.7927 195.69 13.7017 195.223 13.697C194.77 13.697 194.367 13.774 194.012 13.928C193.662 14.0773 193.384 14.2827 193.179 14.544C192.974 14.8053 192.871 15.104 192.871 15.44C192.871 15.7807 192.964 16.0537 193.151 16.259C193.342 16.4643 193.576 16.6253 193.851 16.742C194.131 16.8587 194.402 16.9543 194.663 17.029L196.637 17.61C196.842 17.666 197.083 17.7477 197.358 17.855C197.638 17.9577 197.909 18.107 198.17 18.303C198.436 18.4943 198.655 18.7463 198.828 19.059C199.001 19.3717 199.087 19.7683 199.087 20.249C199.087 20.7157 198.994 21.1333 198.807 21.502C198.625 21.8707 198.366 22.181 198.03 22.433C197.699 22.685 197.309 22.8763 196.861 23.007C196.418 23.1423 195.932 23.21 195.405 23.21Z" fill="white"/>
-    </svg>
-
-  </span>
-
- <h1 class="mt-6 text-2xl sm:text-4xl font-bold leading-tight text-center">
-  Capturing Our
-  <span class="relative inline-block mt-2 text-[#22C55E]">
-    Journey Together
-    <span class="absolute left-0 -bottom-3 w-full flex justify-center">
-      <svg viewBox="0 0 468 4" class="w-full max-w-[468px] h-[4px]" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <line x1="0" y1="2" x2="468" y2="2" stroke="#22C55E" stroke-width="4" stroke-linecap="round"/>
+<div class="galp-page">
+  <section class="galp-hero galp-wrap">
+    <span class="galp-pill">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4.5" y="5.5" width="15" height="13" rx="2"></rect>
+        <circle cx="9" cy="10" r="1.5"></circle>
+        <path d="M7.8 16l3.2-3.3 2.4 2.5 2.8-2.9"></path>
       </svg>
+      MEMORIES &amp; MOMENTS
     </span>
-  </span>
-</h1>
+    <h1>Capturing Our Journey Together</h1>
+    <p>A glimpse into our vibrant learning community, memorable events, and success celebrations at Boffins Academy.</p>
+  </section>
 
-<p class="mt-4 text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
-  A glimpse into our vibrant learning community, memorable events,
-  and success celebrations at Boffins Academy.
-</p>
+  <section class="galp-grid-sec galp-wrap">
+    <div class="galp-grid">
+     
+        {% for img in images|slice:":8" %}
+          <article class="galp-card">
+            <img src="{{ img.image.url }}" alt="{{ img.alt_text|default:'Gallery image' }}" />
+          </article>
+        {% endfor %}
+        
+            {% for img in images|slice:":8" %}
+              <article class="galp-card">
+                <img src="{{ img.image.url }}" alt="{{ img.alt_text|default:'Gallery image' }}" />
+              </article>
+            {% endfor %}
 
-</section>
-
-<!-- GALLERY -->
-<section id="gallery-grid" class="px-5 py-14">
-  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-
-    {% for img in images %}
-    <div class="relative overflow-hidden rounded-xl
-                h-56 sm:h-64 lg:h-72
-                bg-gray-100">
-
-      <img
-        src="{{ img.image.url }}"
-        alt="{{ img.alt_text|default:'Gallery image' }}"
-        class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-      />
+            {% if last_img %}
+              <article class="galp-card galp-card--overlay">
+                <img src="{{ last_img.image.url }}" alt="{{ last_img.alt_text|default:'Gallery image' }}" />
+                <a href="#" class="galp-view-all" aria-label="View all gallery images">
+                  ...
+                </a>
+              </article>
+            {% endif %}
+      
 
     </div>
-    {% empty %}
-    <!-- fallback if no images -->
-    <div class="col-span-full text-center text-gray-400">
-      No gallery images uploaded yet.
-    </div>
-    {% endfor %}
+  </section>
 
-  </div>
-</section>
-
-
-<!-- COMMUNITY CTA -->
-<section id="gallery-cta" class="px-5 py-20 text-center bg-[#F7F6FB] relative overflow-hidden">
-
-  <div class="absolute inset-0 opacity-40 pointer-events-none"
-       style="background-image: linear-gradient(#E9E6F1 1px, transparent 1px),
-              linear-gradient(90deg, #E9E6F1 1px, transparent 1px);
-              background-size: 32px 32px;">
-  </div>
-
-  <div class="relative max-w-3xl mx-auto">
-
-    <h2 class="text-2xl sm:text-3xl font-semibold text-[#34284D]">
-      Be Part Of Our Community
-    </h2>
-
-    <p class="mt-4 text-gray-600 text-base sm:text-lg">
-      Join us for exciting events, workshops, and celebrations
-    </p>
-
-    <div class="mt-8 flex justify-center">
-      <a href="/contact"
-         class="inline-flex items-center gap-4
-                bg-[#6C5CE7]
-                text-white
-                px-8 py-5
-                rounded-full
-                text-lg font-semibold
-                transition
-                hover:bg-[#6C5CE7]">
-        Get in Touch
-        <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2"
-             stroke-linecap="round"
-             stroke-linejoin="round"
-             class="w-6 h-6">
-          <path d="M5 12h14M13 5l7 7-7 7"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</section>
+  {% include "components/cta_section.html" %}
+  {% include "components/faq_section.html" %}
+</div>
 
 {% endblock %}
+

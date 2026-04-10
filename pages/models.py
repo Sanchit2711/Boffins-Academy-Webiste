@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 from django.utils.text import slugify
 
 class Course(models.Model):
@@ -52,6 +52,13 @@ class Courses(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def active_offers(self):
+        return self.offers.filter(is_active=True, deadline__gte=timezone.now()).order_by("order")
+
+    @property
+    def current_offer(self):
+        return self.active_offers.first()
 
 
 # =========================
@@ -72,6 +79,22 @@ class CourseSalary(models.Model):
 
     def __str__(self):
         return f"₹ {self.min_lpa}-{self.max_lpa} LPA"
+
+    @property
+    def discount_label(self):
+        if self.discount_percentage:
+            return f"{self.discount_percentage}% off"
+        if self.discount_amount:
+            return f"₹{self.discount_amount} off"
+        return "Special offer"
+
+    @property
+    def formatted_deadline(self):
+        return self.deadline.strftime("%b %d, %Y")
+
+    @property
+    def is_expired(self):
+        return timezone.now() > self.deadline
 
 # =========================
 # Batch Card
@@ -203,6 +226,52 @@ class CourseCareerRole(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class CourseOffer(models.Model):
+    course = models.ForeignKey(
+        Courses,
+        on_delete=models.CASCADE,
+        related_name="offers"
+    )
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    discount_percentage = models.PositiveIntegerField(
+        help_text="Discount percentage (e.g., 20 for 20%)",
+        blank=True,
+        null=True
+    )
+    discount_amount = models.PositiveIntegerField(
+        help_text="Fixed discount amount in rupees",
+        blank=True,
+        null=True
+    )
+    deadline = models.DateTimeField()
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return f"{self.title} - {self.course.title}"
+
+    @property
+    def discount_label(self):
+        if self.discount_percentage:
+            return f"{self.discount_percentage}% off"
+        if self.discount_amount:
+            return f"₹{self.discount_amount} off"
+        return "Special offer"
+
+    @property
+    def formatted_deadline(self):
+        return self.deadline.strftime("%b %d, %Y")
+
+    @property
+    def is_expired(self):
+        return timezone.now() > self.deadline
 
 
 class GalleryImage(models.Model):

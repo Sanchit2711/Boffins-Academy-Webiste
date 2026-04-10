@@ -1,218 +1,147 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}Contact | Boffins Academy{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
-
-<section id="contact-hero" class="bg-gradient-to-b from-[#FAF8FF] to-white px-4 pt-4 sm:pt-6 pb-20">
-  <!-- INDUSTRY READY BADGE -->
-  <div class="text-center max-w-2xl mx-auto mb-12">
-    <div class="flex justify-center mt-1">
-    <span class="inline-flex items-center gap-2 px-3 py-1 text-[11px] font-medium w-36 md:w-auto">
-     <svg width="154" height="36" viewBox="0 0 154 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="154" height="36" rx="8" fill="#2D9CDB"/>
-<path d="M20.4924 21.6184C20.615 21.9275 20.6422 22.2662 20.5708 22.5909L19.6833 25.3326C19.6547 25.4716 19.6621 25.6156 19.7047 25.751C19.7474 25.8864 19.824 26.0086 19.9271 26.1061C20.0303 26.2036 20.1567 26.2732 20.2943 26.3081C20.4318 26.3431 20.5761 26.3423 20.7133 26.3059L23.5574 25.4742C23.8639 25.4135 24.1812 25.44 24.4733 25.5509C26.2527 26.3819 28.2686 26.5577 30.1651 26.0473C32.0615 25.5369 33.7168 24.3731 34.8388 22.7612C35.9609 21.1493 36.4775 19.1929 36.2977 17.2372C36.1178 15.2815 35.253 13.4521 33.8558 12.0719C32.4586 10.6917 30.6188 9.84927 28.6611 9.69332C26.7033 9.53737 24.7534 10.0779 23.1553 11.2195C21.5572 12.3611 20.4137 14.0305 19.9265 15.9331C19.4393 17.8357 19.6397 19.8492 20.4924 21.6184Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M48.2839 23.21C47.5746 23.21 46.9353 23.0863 46.3659 22.839C45.7966 22.5917 45.3113 22.2393 44.9099 21.782C44.5133 21.3247 44.2099 20.774 43.9999 20.13C43.7899 19.4813 43.6849 18.758 43.6849 17.96C43.6849 16.9053 43.8669 15.986 44.2309 15.202C44.5996 14.4133 45.1269 13.802 45.8129 13.368C46.4989 12.934 47.3226 12.717 48.2839 12.717C49.3573 12.717 50.2299 12.969 50.9019 13.473C51.5786 13.9723 52.0499 14.6443 52.3159 15.489L51.2799 15.741C51.0606 15.125 50.6989 14.6327 50.1949 14.264C49.6956 13.8953 49.0726 13.711 48.3259 13.711C47.5373 13.7063 46.8816 13.8837 46.3589 14.243C45.8363 14.5977 45.4419 15.097 45.1759 15.741C44.9146 16.3803 44.7816 17.12 44.7769 17.96C44.7723 18.8 44.9006 19.5397 45.1619 20.179C45.4279 20.8137 45.8246 21.313 46.3519 21.677C46.8793 22.0363 47.5373 22.2183 48.3259 22.223C49.0493 22.223 49.6466 22.083 50.1179 21.803C50.5893 21.523 50.9463 21.1217 51.1889 20.599C51.4363 20.0763 51.5763 19.458 51.6089 18.744H49.2849V17.862H52.6869C52.7009 17.9693 52.7079 18.0837 52.7079 18.205C52.7126 18.3217 52.7149 18.4057 52.7149 18.457C52.7149 19.367 52.5516 20.1813 52.2249 20.9C51.8983 21.614 51.4059 22.1787 50.7479 22.594C50.0946 23.0047 49.2733 23.21 48.2839 23.21ZM54.144 23V12.92H60.444V13.907H55.173V17.393H59.604V18.38H55.173V22.013H60.444V23H54.144ZM64.8374 23V13.907H61.3164V12.92H69.3874V13.907H65.8664V23H64.8374ZM73.0848 23V12.92H74.1138V23H73.0848ZM76.2404 23V12.92H77.2764L82.8274 21.18V12.92H83.8634V23H82.8274L77.2764 14.733V23H76.2404ZM91.3641 23V13.907H87.8431V12.92H95.9141V13.907H92.3931V23H91.3641ZM101.146 23.21C100.142 23.21 99.2953 22.9883 98.6046 22.545C97.914 22.097 97.3913 21.4787 97.0366 20.69C96.682 19.9013 96.5046 18.9913 96.5046 17.96C96.5046 16.9287 96.682 16.0187 97.0366 15.23C97.3913 14.4413 97.914 13.8253 98.6046 13.382C99.2953 12.934 100.142 12.71 101.146 12.71C102.154 12.71 103.001 12.934 103.687 13.382C104.377 13.8253 104.9 14.4413 105.255 15.23C105.614 16.0187 105.794 16.9287 105.794 17.96C105.794 18.9913 105.614 19.9013 105.255 20.69C104.9 21.4787 104.377 22.097 103.687 22.545C103.001 22.9883 102.154 23.21 101.146 23.21ZM101.146 22.223C101.934 22.223 102.592 22.0433 103.12 21.684C103.647 21.3247 104.041 20.8253 104.303 20.186C104.569 19.542 104.702 18.8 104.702 17.96C104.702 17.12 104.569 16.3803 104.303 15.741C104.041 15.1017 103.647 14.6023 103.12 14.243C102.592 13.8837 101.934 13.7017 101.146 13.697C100.357 13.697 99.7013 13.8767 99.1786 14.236C98.656 14.5953 98.2616 15.097 97.9956 15.741C97.7343 16.3803 97.6013 17.12 97.5966 17.96C97.592 18.8 97.7203 19.5397 97.9816 20.179C98.2476 20.8137 98.6443 21.313 99.1716 21.677C99.699 22.0363 100.357 22.2183 101.146 22.223ZM111.158 23.21C110.388 23.21 109.706 23.0513 109.114 22.734C108.526 22.4167 108.064 21.9687 107.728 21.39C107.392 20.8113 107.224 20.1347 107.224 19.36V12.927L108.26 12.92V19.227C108.26 19.7497 108.348 20.2023 108.526 20.585C108.703 20.963 108.934 21.2757 109.219 21.523C109.508 21.7657 109.823 21.9453 110.164 22.062C110.504 22.1787 110.836 22.237 111.158 22.237C111.484 22.237 111.818 22.1787 112.159 22.062C112.499 21.9453 112.812 21.7657 113.097 21.523C113.381 21.2757 113.612 20.963 113.79 20.585C113.967 20.2023 114.056 19.7497 114.056 19.227V12.92H115.092V19.36C115.092 20.1347 114.924 20.8113 114.588 21.39C114.252 21.964 113.787 22.412 113.195 22.734C112.607 23.0513 111.928 23.21 111.158 23.21ZM121.163 23.21C120.159 23.21 119.312 22.9883 118.622 22.545C117.931 22.097 117.408 21.4787 117.054 20.69C116.699 19.9013 116.522 18.9913 116.522 17.96C116.522 16.9287 116.699 16.0187 117.054 15.23C117.408 14.4413 117.931 13.8253 118.622 13.382C119.312 12.934 120.159 12.71 121.163 12.71C122.334 12.71 123.291 13.011 124.033 13.613C124.775 14.2103 125.283 15.013 125.559 16.021L124.509 16.294C124.294 15.496 123.909 14.8637 123.354 14.397C122.798 13.9303 122.068 13.697 121.163 13.697C120.374 13.697 119.718 13.8767 119.196 14.236C118.673 14.5953 118.279 15.097 118.013 15.741C117.751 16.3803 117.616 17.12 117.607 17.96C117.602 18.8 117.73 19.5397 117.992 20.179C118.258 20.8183 118.654 21.32 119.182 21.684C119.714 22.0433 120.374 22.223 121.163 22.223C122.068 22.223 122.798 21.9897 123.354 21.523C123.909 21.0517 124.294 20.4193 124.509 19.626L125.559 19.899C125.283 20.907 124.775 21.712 124.033 22.314C123.291 22.9113 122.334 23.21 121.163 23.21ZM127.131 23V12.92H128.16V17.463H133.732V12.92H134.754V23H133.732V18.45H128.16V23H127.131Z" fill="white"/>
-     </svg>
-    </span>
-    </div>
-
-    <h2 class="text-2xl sm:text-3xl font-semibold text-[#1E1B2E] mt-2">
-      We’d Love To <span class="text-[#22C55E]">Hear From You</span>
-    </h2>
-
-    <p class="mt-3 text-sm text-gray-600">
-      Have questions about our courses? Want to visit our campus?
-      Or just want to say hello? We're here to help!
-    </p>
-  </div>
-
-  <!-- GRID -->
-  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-
-    <!-- LEFT INFO -->
-    <div class="lg:col-span-4 space-y-4">
-
-
-      <!-- PHONE -->
-      <div class="flex gap-4 rounded-2xl bg-white p-5 shadow-soft">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6B4EFF] to-[#8F7CFF]">
-          <img src="{% static 'icons/phone-icon.svg' %}" class="h-6 w-6" alt="">
-        </div>
-        <div>
-          <p class="font-semibold text-sm text-[#1E1B2E] mb-1">Phone</p>
-          {% for line in phone_lines %}
-            <p class="text-sm text-gray-600 break-words">{{ line }}</p>
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- EMAIL -->
-      <div class="flex gap-4 rounded-2xl bg-white p-5 shadow-soft">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6B4EFF] to-[#8F7CFF]">
-          <img src="{% static 'icons/mail-icon.svg' %}" class="h-6 w-6" alt="">
-        </div>
-        <div>
-          <p class="font-semibold text-sm text-[#1E1B2E] mb-1">Email</p>
-          {% for line in email_lines %}
-            <p class="text-sm text-gray-600 break-words">{{ line }}</p>
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- LOCATION -->
-      <div class="flex gap-4 rounded-2xl bg-white p-5 shadow-soft">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6B4EFF] to-[#8F7CFF]">
-          <img src="{% static 'icons/map-pin.svg' %}" class="h-6 w-6" alt="">
-        </div>
-        <div>
-          <p class="font-semibold text-sm text-[#1E1B2E] mb-1">Location</p>
-          {% for line in location_lines %}
-            <p class="text-sm text-gray-600 break-words">{{ line }}</p>
-          {% endfor %}
-        </div>
-      </div>
-
-      <!-- HOURS -->
-      <div class="flex gap-4 rounded-2xl bg-white p-5 shadow-soft">
-        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6B4EFF] to-[#8F7CFF]">
-          <img src="{% static 'icons/clock-icon.svg' %}" class="h-6 w-6" alt="">
-        </div>
-        <div>
-          <p class="font-semibold text-sm text-[#1E1B2E] mb-1">Working Hours</p>
-          {% for line in hours_lines %}
-            <p class="text-sm text-gray-600 break-words">{{ line }}</p>
-          {% endfor %}
-        </div>
-      </div>
-
-    </div>
-
-    <!-- FORM -->
-    <div id="contact-form" class="lg:col-span-8 bg-white rounded-2xl shadow-card p-8 overflow-hidden">
-
-      <h3 class="text-lg font-semibold text-[#1E1B2E] mb-1">
-        Send Us A Message
-      </h3>
-      <p class="text-sm text-gray-600 mb-6">
-        Fill out the form below and we’ll get back to you within 24 hours.
+<main class="contact-page">
+  <section class="contact-main">
+    <div class="container">
+      <span class="section-pill">Get in touch</span>
+      <h1>We'd Love To Hear From You</h1>
+      <p class="lead">
+        Have questions about our courses? Want to visit our campus? Or just want to say hello? We're here to help!
       </p>
 
-      {% if success %}
-        <div class="mb-4 rounded-lg bg-green-50 text-green-700 px-4 py-3 text-sm">
-          Message sent successfully. We’ll contact you soon.
-        </div>
+      {% if messages %}
+      <div class="flash-group" aria-live="polite">
+        {% for message in messages %}
+        <div class="flash-item">{{ message }}</div>
+        {% endfor %}
+      </div>
       {% endif %}
 
-      <form method="post" class="space-y-4">
-        {% csrf_token %}
+      <div class="contact-grid">
+        <div class="contact-cards">
+          <article class="info-card">
+            <div class="icon-box green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.9 14.3a.9.9 0 0 1 1.2-.3l1.8 1a1 1 0 0 1 .4 1.3l-.8 1.7a1 1 0 0 1-.9.6A10.6 10.6 0 0 1 5.4 9.4a1 1 0 0 1 .6-.9l1.7-.8a1 1 0 0 1 1.3.4l1 1.8a.9.9 0 0 1-.3 1.2l-.9.6a7.7 7.7 0 0 0 3.5 3.5Z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Phone</h3>
+              {% for line in phone_lines %}
+              <p>{{ line }}</p>
+              {% endfor %}
+            </div>
+          </article>
 
-        <input
-  type="text"
-  name="full_name"
-  value="{{ form.full_name.value|default:'' }}"
-  placeholder="Full Name"
-  class="h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm focus:border-[#6B4EFF] focus:ring-2 focus:ring-[#6B4EFF]/20 outline-none"
->
-{% if form.full_name.errors %}
-  <p class="text-xs text-red-500">{{ form.full_name.errors.0 }}</p>
-{% endif %}
+          <article class="info-card">
+            <div class="icon-box brown" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect>
+                <path d="m4.5 7 7.5 5 7.5-5"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Email</h3>
+              {% for line in email_lines %}
+              <p>{{ line }}</p>
+              {% endfor %}
+            </div>
+          </article>
 
+          <article class="info-card">
+            <div class="icon-box red" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21s6-5.4 6-10a6 6 0 1 0-12 0c0 4.6 6 10 6 10Z"></path>
+                <circle cx="12" cy="11" r="2.2"></circle>
+              </svg>
+            </div>
+            <div>
+              <h3>Address</h3>
+              {% for line in location_lines %}
+              <p>{{ line }}</p>
+              {% endfor %}
+            </div>
+          </article>
 
-        <input type="email" name="email" placeholder="Email Id"
-          class="h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm focus:border-[#6B4EFF] focus:ring-2 focus:ring-[#6B4EFF]/20 outline-none" required>
+          <article class="info-card">
+            <div class="icon-box yellow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M12 8v4l2.8 1.8"></path>
+              </svg>
+            </div>
+            <div>
+              <h3>Working Hours</h3>
+              {% for line in hours_lines %}
+              <p>{{ line }}</p>
+              {% endfor %}
+            </div>
+          </article>
+        </div>
 
-        <input type="text" name="phone" placeholder="Phone No."
-          class="h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm">
+        <div class="form-card">
+          <h2>Contact our team</h2>
+          <p>Fill out the form below and we'll get back to you within 24 hours</p>
 
-        <select
-  name="course_interest"
-  class="h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm">
+          <form class="contact-form" method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <label for="id_full_name">Full Name <span>*</span></label>
+            <input id="id_full_name" name="full_name" type="text" placeholder="Enter Name" value="{{ form.full_name.value|default_if_none:'' }}">
+            {% if form.full_name.errors %}
+            <div class="field-error">{{ form.full_name.errors.0 }}</div>
+            {% endif %}
 
-  <!-- Single placeholder (non-duplicated, non-breaking) -->
-  <option value="" disabled {% if not form.course_interest.value %}selected{% endif %}>
-    Select Course
-  </option>
+            <label for="id_email">Email Address <span>*</span></label>
+            <input id="id_email" name="email" type="email" placeholder="Enter Email" value="{{ form.email.value|default_if_none:'' }}">
+            {% if form.email.errors %}
+            <div class="field-error">{{ form.email.errors.0 }}</div>
+            {% endif %}
 
-  {% for value, label in form.course_interest.field.choices %}
-    {% if value %}
-      <option value="{{ value }}"
-        {% if form.course_interest.value == value %}selected{% endif %}>
-        {{ label }}
-      </option>
-    {% endif %}
-  {% endfor %}
-</select>
+            <label for="id_phone">Phone Number</label>
+            <input id="id_phone" name="phone" type="text" placeholder="Enter Phone No." value="{{ form.phone.value|default_if_none:'' }}">
+            {% if form.phone.errors %}
+            <div class="field-error">{{ form.phone.errors.0 }}</div>
+            {% endif %}
 
+            <label for="id_course_interest">Course Interest</label>
+            <select id="id_course_interest" name="course_interest">
+              {% for value, text in form.course_interest.field.choices %}
+              <option value="{{ value }}"{% if form.course_interest.value|stringformat:"s" == value|stringformat:"s" %} selected{% endif %}>{{ text }}</option>
+              {% endfor %}
+            </select>
+            {% if form.course_interest.errors %}
+            <div class="field-error">{{ form.course_interest.errors.0 }}</div>
+            {% endif %}
 
+            <label for="id_message">Message <span>*</span></label>
+            <textarea id="id_message" name="message" rows="5" placeholder="Tell us about your goals and how we can help you...">{{ form.message.value|default_if_none:'' }}</textarea>
+            {% if form.message.errors %}
+            <div class="field-error">{{ form.message.errors.0 }}</div>
+            {% endif %}
 
-        <textarea name="message" rows="4"
-          class="w-full rounded-lg border border-[#E6E2F0] px-4 py-3 text-sm resize-none"
-          placeholder="Tell us about your goals and how we can help you."></textarea>
-
-        <button
-  type="submit"
-  class="inline-flex items-center gap-2 h-[48px] px-5 rounded-xl
-         bg-[#6C5CE7] text-sm font-medium text-white
-         shadow-[0_8px_20px_rgba(107,90,237,0.25)]
-         hover:bg-[#5F4FE0] transition-all">
-
-
-  <img
-    src="{% static 'icons/send.svg' %}"
-    class="h-[18px] w-[18px] -mt-[1px]"
-    alt=""
-  >
-  Send Message
-</button>
-
-
-      </form>
-    </div>
-
-  </div>
-</section>
-
-<!-- MAP SECTION -->
-<section id="contact-map" class="relative overflow-hidden bg-[#F6F2FF] px-4 pt-12 pb-20 sm:pt-14 sm:pb-24">
-  <!-- TOP WAVE SVG (leave blank for custom artwork) -->
-  <div class="pointer-events-none absolute inset-x-0 -top-px z-0 h-12 w-full overflow-hidden sm:h-14">
-  <svg class="block h-full w-full" viewBox="0 0 1280 100" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 28.0627L71.4667 20.0697C141.867 12.0766 279.633 -4.7287 421.5 1.26608C563.367 7.26085 711.467 36.0557 853.333 40.0523C995.2 44.0488 1138.13 24.0662 1208.53 14.0749L1280 4.08359V100H1208.53C1138.13 100 995.2 100 853.333 100C711.467 100 568.533 100 426.667 100C284.8 100 141.867 100 71.4667 100H0V28.0627Z" fill="#F4F2FF"/>
-</svg>
-
-  </div>
-
-  <!-- BOTTOM WAVE SVG (leave blank for custom artwork) -->
-  <div class="pointer-events-none absolute inset-x-0 -bottom-px z-0 h-12 w-full overflow-hidden sm:h-14">
-    <svg class="block h-full w-full" viewBox="0 0 1280 100" preserveAspectRatio="none"></svg>
-  </div>
-
-  <div class="relative z-10 mx-auto max-w-5xl text-center">
-    <div class="flex justify-center">
-      <button class="inline-flex items-center gap-2 rounded-md bg-[#2D9CDB] px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white shadow-[0_6px_14px_rgba(45,156,219,0.3)]">
-        <span class="flex h-4 w-4 items-center justify-center rounded-[4px] bg-white/15">
-          <svg class="h-3 w-3" viewBox="0 0 16 16" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
-        </span>
-        Visit Us
-      </button>
-    </div>
-
-    <h3 class="mt-5 text-[20px] sm:text-2xl font-semibold text-[#2E244A]">
-      Find Us On The Map
-    </h3>
-
-    <div class="mt-5 rounded-3xl bg-white/70 p-2 sm:p-3 shadow-[0_16px_30px_rgba(31,24,66,0.08)]">
-      <div class="h-[190px] sm:h-[230px] md:h-[270px] w-full overflow-hidden rounded-2xl bg-[#E9EDF5]">
-        <iframe
-          title="Campus Location Map"
-          src=""
-          class="h-full w-full border-0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="map-wrap" aria-label="Map">
+    <iframe
+      title="NIT Garden Nagpur"
+      src="https://www.openstreetmap.org/export/embed.html?bbox=79.0387%2C21.1330%2C79.0487%2C21.1430&layer=mapnik&marker=21.1380%2C79.0437"
+      loading="lazy">
+    </iframe>
+  </section>
+
+  {% include "components/faq_section.html" %}
+</main>
 {% endblock %}

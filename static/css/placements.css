@@ -1,0 +1,685 @@
+.plx-page {
+  background: #faf9f6;
+  color: #2a2168;
+  font-family: "Manrope", sans-serif;
+}
+
+.plx-wrap {
+  width: min(1220px, calc(100% - 16px));
+  margin: 0 auto;
+}
+
+.plx-hero,
+.plx-process,
+.plx-companies,
+.plx-faq {
+  text-align: center;
+}
+
+.plx-hero {
+  padding-top: 24px;
+  padding-bottom: 22px;
+}
+
+.plx-process,
+.plx-companies,
+.plx-faq {
+  padding-top: 26px;
+  padding-bottom: 22px;
+}
+
+.plx-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(127, 108, 244, 0.32);
+  border-radius: 999px;
+  background: #fff;
+  padding: 6px 12px;
+  color: #7f6cf4;
+  font-size: 8px;
+  line-height: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.plx-pill svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plx-pill-amber {
+  color: #ff8a00;
+}
+
+.plx-page h1 {
+  margin: 12px 0 0;
+  color: #2a2168;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.plx-page h2 {
+  margin: 10px 0 0;
+  color: #2a2168;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 800;
+}
+
+.plx-page h2 span {
+  color: #5d56cf;
+}
+
+.plx-sub {
+  margin: 6px auto 0;
+  max-width: 336px;
+  color: #7f83ab;
+  font-size: 7px;
+  line-height: 11px;
+  font-weight: 500;
+}
+
+.plx-cards {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.plx-card {
+  border: 1px solid #dce0f3;
+  border-radius: 6px;
+  background: #f7f6ff;
+  padding: 6px;
+  text-align: left;
+}
+
+.plx-card-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.plx-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.plx-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.plx-id h2 {
+  margin: 0;
+  color: #2a2168;
+  font-size: 6.5px;
+  line-height: 9px;
+  font-weight: 700;
+}
+
+.plx-id p {
+  margin: 1px 0 0;
+  color: #7c80a9;
+  font-size: 5px;
+  line-height: 8px;
+  font-weight: 600;
+}
+
+.plx-id span {
+  display: block;
+  margin-top: 1px;
+  color: #ff8a00;
+  font-size: 5px;
+  line-height: 8px;
+  font-weight: 700;
+}
+
+.plx-package {
+  margin-top: 5px;
+  border: 1px solid #dfe4f7;
+  border-radius: 4px;
+  background: #fff;
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plx-package small {
+  display: block;
+  color: #7a7fa8;
+  font-size: 4.8px;
+  line-height: 7px;
+}
+
+.plx-package strong {
+  color: #2a2168;
+  font-size: 6px;
+  line-height: 8px;
+  font-weight: 800;
+}
+
+.plx-package svg {
+  width: 9px;
+  height: 9px;
+  stroke: #6f5ded;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plx-quote {
+  margin: 4px 0 0;
+  color: #8388af;
+  font-size: 5px;
+  line-height: 8px;
+  font-weight: 500;
+}
+
+.plx-view-all {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid #d1d6ef;
+  background: #fff;
+  color: #6f61df;
+  text-decoration: none;
+  padding: 5px 11px;
+  font-size: 6.5px;
+  line-height: 9px;
+  font-weight: 700;
+}
+
+.plx-steps {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.plx-steps article {
+  border: 1px solid #e0e4f6;
+  border-radius: 6px;
+  background: #f6f7ff;
+  padding: 7px 6px 8px;
+  text-align: left;
+  position: relative;
+}
+
+.plx-step-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  box-shadow: 0 4px 14px rgba(111, 97, 223, 0.22);
+  color: #fff;
+  background: linear-gradient(180deg, #8f7cff 0%, #6f5ded 100%);
+}
+
+.plx-step-icon svg {
+  width: 9px;
+  height: 9px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plx-steps article:nth-child(2) .plx-step-icon,
+.plx-steps article:nth-child(5) .plx-step-icon {
+  background: linear-gradient(180deg, #7b6af5 0%, #5f52cc 100%);
+}
+
+.plx-steps article:nth-child(3) .plx-step-icon,
+.plx-steps article:nth-child(6) .plx-step-icon {
+  background: linear-gradient(180deg, #846cf5 0%, #6d53d9 100%);
+}
+
+.plx-steps b {
+  position: absolute;
+  right: 6px;
+  top: 7px;
+  color: #ffcf9a;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.plx-steps h3 {
+  margin: 2px 0 2px;
+  color: #2a2168;
+  font-size: 6px;
+  line-height: 9px;
+  font-weight: 700;
+}
+
+.plx-steps p {
+  margin: 0;
+  color: #8287ae;
+  font-size: 5px;
+  line-height: 8px;
+  font-weight: 500;
+}
+
+.plx-companies .figma-company-ticker {
+  margin: 12px auto 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 72px;
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+
+.plx-companies .figma-company-logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  animation: figmaCompanyTicker 24s linear infinite;
+}
+
+.plx-companies .figma-company-item {
+  flex: 0 0 auto;
+  width: 160px;
+  height: 72px;
+  display: grid;
+  align-items: center;
+}
+
+.plx-companies .figma-company-item img {
+  width: 100%;
+  max-width: 160px;
+  margin: 0 auto;
+  max-height: 56px;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+.plx-companies .figma-company-ticker:hover .figma-company-logos,
+.plx-companies .figma-company-ticker.is-touch-paused .figma-company-logos {
+  animation-play-state: paused;
+}
+
+@keyframes figmaCompanyTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 12px)); }
+}
+
+.plx-cta {
+  margin-top: 14px;
+  border-radius: 14px;
+  padding: 15px 10px 13px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0, transparent 20px, rgba(255, 255, 255, 0.08) 21px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 20px, rgba(255, 255, 255, 0.08) 21px),
+    linear-gradient(180deg, #2f0f84 0%, #4c2fbf 100%);
+}
+
+.plx-cta-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  margin: 0 auto 7px;
+  background: #fff;
+  color: #6f5ded;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+}
+
+.plx-cta-icon svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.plx-cta h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 9px;
+  line-height: 13px;
+  font-weight: 700;
+}
+
+.plx-cta p {
+  margin: 4px auto 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 5px;
+  line-height: 8px;
+  font-weight: 500;
+}
+
+.plx-cta a {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #fff;
+  color: #2a2168;
+  text-decoration: none;
+  padding: 4px 8px;
+  font-size: 5.5px;
+  line-height: 8px;
+  font-weight: 800;
+}
+
+.plx-faq {
+  padding-bottom: 40px;
+}
+
+.plx-faq-list {
+  margin-top: 9px;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+
+.plx-faq-list details {
+  border-radius: 4px;
+  border: 1px solid #e5e8f6;
+  background: #f4f3ff;
+  padding: 7px 9px;
+}
+
+.plx-faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #3b3570;
+  font-size: 7px;
+  line-height: 10px;
+  font-weight: 600;
+}
+
+.plx-faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.plx-faq-list summary span {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #7f6cf4;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.plx-faq-list details[open] summary span {
+  background: #ff8a00;
+}
+
+.plx-faq-list details p {
+  margin: 6px 0 0;
+  color: #7c80a8;
+  font-size: 6px;
+  line-height: 9px;
+}
+
+@media (min-width: 768px) {
+  .plx-wrap {
+    width: min(1220px, calc(100% - 32px));
+  }
+
+  .plx-hero {
+    padding-top: 82px;
+    padding-bottom: 36px;
+  }
+
+  .plx-process,
+  .plx-companies,
+  .plx-faq {
+    padding-top: 54px;
+    padding-bottom: 36px;
+  }
+
+  .plx-pill {
+    gap: 8px;
+    padding: 10px 18px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .plx-pill svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .plx-page h1 {
+    font-size: 46px;
+    line-height: 54px;
+    margin-top: 16px;
+  }
+
+  .plx-page h2 {
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 14px;
+  }
+
+  .plx-sub {
+    max-width: 760px;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 10px;
+  }
+
+  .plx-cards,
+  .plx-steps {
+    margin-top: 20px;
+    gap: 16px;
+  }
+
+  .plx-card,
+  .plx-steps article {
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .plx-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .plx-card-head {
+    gap: 10px;
+  }
+
+  .plx-id h2 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .plx-id p,
+  .plx-id span {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .plx-package {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  .plx-package small {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .plx-package strong {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .plx-package svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .plx-quote {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .plx-view-all {
+    margin-top: 22px;
+    padding: 10px 18px;
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .plx-step-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .plx-step-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .plx-steps b {
+    top: 16px;
+    right: 16px;
+    font-size: 34px;
+  }
+
+  .plx-steps h3 {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 2px;
+  }
+
+  .plx-steps p {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .plx-companies .figma-company-ticker {
+    min-height: 92px;
+    margin-top: 16px;
+  }
+
+  .plx-companies .figma-company-logos {
+    gap: 36px;
+    animation-duration: 28s;
+  }
+
+  .plx-companies .figma-company-item {
+    width: 220px;
+    height: 92px;
+  }
+
+  .plx-companies .figma-company-item img {
+    max-width: 220px;
+    max-height: 80px;
+  }
+
+  .plx-cta {
+    margin-top: 34px;
+    border-radius: 28px;
+    padding: 34px 20px 30px;
+  }
+
+  .plx-cta-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+  }
+
+  .plx-cta-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .plx-cta h3 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .plx-cta p {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+
+  .plx-cta a {
+    margin-top: 12px;
+    padding: 10px 16px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .plx-faq {
+    padding-bottom: 70px;
+  }
+
+  .plx-faq-list {
+    gap: 10px;
+  }
+
+  .plx-faq-list details {
+    border-radius: 6px;
+    padding: 14px 18px;
+  }
+
+  .plx-faq-list summary {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .plx-faq-list summary span {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .plx-faq-list details p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plx-companies .figma-company-logos {
+    animation: none;
+  }
+}

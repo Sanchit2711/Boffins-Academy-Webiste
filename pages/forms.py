@@ -32,9 +32,8 @@ class ContactForm(forms.ModelForm):
                 "placeholder": "Phone No.",
                 "class": "h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm"
             }),
-            "course_interest": forms.TextInput(attrs={
-                "placeholder": "Course Interest",
-                "class": "h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm"
+            "course_interest": forms.Select(attrs={
+                "class": "h-10 w-full rounded-lg border border-[#E6E2F0] px-4 text-sm focus:border-[#6B4EFF] focus:ring-2 focus:ring-[#6B4EFF]/20 outline-none"
             }),
             "message": forms.Textarea(attrs={
                 "rows": 4,
