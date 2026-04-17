@@ -1,7 +1,8 @@
+{% load static %}
 <section class="figma-companies">
   <div class="figma-companies-head">
     <div class="figma-pill">
-      <img src="/static/icons/pill-companies.svg" alt="" />
+      <img src="{% static 'icons/pill-companies.svg' %}" alt="" />
       <span>COMPANIES</span>
     </div>
     <h2>Our Alumni Work at Top Companies</h2>
@@ -10,23 +11,23 @@
 
   <div class="figma-company-ticker">
     <div class="figma-company-logos">
-      <div class="figma-company-item"><img src="https://www.figma.com/api/mcp/asset/f762decc-25c4-4270-ab50-9c6aae87874b" alt="Amazon" /></div>
-      <div class="figma-company-item"><img src="https://www.figma.com/api/mcp/asset/ec67185c-333b-451e-bf8e-63a161bcd031" alt="Microsoft" /></div>
-      <div class="figma-company-item"><img src="https://www.figma.com/api/mcp/asset/97849177-3636-4cb8-bc24-146a7a6b3e30" alt="Spotify" /></div>
-      <div class="figma-company-item"><img src="https://www.figma.com/api/mcp/asset/c9f82a42-1603-4f66-9746-f77976a8608e" alt="Slack" /></div>
-      <div class="figma-company-item"><img src="https://www.figma.com/api/mcp/asset/50d6cb19-32ab-466e-b290-7fbff3f8e1b0" alt="Lenovo" /></div>
-      <div class="figma-company-item" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/f762decc-25c4-4270-ab50-9c6aae87874b" alt="" /></div>
-      <div class="figma-company-item" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/ec67185c-333b-451e-bf8e-63a161bcd031" alt="" /></div>
-      <div class="figma-company-item" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/97849177-3636-4cb8-bc24-146a7a6b3e30" alt="" /></div>
-      <div class="figma-company-item" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/c9f82a42-1603-4f66-9746-f77976a8608e" alt="" /></div>
-      <div class="figma-company-item" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/50d6cb19-32ab-466e-b290-7fbff3f8e1b0" alt="" /></div>
+      <div class="figma-company-item"><img src="{% static 'icons/company-amazon.svg' %}" alt="Amazon" /></div>
+      <div class="figma-company-item"><img src="{% static 'icons/company-microsoft.svg' %}" alt="Microsoft" /></div>
+      <div class="figma-company-item"><img src="{% static 'icons/company-spotify.svg' %}" alt="Spotify" /></div>
+      <div class="figma-company-item"><img src="{% static 'icons/company-slack.svg' %}" alt="Slack" /></div>
+      <div class="figma-company-item"><img src="{% static 'icons/company-lenovo.svg' %}" alt="Lenovo" /></div>
+      <div class="figma-company-item" aria-hidden="true"><img src="{% static 'icons/company-amazon.svg' %}" alt="" /></div>
+      <div class="figma-company-item" aria-hidden="true"><img src="{% static 'icons/company-microsoft.svg' %}" alt="" /></div>
+      <div class="figma-company-item" aria-hidden="true"><img src="{% static 'icons/company-spotify.svg' %}" alt="" /></div>
+      <div class="figma-company-item" aria-hidden="true"><img src="{% static 'icons/company-slack.svg' %}" alt="" /></div>
+      <div class="figma-company-item" aria-hidden="true"><img src="{% static 'icons/company-lenovo.svg' %}" alt="" /></div>
     </div>
   </div>
 </section>
 
 <style>
   .figma-companies {
-    background: #faf9f6;
+    background: #f4f6ff;
     padding: 100px 32px 24px;
     font-family: "Manrope", sans-serif;
     text-align: center;
@@ -43,6 +44,7 @@
     border-radius: 30px;
     border: 1px solid #e2d9ff;
     background: #fff;
+    box-shadow: 0 0 20px rgba(128, 103, 246, 0.24);
     color: #200060;
     font-size: 14px;
     line-height: 20px;
@@ -79,8 +81,6 @@
     overflow: hidden;
     position: relative;
     min-height: 92px;
-    mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
   }
 
   .figma-company-logos {
@@ -93,19 +93,20 @@
 
   .figma-company-item {
     flex: 0 0 auto;
-    width: 220px;
+    width: 240px;
     height: 92px;
     display: grid;
     align-items: center;
+    justify-items: center;
   }
 
   .figma-company-logos img {
-    width: 100%;
-    max-width: 220px;
+    width: auto;
+    max-width: 210px;
     margin: 0 auto;
-    max-height: 80px;
+    max-height: 62px;
     object-fit: contain;
-    filter: grayscale(100%);
+    display: block;
   }
 
   .figma-company-ticker:hover .figma-company-logos {
@@ -124,8 +125,6 @@
 
     .figma-company-ticker {
       min-height: 72px;
-      mask-image: none;
-      -webkit-mask-image: none;
     }
 
     .figma-company-logos {

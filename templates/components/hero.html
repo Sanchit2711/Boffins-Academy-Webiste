@@ -1,16 +1,16 @@
 {% load static %}
 <section id="hero-figma" class="hero-figma" data-tight>
   <div class="hero-banner">
-    <img class="hero-ellipse hero-ellipse-right" src="https://www.figma.com/api/mcp/asset/4444a2d3-f25a-4c9e-bd14-cab7620368a2" alt="" />
-    <img class="hero-ellipse hero-ellipse-left" src="https://www.figma.com/api/mcp/asset/4444a2d3-f25a-4c9e-bd14-cab7620368a2" alt="" />
+    <img class="hero-ellipse hero-ellipse-right" src="{% static 'images/figma-mcp/hero-ellipse.svg' %}" alt="" />
+    <img class="hero-ellipse hero-ellipse-left" src="{% static 'images/figma-mcp/hero-ellipse.svg' %}" alt="" />
 
     <div class="hero-trust">
       <span>
-        <img src="https://www.figma.com/api/mcp/asset/f3c6dd9d-5546-4e67-a641-aef349913621" alt="" />
+        <img src="{% static 'icons/check-circle.svg' %}" alt="" />
         Trusted by 15,000+ Students
       </span>
       <span>
-        <img src="https://www.figma.com/api/mcp/asset/f3c6dd9d-5546-4e67-a641-aef349913621" alt="" />
+        <img src="{% static 'icons/check-circle.svg' %}" alt="" />
         10 Years of Excellence
       </span>
     </div>
@@ -31,7 +31,7 @@
         <div class="hero-stat-glow"></div>
         <div class="hero-stat-card">
           <div class="hero-stat-icon hero-stat-red">
-            <img src="https://www.figma.com/api/mcp/asset/e3b3b018-a319-416a-908f-4a50b430572c" alt="" />
+            <img src="{% static 'icons/check-badge.svg' %}" alt="" />
           </div>
           <div>
             <h2>Industry Certified</h2>
@@ -44,7 +44,7 @@
         <div class="hero-stat-glow"></div>
         <div class="hero-stat-card">
           <div class="hero-stat-icon hero-stat-yellow">
-            <img src="https://www.figma.com/api/mcp/asset/15382572-b455-4ef6-98b9-5b7c43726952" alt="" />
+            <img src="{% static 'icons/star-rating.svg' %}" alt="" />
           </div>
           <div>
             <h2>4.8/5 Rating</h2>
@@ -57,7 +57,7 @@
         <div class="hero-stat-glow"></div>
         <div class="hero-stat-card">
           <div class="hero-stat-icon hero-stat-blue">
-            <img src="https://www.figma.com/api/mcp/asset/aff20c46-cc86-465d-819f-a05e9691e7f2" alt="" />
+            <img src="{% static 'icons/users-group-icon.svg' %}" alt="" />
           </div>
           <div>
             <h2>15,000+ Alumni</h2>
@@ -69,6 +69,9 @@
   </div>
 
   <div class="hero-wave">
-    <img src="https://www.figma.com/api/mcp/asset/064ed4e6-d58e-442d-86ed-0b0cf719927d" alt="" />
+    <picture>
+      <source media="(max-width: 640px)" srcset="{% static 'images/hero-wave-mobile.svg' %}" />
+      <img src="{% static 'images/hero-wave-desktop.svg' %}" alt="" />
+    </picture>
   </div>
 </section>
